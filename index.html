@@ -19,7 +19,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--body-text); font-family: var(--sans); font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s, border-color 0.3s; background: rgba(234,249,248,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; background: rgba(234,249,248,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
     nav.scrolled { background: rgba(234,249,248,0.96); border-bottom-color: var(--teal-rule); }
     .nav-wordmark { font-family: var(--serif); font-weight: 300; font-size: 0.95rem; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; }
     .nav-wordmark span { color: var(--teal-deep); font-weight: 400; }
@@ -52,16 +52,247 @@
     .what-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 4rem; }
     .what-body p { font-size: 1rem; color: var(--body-text); line-height: 1.85; }
     .what-body p + p { margin-top: 1rem; }
-    .what-body a { color: var(--teal-deep); text-decoration: none; border-bottom: 1px solid var(--teal-rule); transition: border-color 0.2s; }
-    .what-body a:hover { border-color: var(--teal-deep); }
+    .what-body a { color: var(--teal-deep); text-decoration: none; border-bottom: 1px solid var(--teal-rule); }
     .rumi-section { padding: 4rem 0; }
     .rumi-quote { text-align: center; max-width: 600px; margin: 0 auto; }
     .rumi-quote blockquote { font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-style: italic; font-weight: 300; color: var(--charcoal); line-height: 1.55; margin-bottom: 1rem; }
     .rumi-quote cite { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-style: normal; }
     .essays-section { padding: 6rem 0; background: var(--bg-section); }
-    .essays-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2.5rem; }
-    .essays-title { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--charcoal); }
+    .essays-title { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 2.5rem; }
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .essay-card { display: block; background: var(--bg-card); border: 1px solid rgba(0,139,135,0.12); border-radius: 3px; padding: 1.75rem 2.25rem; margin-bottom: 2px; text-decoration: none; transition: all 0.28s; position: relative; overflow: hidden; }
-    .essay-card::after
+    .essay-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--teal-deep); transform: scaleY(0); transform-origin: bottom; transition: transform 0.35s ease; }
+    .essay-card:hover { border-color: rgba(0,139,135,0.3); transform: translateX(4px); }
+    .essay-card:hover::after { transform: scaleY(1); }
+    .essay-card.coming { opacity: 0.45; pointer-events: none; }
+    .essay-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
+    .essay-number { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); }
+    .essay-status { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .essay-status.live { color: var(--teal-deep); }
+    .essay-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.3; }
+    .essay-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 600px; }
+    .essay-arrow { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); color: var(--teal-deep); font-size: 1.1rem; opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+    .essay-card:hover .essay-arrow { opacity: 1; transform: translateY(-50%) translateX(3px); }
+    .field-invite { padding: 6rem 0; }
+    .field-invite-inner { background: var(--charcoal); border-radius: 4px; padding: 4rem; text-align: center; position: relative; overflow: hidden; }
+    .field-invite-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(79,189,186,0.12) 0%, transparent 70%); pointer-events: none; }
+    .field-eyebrow { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 1.5rem; }
+    .field-invite-inner blockquote { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.6; margin-bottom: 0.75rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .field-invite-inner cite { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-mid); font-style: normal; display: block; margin-bottom: 2.5rem; }
+    .field-invite-inner p { font-size: 0.97rem; color: rgba(255,255,255,0.6); max-width: 440px; margin: 0 auto 2.5rem; line-height: 1.75; }
+    .foundation-section { padding: 6rem 0; }
+    .foundation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--teal-rule); border: 1px solid var(--teal-rule); border-radius: 3px; overflow: hidden; margin-top: 2.5rem; }
+    .foundation-card { background: var(--white); padding: 2rem 2.25rem; text-decoration: none; transition: background 0.2s; }
+    .foundation-card:hover { background: #f0faf9; }
+    .foundation-card.dim { opacity: 0.5; cursor: default; pointer-events: none; }
+    .card-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 0.65rem; }
+    .foundation-card h4 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.45rem; line-height: 1.35; }
+    .foundation-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+    .bio-section { padding: 6rem 0; background: var(--bg-section); }
+    .bio-inner { display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: start; }
+    .bio-monogram { width: 68px; height: 68px; border: 1px solid var(--teal-deep); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--teal-deep); flex-shrink: 0; }
+    .bio-name { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.2rem; }
+    .bio-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 1.1rem; }
+    .bio-text { font-size: 0.96rem; color: var(--body-text); line-height: 1.85; max-width: 540px; }
+    .bio-text + .bio-text { margin-top: 0.85rem; }
+    footer { border-top: 1px solid var(--teal-rule); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-mark { font-family: var(--serif); font-size: 0.88rem; color: var(--muted); }
+    .footer-mark span { color: var(--teal-deep); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal-deep); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 680px) { nav { padding: 1rem 1.25rem; } .nav-links { display: none; } .what-body { grid-template-columns: 1fr; } .foundation-grid { grid-template-columns: 1fr; } .bio-inner { grid-template-columns: 1fr; } .field-invite-inner { padding: 2.5rem 1.5rem; } footer { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav id="main-nav">
+  <a href="#" class="nav-wordmark">The <span>Age of Absurdity</span></a>
+  <ul class="nav-links">
+    <li><a href="#essays">Essays</a></li>
+    <li><a href="#field">The Field</a></li>
+    <li><a href="#foundation">Research</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <canvas id="field-canvas"></canvas>
+  <div class="hero-inner container">
+    <p class="hero-eyebrow">An Essay Series &nbsp;·&nbsp; Building a Book in Public</p>
+    <h1 class="hero-title">The Age of<br><em>Absurdity</em></h1>
+    <div class="hero-signal" id="signal-block">
+      <span class="signal-line" id="sl1">Absurdity is a neutral signal.</span>
+      <span class="signal-line" id="sl2">What isn't neutral is what happens next.</span>
+      <span class="signal-line" id="sl3">Does the signal travel?</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#essays" class="btn btn-primary">Read the Essays</a>
+      <a href="#field" class="btn btn-field">Experience the Field</a>
+      <a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener" class="btn btn-secondary">Field Paper 02 ↗</a>
+    </div>
+  </div>
+</section>
+<hr class="section-rule" />
+<section class="rumi-section reveal">
+  <div class="container">
+    <div class="rumi-quote">
+      <blockquote>"Out beyond ideas of right and wrong, there is a field.<br>I'll meet you there."</blockquote>
+      <cite>Rumi &nbsp;·&nbsp; trans. Coleman Barks</cite>
+    </div>
+  </div>
+</section>
+<hr class="section-rule" />
+<section class="what-section" id="about">
+  <div class="container">
+    <p class="section-label">What This Is</p>
+    <div class="what-body reveal">
+      <div>
+        <p>This series is a book being built in public. Each essay is a chapter in embryo — an argument developed in the open, tested against real conditions, refined through the process of being read.</p>
+        <p>The book is called <em>The Age of Absurdity</em>. It argues that what organisations, institutions, and individuals are experiencing right now is not dysfunction or poor leadership. It is something more specific: a progressive loss of the capacity to stay in accurate contact with what is actually happening.</p>
+      </div>
+      <div>
+        <p>Absurdity is the signal that this capacity has slipped below threshold. It is not what people do wrong. It is what systems produce when their orientation field is under strain.</p>
+        <p>The research foundation is the Organizational Absurdity Research Program at InSpark Group Inc. The scholarly argument lives in <a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener">Field Paper 02</a>. These essays are its public voice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-rule" />
+<section class="essays-section" id="essays">
+  <div class="container">
+    <h2 class="essays-title">The Essays</h2>
+    <a href="https://charleen-johnson.github.io/after-the-container/" class="essay-card reveal">
+      <div class="essay-meta">
+        <span class="essay-number">Essay One</span>
+        <span class="essay-status live">&#9679; Live</span>
+      </div>
+      <h3>After the Container</h3>
+      <p>What the container got right, why it stopped working, and what comes next. Introduces orientation capacity, the five scaffolding dimensions, and what the work actually is now.</p>
+      <span class="essay-arrow">→</span>
+    </a>
+    <div class="essay-card coming reveal">
+      <div class="essay-meta"><span class="essay-number">Essay Two</span><span class="essay-status">Coming Soon</span></div>
+      <h3>Complicit Incoherence</h3>
+      <p>Not dishonesty. Organised participation in conditions that prevent integrated seeing from forming.</p>
+    </div>
+    <div class="essay-card coming reveal">
+      <div class="essay-meta"><span class="essay-number">Essay Three</span><span class="essay-status">Coming Soon</span></div>
+      <h3>Orientation Capacity</h3>
+      <p>The anchor essay. The full argument — what orientation capacity is, how it degrades, what absurdity patterns reveal.</p>
+    </div>
+    <div class="essay-card coming reveal">
+      <div class="essay-meta"><span class="essay-number">Essay Four</span><span class="essay-status">Coming Soon</span></div>
+      <h3>Orientation Development</h3>
+      <p>Same initials as Organisation Development. Different unit of analysis. What the next generation of this work looks like.</p>
+    </div>
+  </div>
+</section>
+<hr class="section-rule" />
+<section class="field-invite" id="field">
+  <div class="container">
+    <div class="field-invite-inner reveal">
+      <p class="field-eyebrow">The Orientation Field</p>
+      <blockquote>"Out beyond ideas of right and wrong,<br>there is a field. I'll meet you there."</blockquote>
+      <cite>Rumi &nbsp;·&nbsp; trans. Coleman Barks</cite>
+      <p>Before the argument, there is the experience. Enter the orientation field — a living, responsive environment where signals emerge, patterns surface, and something in you begins to orient.</p>
+      <a href="https://charleen-johnson.github.io/orientation-field/" class="btn btn-field">Enter the Field</a>
+    </div>
+  </div>
+</section>
+<hr class="section-rule" />
+<section class="foundation-section" id="foundation">
+  <div class="container">
+    <p class="section-label">The Research Foundation</p>
+    <div class="foundation-grid reveal">
+      <a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener" class="foundation-card">
+        <p class="card-label">Field Paper 02 &nbsp;·&nbsp; Zenodo</p>
+        <h4>Orientation Capacity: Why Organizations Lose Their Ability to Interpret Reality</h4>
+        <p>The scholarly argument. Mechanisms, evidence, framework.</p>
+      </a>
+      <a href="https://www.insparkgroup.com" target="_blank" rel="noopener" class="foundation-card">
+        <p class="card-label">InSpark Group Inc.</p>
+        <h4>Organizational Absurdity Research Program</h4>
+        <p>The research program producing the Field Paper series, the Absurdity Pattern Library, and the Workplace Absurdities Report.</p>
+      </a>
+      <div class="foundation-card dim">
+        <p class="card-label">Newsletter &nbsp;·&nbsp; Coming Soon</p>
+        <h4>The Brief</h4>
+        <p>The conversation layer. Moving to Substack in the coming weeks.</p>
+      </div>
+      <div class="foundation-card dim">
+        <p class="card-label">Book &nbsp;·&nbsp; In Progress</p>
+        <h4>The Age of Absurdity</h4>
+        <p>The book these essays are building toward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-rule" />
+<section class="bio-section">
+  <div class="container">
+    <p class="section-label">The Author</p>
+    <div class="bio-inner reveal">
+      <div class="bio-monogram">CJ</div>
+      <div>
+        <p class="bio-name">Charleen Johnson</p>
+        <p class="bio-role">Founder &nbsp;·&nbsp; InSpark Group Inc. &amp; Behaving Badly HQ</p>
+        <p class="bio-text">Charleen Johnson is the founder of InSpark Group Inc. and creator of the Organizational Absurdity Research Program. Her research sits at the intersection of complexity thinking, sensemaking, and the conditions through which organisations lose — and can recover — their capacity to stay in contact with what they are actually encountering.</p>
+        <p class="bio-text">She is the author of <em>Who Are My Muffin</em> (BBHQ Books, 2025) and the Field Paper series. <em>The Age of Absurdity</em> is her next book.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <p class="footer-mark">The <span>Age of Absurdity</span> &nbsp;·&nbsp; Charleen Johnson &nbsp;·&nbsp; InSpark Group Inc.</p>
+  <ul class="footer-links">
+    <li><a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener">Field Paper 02</a></li>
+    <li><a href="https://www.insparkgroup.com" target="_blank" rel="noopener">InSpark</a></li>
+    <li><a href="https://www.linkedin.com/in/charleenjohnson" target="_blank" rel="noopener">LinkedIn</a></li>
+  </ul>
+</footer>
+<script>
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%'; });
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
+  const lines = [{ el: document.getElementById('sl1'), delay: 800 }, { el: document.getElementById('sl2'), delay: 1350 }, { el: document.getElementById('sl3'), delay: 1900 }];
+  lines.forEach(({ el, delay }) => { setTimeout(() => { el.classList.add('visible'); el.style.animationDelay = '0ms'; }, delay); });
+  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  const canvas = document.getElementById('field-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles, mouse = { x: -999, y: -999 };
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function init() { const count = Math.floor((W * H) / 9000); particles = Array.from({ length: count }, () => ({ x: rnd(0,W), y: rnd(0,H), vx: rnd(-0.18,0.18), vy: rnd(-0.22,0.04), r: rnd(1.2,3.2), color: ['#008b87','#4FBDBA','#4FBDBA','#E6A600','#ff6f61'][Math.floor(Math.random()*5)], alpha: rnd(0.15,0.5), pulse: rnd(0,Math.PI*2), pulseSpeed: rnd(0.008,0.022) })); }
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p => {
+      const dx = mouse.x-p.x, dy = mouse.y-p.y, dist = Math.sqrt(dx*dx+dy*dy);
+      if (dist < 180) { p.vx += (dx/dist)*0.012; p.vy += (dy/dist)*0.012; }
+      p.vx *= 0.985; p.vy *= 0.985;
+      p.vx += rnd(-0.008,0.008); p.vy += rnd(-0.006,0.002);
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10) p.x = W+10; if (p.x > W+10) p.x = -10;
+      if (p.y < -10) p.y = H+10; if (p.y > H+10) p.y = -10;
+      p.pulse += p.pulseSpeed;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha*(0.7+0.3*Math.sin(p.pulse)); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    for (let i=0; i<particles.length; i++) for (let j=i+1; j<particles.length; j++) {
+      const a=particles[i], b=particles[j], dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy);
+      if (d<80) { ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.strokeStyle='#4FBDBA'; ctx.globalAlpha=(1-d/80)*0.08; ctx.lineWidth=0.6; ctx.stroke(); }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  canvas.addEventListener('mousemove', e => { const r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
+  canvas.addEventListener('mouseleave', () => { mouse.x=-999; mouse.y=-999; });
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize(); init(); draw();
+</script>
+</body>
+</html>
