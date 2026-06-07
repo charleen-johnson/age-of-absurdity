@@ -193,6 +193,142 @@
     .essay-article .essay-return a { color: var(--teal-deep); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
     .essay-article .essay-return a:hover { color: var(--coral); }
 
+  
+    /* Interactive hero field for Essay One */
+    .field-hero-wrap {
+      max-width: 1040px;
+      margin: 2.25rem auto 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.9s;
+    }
+
+    .field-hero {
+      --terrain-x: 0px;
+      --terrain-y: 0px;
+      --grid-x: 0px;
+      --grid-y: 0px;
+      --agent-x: 0px;
+      --agent-y: 0px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 5px;
+      border: 1px solid rgba(0,139,135,0.22);
+      box-shadow: 0 18px 50px rgba(26,26,46,0.12);
+      background: #f8fffe;
+      cursor: crosshair;
+      isolation: isolate;
+    }
+
+    .field-hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transform: translate3d(var(--terrain-x), var(--terrain-y), 0) scale(1.025);
+      transition: transform 0.28s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .field-hero-grid,
+    .field-hero-flow,
+    .field-hero-agent,
+    .field-hero-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .field-hero-grid {
+      z-index: 2;
+      opacity: 0.22;
+      transform: translate3d(var(--grid-x), var(--grid-y), 0);
+      transition: transform 0.28s ease-out;
+      background-image:
+        linear-gradient(rgba(0,107,104,0.24) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,107,104,0.24) 1px, transparent 1px);
+      background-size: 68px 68px;
+      mix-blend-mode: multiply;
+    }
+
+    .field-hero-flow {
+      z-index: 3;
+      opacity: 0.24;
+      transform: translate3d(calc(var(--grid-x) * -1), calc(var(--grid-y) * -1), 0);
+      transition: transform 0.28s ease-out;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.4' stroke-opacity='0.55'%3E%3Cpath d='M-60 120 C 110 45, 240 185, 420 110 S 715 40, 880 140 S 1060 215, 1260 130'/%3E%3Cpath d='M-70 210 C 120 140, 285 285, 475 205 S 730 122, 940 240 S 1110 318, 1265 230'/%3E%3Cpath d='M-40 315 C 100 270, 270 380, 470 320 S 755 230, 930 350 S 1100 430, 1250 360'/%3E%3Cpath d='M-30 420 C 150 360, 300 495, 520 420 S 800 340, 990 455 S 1130 520, 1260 470'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      mix-blend-mode: screen;
+    }
+
+    .field-hero-glow {
+      z-index: 4;
+      opacity: 0.32;
+      transform: translate3d(calc(var(--terrain-x) * -1), calc(var(--terrain-y) * -1), 0);
+      transition: transform 0.28s ease-out;
+      background:
+        radial-gradient(circle at 42% 62%, rgba(255,111,97,0.20), transparent 14%),
+        radial-gradient(circle at 62% 38%, rgba(193,127,0,0.18), transparent 16%),
+        radial-gradient(circle at 26% 70%, rgba(79,189,186,0.18), transparent 18%);
+      mix-blend-mode: soft-light;
+    }
+
+    .field-hero-agent {
+      z-index: 5;
+    }
+
+    .field-hero-agent::before {
+      content: "";
+      position: absolute;
+      left: calc(50% + var(--agent-x));
+      top: calc(62% + var(--agent-y));
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--gold);
+      box-shadow:
+        0 0 0 8px rgba(255,255,255,0.72),
+        0 0 0 13px rgba(0,139,135,0.22),
+        0 0 36px rgba(255,111,97,0.32);
+      transition: left 0.28s ease-out, top 0.28s ease-out;
+      animation: agentPulse 2.8s ease-in-out infinite;
+    }
+
+    .field-hero-agent::after {
+      content: "";
+      position: absolute;
+      left: calc(50% + var(--agent-x));
+      top: calc(62% + var(--agent-y));
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.72);
+      transform: translate(-50%, -50%);
+      transition: left 0.28s ease-out, top 0.28s ease-out;
+    }
+
+    .field-hero-caption {
+      margin-top: 0.85rem;
+      text-align: center;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    @keyframes agentPulse {
+      0%, 100% { box-shadow: 0 0 0 8px rgba(255,255,255,0.72), 0 0 0 13px rgba(0,139,135,0.22), 0 0 30px rgba(255,111,97,0.22); }
+      50% { box-shadow: 0 0 0 10px rgba(255,255,255,0.86), 0 0 0 18px rgba(0,139,135,0.16), 0 0 46px rgba(255,111,97,0.34); }
+    }
+
+    @media (max-width: 768px) {
+      .field-hero-wrap { margin-top: 1.5rem; }
+      .field-hero-caption { font-size: 0.92rem; padding: 0 0.5rem; }
+      .field-hero-agent::before { width: 16px; height: 16px; }
+      .field-hero-agent::after { width: 64px; height: 64px; }
+    }
+
   </style>
 </head>
 <body>
@@ -252,6 +388,17 @@
       <a href="index.html#essays" class="btn btn-teal">Back to Essays</a>
       <a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener" class="btn btn-ghost">Field Paper 02 &#x2197;</a>
     </div>
+    <div class="field-hero-wrap reveal">
+      <figure class="field-hero" id="orientation-field-hero">
+        <img src="orientation-crisis-field.png" alt="An abstract topographic field with a static navigation grid, compass markings, and a small agent marker trying to orient within a shifting terrain." />
+        <div class="field-hero-grid" aria-hidden="true"></div>
+        <div class="field-hero-flow" aria-hidden="true"></div>
+        <div class="field-hero-glow" aria-hidden="true"></div>
+        <div class="field-hero-agent" aria-hidden="true"></div>
+      </figure>
+      <p class="field-hero-caption">A static map. A moving field. An agent trying to find enough bearing to act.</p>
+    </div>
+
   </div>
 </section>
 
@@ -578,6 +725,45 @@
   })();
 
 
+
+  // INTERACTIVE ORIENTATION FIELD HERO
+  (function() {
+    const field = document.getElementById('orientation-field-hero');
+    if (!field) return;
+
+    const reset = () => {
+      field.style.setProperty('--terrain-x', '0px');
+      field.style.setProperty('--terrain-y', '0px');
+      field.style.setProperty('--grid-x', '0px');
+      field.style.setProperty('--grid-y', '0px');
+      field.style.setProperty('--agent-x', '0px');
+      field.style.setProperty('--agent-y', '0px');
+    };
+
+    const move = (clientX, clientY) => {
+      const r = field.getBoundingClientRect();
+      const x = ((clientX - r.left) / r.width) - 0.5;
+      const y = ((clientY - r.top) / r.height) - 0.5;
+
+      field.style.setProperty('--terrain-x', `${x * -14}px`);
+      field.style.setProperty('--terrain-y', `${y * -10}px`);
+      field.style.setProperty('--grid-x', `${x * 22}px`);
+      field.style.setProperty('--grid-y', `${y * 16}px`);
+      field.style.setProperty('--agent-x', `${x * 8}px`);
+      field.style.setProperty('--agent-y', `${y * 6}px`);
+    };
+
+    field.addEventListener('mousemove', e => move(e.clientX, e.clientY));
+    field.addEventListener('mouseleave', reset);
+
+    field.addEventListener('touchmove', e => {
+      if (!e.touches || !e.touches.length) return;
+      move(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    field.addEventListener('touchend', reset);
+    reset();
+  })();
 
 </script>
 </body>
