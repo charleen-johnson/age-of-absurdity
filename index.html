@@ -541,7 +541,7 @@
         const ox = mMouse.x > 0 ? mMouse.x : mW / 2;
         const oy = mMouse.y > 0 ? mMouse.y : mH / 2;
         triggerRipple(ox, oy);
-        // Reset so it fires again 2.3s after the next interaction
+        // Reset so it fires again 2.8s after the next interaction
         hasInteracted = false;
       }
     }
@@ -567,7 +567,7 @@
           const diff = Math.abs(dist - waveFront);
           if (diff < bandWidth) {
             // Force proportional to proximity to wave front, decays over distance
-            const force = (1 - diff/bandWidth) * ripple.strength * 3.5;
+            const force = (1 - diff/bandWidth) * ripple.strength * 2.5;
             if (dist > 0) {
               p.vx += (dx/dist) * force;
               p.vy += (dy/dist) * force;
