@@ -32,7 +32,7 @@
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0.85rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: var(--teal-dark); border-bottom: 1px solid rgba(0,0,0,0.15); transition: padding 0.3s; }
     nav.scrolled { padding: 0.65rem 2.5rem; }
-    .nav-home { font-size: 1.4rem; color: white; text-decoration: none; font-weight: 900; line-height: 1; filter: drop-shadow(0 0 3px rgba(255,255,255,0.25)); transition: all 0.2s; }
+    .nav-home { font-size: 1.85rem; color: white; text-decoration: none; font-weight: 900; line-height: 1; filter: drop-shadow(0 0 4px rgba(255,255,255,0.35)); transition: all 0.2s; transform: translateY(-1px); }
     .nav-home:hover { color: var(--gold); }
     .nav-right { display: flex; align-items: center; gap: 2rem; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -165,7 +165,6 @@
 
     @media (max-width: 768px) {
       nav { padding: 0.85rem 1.25rem; }
-      .nav-links li:nth-child(2) { display: none; }
       .bio-inner { grid-template-columns: 1fr; gap: 2rem; }
       .papers-grid { grid-template-columns: 1fr; }
       .compass-grid { grid-template-columns: 1fr; }
@@ -173,9 +172,11 @@
     }
   
 
-    .essay-hero { min-height: 68vh; padding-top: 7rem; }
-    .essay-hero .hero-title { font-size: clamp(3.5rem, 8vw, 7rem); }
-    .essay-hero .hero-subtitle { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .essay-hero { min-height: 52vh; padding: 7rem 2rem 3.5rem; }
+    .essay-series { font-family: var(--serif); font-size: clamp(1.45rem, 3vw, 2.2rem); font-weight: 400; color: var(--teal-deep); margin-bottom: 0.35rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.15s; }
+    .essay-hero .hero-eyebrow { margin-bottom: 0.9rem; animation-delay: 0.3s; }
+    .essay-hero .hero-title { font-size: clamp(2.6rem, 5.5vw, 4.8rem); line-height: 1.05; margin-bottom: 0.9rem; animation-delay: 0.45s; }
+    .essay-hero .hero-subtitle { max-width: 720px; margin-left: auto; margin-right: auto; font-size: clamp(1.05rem, 1.9vw, 1.35rem); animation-delay: 0.6s; }
     .essay-section { padding: 5rem 0 6rem; background: var(--white); }
     .essay-article { max-width: 760px; margin: 0 auto; }
     .essay-article p { font-size: 1rem; color: var(--body-text); line-height: 1.95; margin-bottom: 1.35rem; font-weight: 300; }
@@ -221,7 +222,7 @@
 </div>
 
 <nav id="main-nav">
-  <a href="index.html" class="nav-home" title="Home">&#x2302;</a>
+  <a href="index.html" class="nav-home" title="Home">&#8962;</a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="index.html#essays">Essays</a></li>
@@ -236,9 +237,10 @@
 <section class="hero essay-hero">
   <canvas id="field-canvas"></canvas>
   <div class="hero-inner">
+    <p class="essay-series">The Age of Absurdity</p>
     <p class="hero-eyebrow">Essay One</p>
-    <h1 class="hero-title">The Orientation<br><em>Crisis</em></h1>
-    <p class="hero-subtitle">Why the Age of Absurdity begins with losing our bearings</p>
+    <h1 class="hero-title">The Orientation <em>Crisis</em></h1>
+    <p class="hero-subtitle">Why this age begins with losing our bearings</p>
     <div class="hero-cta">
       <a href="index.html#essays" class="btn btn-teal">Back to Essays</a>
       <a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener" class="btn btn-ghost">Field Paper 02 &#x2197;</a>
@@ -250,7 +252,7 @@
 
 <section class="essay-section">
   <div class="container">
-    <article class="essay-article reveal">
+    <article class="essay-article">
           <p class="essay-opening">We have never had more information about the world, and yet it has rarely felt harder to know what is actually going on.</p>
           <p>Everywhere we turn, someone is explaining something. There are dashboards, forecasts, feeds, expert takes, leadership models, AI summaries, economic predictions, institutional statements, cultural diagnoses, wellness protocols, strategy decks, political certainties, and more frameworks than any reasonable mammal should be asked to metabolize before lunch. We are surrounded by signals, commentary, interpretation, and advice. The age does not suffer from a shortage of content. If anything, we are drowning in interpretation while feeling strangely less oriented by it.</p>
           <p>That is the oddity of this moment. The world is more described than ever, and still many people feel less able to tell what is real, what matters, what is changing, who can be trusted, and what requires action. The problem is not simple uncertainty. Human beings have always lived with uncertainty. The future has never been a cooperative animal. Weather changes. Markets shift. Illness arrives. Empires rise and weaken. Families rupture. People fall in love with unsuitable men and call it intuition. Life has always contained instability.</p>
@@ -491,3 +493,4 @@
 </script>
 </body>
 </html>
+
