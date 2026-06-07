@@ -194,107 +194,103 @@
     .essay-article .essay-return a:hover { color: var(--coral); }
 
   
-    /* Lens-based interactive hero for Essay One */
-    .field-hero-wrap {
+    /* Orientation Crisis living terrain visual */
+    .orientation-field-wrap {
       max-width: 1040px;
-      margin: 2.25rem auto 0;
+      margin: 2.2rem auto 0;
       opacity: 1;
       animation: fadeUp 0.9s ease forwards 0.9s;
     }
 
-    .field-hero {
+    .orientation-field {
       --lens-left: 50%;
-      --lens-top: 54%;
-      --grid-x: 0px;
-      --grid-y: 0px;
+      --lens-top: 52%;
       position: relative;
+      height: clamp(260px, 34vw, 430px);
       overflow: hidden;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1px solid rgba(0,139,135,0.22);
       box-shadow: 0 18px 50px rgba(26,26,46,0.12);
-      background: #f8fffe;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,0.82), transparent 22%),
+        linear-gradient(180deg, rgba(250,246,235,0.98), rgba(233,247,246,0.94));
       cursor: crosshair;
       isolation: isolate;
     }
 
-    .field-hero img.field-base-img {
-      display: block;
-      width: 100%;
-      height: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .field-hero-static-grid {
+    .static-map-layer,
+    .static-grid-layer,
+    .static-contour-layer,
+    .static-route-layer,
+    .terrain-lens,
+    .orientation-field-label {
       position: absolute;
       inset: 0;
-      z-index: 2;
       pointer-events: none;
-      opacity: 0.28;
+    }
+
+    .static-map-layer {
+      z-index: 1;
+      background:
+        radial-gradient(ellipse at 18% 70%, rgba(0,107,104,0.34), transparent 32%),
+        radial-gradient(ellipse at 62% 58%, rgba(0,139,135,0.24), transparent 34%),
+        radial-gradient(ellipse at 86% 28%, rgba(193,127,0,0.16), transparent 28%),
+        radial-gradient(ellipse at 74% 78%, rgba(255,111,97,0.13), transparent 26%);
+      opacity: 0.84;
+      filter: saturate(0.95);
+    }
+
+    .static-grid-layer {
+      z-index: 2;
+      opacity: 0.30;
       mix-blend-mode: multiply;
       background-image:
-        linear-gradient(rgba(0,107,104,0.20) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,107,104,0.20) 1px, transparent 1px);
-      background-size: 72px 72px;
-      background-position: var(--grid-x) var(--grid-y);
-      transition: background-position 0.18s ease-out;
+        linear-gradient(rgba(0,107,104,0.28) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,107,104,0.28) 1px, transparent 1px);
+      background-size: 74px 74px;
     }
 
-    .field-hero-static-grid::after {
-      content: "";
-      position: absolute;
-      right: 7%;
-      top: 12%;
-      width: 22%;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      border: 1px solid rgba(193,127,0,0.42);
-      background:
-        radial-gradient(circle, transparent 0 46%, rgba(193,127,0,0.18) 47% 48%, transparent 49%),
-        linear-gradient(0deg, transparent 49%, rgba(193,127,0,0.35) 50%, transparent 51%),
-        linear-gradient(90deg, transparent 49%, rgba(193,127,0,0.35) 50%, transparent 51%);
-      opacity: 0.75;
-    }
-
-    .field-hero-resting-lens {
-      position: absolute;
-      left: 50%;
-      top: 54%;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px dashed rgba(255,255,255,0.72);
-      box-shadow: 0 0 0 7px rgba(0,139,135,0.10);
+    .static-contour-layer {
       z-index: 3;
-      pointer-events: none;
-      opacity: 0.55;
+      opacity: 0.58;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23006b68' stroke-width='1.15' stroke-opacity='0.38'%3E%3Cpath d='M-80 80 C 70 20, 190 126, 350 76 S 610 18, 780 88 S 1030 152, 1380 70'/%3E%3Cpath d='M-70 132 C 84 78, 208 180, 370 130 S 642 74, 822 142 S 1040 212, 1370 132'/%3E%3Cpath d='M-60 190 C 96 140, 236 242, 398 190 S 664 132, 850 204 S 1078 272, 1376 192'/%3E%3Cpath d='M-68 252 C 110 198, 264 306, 430 252 S 692 190, 888 270 S 1120 328, 1370 254'/%3E%3Cpath d='M-84 318 C 108 262, 296 374, 472 320 S 726 260, 932 330 S 1156 398, 1382 324'/%3E%3Cpath d='M-80 386 C 126 332, 322 444, 514 390 S 766 326, 976 396 S 1198 468, 1378 396'/%3E%3Cpath d='M-72 456 C 150 400, 356 512, 560 462 S 810 396, 1012 468 S 1220 528, 1370 470'/%3E%3C/g%3E%3Cg fill='none' stroke='%23C17F00' stroke-width='1' stroke-opacity='0.26'%3E%3Cpath d='M40 390 C 186 326, 314 342, 448 286 S 632 194, 842 240 S 1036 284, 1280 210'/%3E%3Cpath d='M-20 230 C 160 270, 254 190, 430 220 S 720 314, 930 272 S 1120 160, 1320 206'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .static-route-layer {
+      z-index: 4;
+      opacity: 0.44;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23ff6f61' stroke-width='2' stroke-opacity='0.45' stroke-dasharray='9 10'%3E%3Cpath d='M40 370 C 180 330, 280 356, 420 292 S 620 196, 810 238 S 1020 314, 1250 246'/%3E%3C/g%3E%3Cg fill='%231a1a2e' fill-opacity='0.36' font-family='serif' font-size='20' letter-spacing='6'%3E%3Ctext x='130' y='120'%3ERIDGE%3C/text%3E%3Ctext x='760' y='158'%3EFIELD%3C/text%3E%3Ctext x='1010' y='360'%3ELOWLAND%3C/text%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
     }
 
     .terrain-lens {
-      position: absolute;
+      z-index: 8;
       left: var(--lens-left);
       top: var(--lens-top);
-      width: 260px;
-      height: 260px;
+      right: auto;
+      bottom: auto;
+      width: 270px;
+      height: 270px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       overflow: hidden;
-      z-index: 6;
-      pointer-events: none;
-      opacity: 0.9;
-      transition: opacity 0.18s ease, width 0.18s ease, height 0.18s ease;
+      opacity: 0.96;
       box-shadow:
         0 0 0 2px rgba(255,255,255,0.96),
-        0 0 0 8px rgba(0,139,135,0.26),
-        0 18px 36px rgba(26,26,46,0.18);
-      background: rgba(255,255,255,0.2);
+        0 0 0 9px rgba(0,139,135,0.26),
+        0 20px 42px rgba(26,26,46,0.22);
+      background: rgba(255,255,255,0.18);
+      transition: width 0.18s ease, height 0.18s ease, opacity 0.18s ease;
     }
 
-    .field-hero.is-active .terrain-lens {
+    .orientation-field.is-active .terrain-lens {
+      width: 315px;
+      height: 315px;
       opacity: 1;
-      width: 300px;
-      height: 300px;
     }
 
     .terrain-lens::before {
@@ -303,8 +299,7 @@
       inset: 14px;
       border-radius: 50%;
       border: 1px dashed rgba(255,255,255,0.82);
-      z-index: 12;
-      pointer-events: none;
+      z-index: 15;
     }
 
     .terrain-lens::after {
@@ -312,89 +307,59 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      border: 1px solid rgba(255,180,0,0.95);
+      border: 1px solid rgba(255,180,0,0.96);
+      background: radial-gradient(circle, rgba(255,180,0,0.95) 0 33%, transparent 36%);
       box-shadow:
         0 0 0 1px rgba(255,255,255,0.92),
-        0 0 0 7px rgba(255,180,0,0.20),
-        0 0 28px rgba(255,111,97,0.22);
-      z-index: 13;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(255,180,0,0.95) 0 32%, transparent 35%);
-      animation: lensPulse 2.6s ease-in-out infinite;
+        0 0 0 7px rgba(255,180,0,0.19),
+        0 0 34px rgba(255,111,97,0.25);
+      z-index: 16;
+      animation: lensPulse 2.8s ease-in-out infinite;
     }
 
-    .terrain-live-stage {
+    #terrain-live-canvas {
       position: absolute;
       inset: 0;
-      overflow: hidden;
-      z-index: 8;
-      border-radius: 50%;
-    }
-
-    .terrain-live-wrap {
-      position: absolute;
-      left: 0;
-      top: 0;
       width: 100%;
       height: 100%;
-      transform-origin: top left;
-      will-change: transform;
-    }
-
-    .terrain-live-img,
-    .terrain-live-ghost,
-    .terrain-live-lines,
-    .terrain-live-sheen {
-      position: absolute;
-      inset: 0;
-    }
-
-    .terrain-live-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(1.08) contrast(1.03);
-    }
-
-    .terrain-live-ghost {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.34;
-      mix-blend-mode: screen;
-      transform: translate(14px, -10px) scale(1.05);
-      filter: hue-rotate(-10deg) saturate(1.18);
-      animation: ghostDrift 7.5s ease-in-out infinite alternate;
-    }
-
-    .terrain-live-lines {
-      opacity: 0.42;
-      mix-blend-mode: screen;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.35' stroke-opacity='0.68'%3E%3Cpath d='M-12 96 C 76 56, 138 126, 222 94 S 364 54, 446 96 S 542 126, 612 94'/%3E%3Cpath d='M-24 166 C 66 134, 144 206, 236 172 S 372 134, 460 172 S 548 198, 624 168'/%3E%3Cpath d='M-10 248 C 82 216, 154 286, 250 252 S 386 212, 476 248 S 552 282, 620 248'/%3E%3Cpath d='M-18 330 C 72 300, 164 362, 264 332 S 390 294, 488 330 S 564 364, 628 330'/%3E%3Cpath d='M-20 416 C 74 386, 164 446, 266 418 S 392 380, 494 414 S 572 448, 632 416'/%3E%3Cpath d='M-8 506 C 90 470, 188 540, 298 508 S 420 476, 516 508 S 584 540, 640 512'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: 120% 120%;
-      animation: lineDrift 12s linear infinite alternate;
-    }
-
-    .terrain-live-sheen {
-      background:
-        radial-gradient(circle at 30% 35%, rgba(255,255,255,0.28), transparent 21%),
-        radial-gradient(circle at 72% 62%, rgba(79,189,186,0.18), transparent 24%),
-        radial-gradient(circle at 52% 52%, rgba(255,180,0,0.16), transparent 20%);
-      mix-blend-mode: soft-light;
-      animation: sheenFloat 9s ease-in-out infinite alternate;
-    }
-
-    .field-hero-instruction {
-      position: absolute;
-      left: 1rem;
-      bottom: 0.85rem;
+      display: block;
       z-index: 10;
+      background: transparent;
+    }
+
+    .lens-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 11;
+      opacity: 0.28;
+      mix-blend-mode: screen;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.34) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.34) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .lens-sheen {
+      position: absolute;
+      inset: 0;
+      z-index: 12;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,0.36), transparent 25%),
+        radial-gradient(circle at 70% 68%, rgba(79,189,186,0.18), transparent 28%),
+        radial-gradient(circle at 50% 50%, rgba(255,180,0,0.12), transparent 22%);
+      mix-blend-mode: soft-light;
+      animation: sheenFloat 8s ease-in-out infinite alternate;
+    }
+
+    .orientation-field-label {
+      inset: auto auto 0.85rem 1rem;
+      z-index: 18;
       padding: 0.42rem 0.58rem;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.74);
       color: rgba(26,26,46,0.72);
       font-size: 0.56rem;
       letter-spacing: 0.13em;
@@ -402,10 +367,9 @@
       font-weight: 500;
       border: 1px solid rgba(0,139,135,0.18);
       backdrop-filter: blur(4px);
-      pointer-events: none;
     }
 
-    .field-hero-caption {
+    .orientation-field-caption {
       margin-top: 0.85rem;
       text-align: center;
       font-family: var(--serif);
@@ -415,31 +379,22 @@
     }
 
     @keyframes lensPulse {
-      0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.92), 0 0 0 7px rgba(255,180,0,0.20), 0 0 28px rgba(255,111,97,0.22); }
-      50% { box-shadow: 0 0 0 1px rgba(255,255,255,0.96), 0 0 0 11px rgba(255,180,0,0.14), 0 0 40px rgba(255,111,97,0.32); }
-    }
-
-    @keyframes ghostDrift {
-      0% { transform: translate(14px, -10px) scale(1.05); opacity: 0.26; }
-      100% { transform: translate(-14px, 12px) scale(1.08); opacity: 0.38; }
-    }
-
-    @keyframes lineDrift {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 18% 10%; }
+      0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.92), 0 0 0 7px rgba(255,180,0,0.19), 0 0 30px rgba(255,111,97,0.22); }
+      50% { box-shadow: 0 0 0 1px rgba(255,255,255,0.96), 0 0 0 11px rgba(255,180,0,0.13), 0 0 46px rgba(255,111,97,0.34); }
     }
 
     @keyframes sheenFloat {
-      0% { transform: translate(0px, 0px); opacity: 0.32; }
-      100% { transform: translate(12px, -8px); opacity: 0.45; }
+      0% { transform: translate(0, 0); opacity: 0.38; }
+      100% { transform: translate(12px, -8px); opacity: 0.5; }
     }
 
     @media (max-width: 768px) {
-      .field-hero-wrap { margin-top: 1.5rem; }
+      .orientation-field-wrap { margin-top: 1.5rem; }
+      .orientation-field { height: 260px; }
       .terrain-lens { width: 180px; height: 180px; }
-      .field-hero.is-active .terrain-lens { width: 210px; height: 210px; }
-      .field-hero-caption { font-size: 0.92rem; padding: 0 0.5rem; }
-      .field-hero-instruction { display: none; }
+      .orientation-field.is-active .terrain-lens { width: 215px; height: 215px; }
+      .orientation-field-label { display: none; }
+      .orientation-field-caption { font-size: 0.92rem; padding: 0 0.5rem; }
     }
 
   </style>
@@ -501,24 +456,20 @@
       <a href="index.html#essays" class="btn btn-teal">Back to Essays</a>
       <a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener" class="btn btn-ghost">Field Paper 02 &#x2197;</a>
     </div>
-    <div class="field-hero-wrap reveal">
-      <figure class="field-hero" id="orientation-field-hero">
-        <img class="field-base-img" src="orientation-crisis-field-v2.png" alt="A static cartographic view of a landscape with topographic forms and compass references." />
-        <div class="field-hero-static-grid" aria-hidden="true"></div>
-        <div class="field-hero-resting-lens" aria-hidden="true"></div>
+    <div class="orientation-field-wrap reveal">
+      <figure class="orientation-field" id="orientation-living-field">
+        <div class="static-map-layer" aria-hidden="true"></div>
+        <div class="static-grid-layer" aria-hidden="true"></div>
+        <div class="static-contour-layer" aria-hidden="true"></div>
+        <div class="static-route-layer" aria-hidden="true"></div>
         <div class="terrain-lens" id="terrain-lens" aria-hidden="true">
-          <div class="terrain-live-stage">
-            <div class="terrain-live-wrap" id="terrain-live-wrap">
-              <img class="terrain-live-img" src="orientation-crisis-field-v2.png" alt="" />
-              <img class="terrain-live-ghost" src="orientation-crisis-field-v2.png" alt="" />
-              <div class="terrain-live-lines"></div>
-              <div class="terrain-live-sheen"></div>
-            </div>
-          </div>
+          <canvas id="terrain-live-canvas"></canvas>
+          <div class="lens-grid"></div>
+          <div class="lens-sheen"></div>
         </div>
-        <div class="field-hero-instruction">Move cursor across the field</div>
+        <div class="orientation-field-label">Move cursor across the map</div>
       </figure>
-      <p class="field-hero-caption">The map stays still. The terrain does not.</p>
+      <p class="orientation-field-caption">The map stays still. The terrain does not.</p>
     </div>
 
   </div>
@@ -848,94 +799,148 @@
 
 
 
-  // INTERACTIVE ORIENTATION FIELD HERO
+  // ORIENTATION CRISIS LIVING TERRAIN
   (function() {
-    const field = document.getElementById('orientation-field-hero');
+    const field = document.getElementById('orientation-living-field');
     const lens = document.getElementById('terrain-lens');
-    const liveWrap = document.getElementById('terrain-live-wrap');
-    if (!field || !lens || !liveWrap) return;
+    const canvas = document.getElementById('terrain-live-canvas');
+    if (!field || !lens || !canvas) return;
 
-    let lensSize = 260;
-    const zoom = 1.24;
+    const ctx = canvas.getContext('2d');
+    let w = 0;
+    let h = 0;
+    let lensSize = 270;
+    let t = 0;
+    let mx = 0.5;
+    let my = 0.52;
 
-    function updateLensSize() {
-      lensSize = window.innerWidth <= 768 ? (field.classList.contains('is-active') ? 210 : 180) : (field.classList.contains('is-active') ? 300 : 260);
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = lens.getBoundingClientRect();
+      w = Math.max(1, rect.width);
+      h = Math.max(1, rect.height);
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      lensSize = w;
     }
 
-    function setInactive() {
-      field.classList.remove('is-active');
-      updateLensSize();
-    }
-
-    function setActive() {
-      field.classList.add('is-active');
-      updateLensSize();
-    }
-
-    function moveLens(clientX, clientY) {
+    function setLensFromPoint(clientX, clientY) {
       const rect = field.getBoundingClientRect();
-      let x = clientX - rect.left;
-      let y = clientY - rect.top;
-
-      x = Math.max(0, Math.min(rect.width, x));
-      y = Math.max(0, Math.min(rect.height, y));
-
+      const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
+      const y = Math.max(0, Math.min(rect.height, clientY - rect.top));
+      mx = x / rect.width;
+      my = y / rect.height;
       field.style.setProperty('--lens-left', `${x}px`);
       field.style.setProperty('--lens-top', `${y}px`);
-
-      const gridX = ((x / rect.width) - 0.5) * -18;
-      const gridY = ((y / rect.height) - 0.5) * -14;
-      field.style.setProperty('--grid-x', `${gridX}px`);
-      field.style.setProperty('--grid-y', `${gridY}px`);
-
-      const offsetX = -(x * zoom - lensSize / 2);
-      const offsetY = -(y * zoom - lensSize / 2);
-
-      liveWrap.style.width = `${rect.width}px`;
-      liveWrap.style.height = `${rect.height}px`;
-      liveWrap.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
     }
 
     function centerLens() {
       const rect = field.getBoundingClientRect();
-      if (!rect.width || !rect.height) return;
-      const cx = rect.left + rect.width * 0.5;
-      const cy = rect.top + rect.height * 0.54;
-      moveLens(cx, cy);
+      setLensFromPoint(rect.left + rect.width * 0.5, rect.top + rect.height * 0.52);
+    }
+
+    function drawTerrain() {
+      t += 0.010;
+      ctx.clearRect(0, 0, w, h);
+
+      const grad = ctx.createRadialGradient(w * 0.45, h * 0.42, 12, w * 0.5, h * 0.5, w * 0.72);
+      grad.addColorStop(0, 'rgba(255,255,255,0.74)');
+      grad.addColorStop(0.34, 'rgba(79,189,186,0.34)');
+      grad.addColorStop(0.68, 'rgba(0,107,104,0.34)');
+      grad.addColorStop(1, 'rgba(26,26,46,0.18)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      const baseShift = (mx - 0.5) * 46;
+      const verticalShift = (my - 0.5) * 34;
+
+      for (let k = 0; k < 16; k++) {
+        ctx.beginPath();
+        const yBase = (k / 15) * h + Math.sin(t * 0.8 + k * 0.7) * 18 + verticalShift;
+        for (let x = -20; x <= w + 20; x += 8) {
+          const y =
+            yBase
+            + Math.sin(x * 0.018 + t * 1.7 + k * 0.72 + mx * 2.5) * (15 + k * 0.35)
+            + Math.cos(x * 0.034 - t * 1.1 + my * 3.5) * 7
+            + baseShift * Math.sin(k * 0.42);
+          if (x === -20) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = k % 3 === 0 ? 'rgba(255,255,255,0.62)' : 'rgba(234,249,248,0.46)';
+        ctx.lineWidth = k % 3 === 0 ? 1.2 : 0.75;
+        ctx.stroke();
+      }
+
+      for (let k = 0; k < 7; k++) {
+        ctx.beginPath();
+        const start = -40 + k * 45;
+        for (let y = -20; y <= h + 20; y += 8) {
+          const x =
+            start
+            + (mx * w * 0.22)
+            + Math.sin(y * 0.026 + t * 1.4 + k) * 18
+            + Math.cos(y * 0.015 - t * 1.8 + my * 4) * 10;
+          if (y === -20) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = k % 2 === 0 ? 'rgba(193,127,0,0.36)' : 'rgba(255,111,97,0.24)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 90; i++) {
+        const x = (Math.sin(i * 12.989 + t * 0.2) * 43758.5453) % 1;
+        const y = (Math.sin(i * 78.233 + t * 0.17) * 24634.6345) % 1;
+        const px = Math.abs(x) * w;
+        const py = Math.abs(y) * h;
+        ctx.fillStyle = i % 4 === 0 ? 'rgba(255,180,0,0.34)' : 'rgba(255,255,255,0.22)';
+        ctx.fillRect(px, py, 1.4, 1.4);
+      }
+
+      requestAnimationFrame(drawTerrain);
     }
 
     field.addEventListener('mouseenter', () => {
-      setActive();
-      centerLens();
+      field.classList.add('is-active');
+      resize();
     });
 
     field.addEventListener('mousemove', (e) => {
-      setActive();
-      moveLens(e.clientX, e.clientY);
+      field.classList.add('is-active');
+      setLensFromPoint(e.clientX, e.clientY);
     });
 
-    field.addEventListener('mouseleave', setInactive);
+    field.addEventListener('mouseleave', () => {
+      field.classList.remove('is-active');
+    });
 
     field.addEventListener('touchstart', (e) => {
       if (!e.touches || !e.touches.length) return;
-      setActive();
-      moveLens(e.touches[0].clientX, e.touches[0].clientY);
+      field.classList.add('is-active');
+      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+      resize();
     }, { passive: true });
 
     field.addEventListener('touchmove', (e) => {
       if (!e.touches || !e.touches.length) return;
-      moveLens(e.touches[0].clientX, e.touches[0].clientY);
+      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
 
-    field.addEventListener('touchend', setInactive);
+    field.addEventListener('touchend', () => field.classList.remove('is-active'));
 
     window.addEventListener('resize', () => {
-      updateLensSize();
+      resize();
       centerLens();
     });
 
-    updateLensSize();
-    requestAnimationFrame(centerLens);
+    requestAnimationFrame(() => {
+      resize();
+      centerLens();
+      drawTerrain();
+    });
   })();
 
 </script>
