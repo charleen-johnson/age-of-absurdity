@@ -194,21 +194,19 @@
     .essay-article .essay-return a:hover { color: var(--coral); }
 
   
-    /* Interactive hero field for Essay One */
+    /* Lens-based interactive hero for Essay One */
     .field-hero-wrap {
       max-width: 1040px;
       margin: 2.25rem auto 0;
-      opacity: 0;
+      opacity: 1;
       animation: fadeUp 0.9s ease forwards 0.9s;
     }
 
     .field-hero {
-      --terrain-x: 0px;
-      --terrain-y: 0px;
+      --lens-left: 50%;
+      --lens-top: 54%;
       --grid-x: 0px;
       --grid-y: 0px;
-      --agent-x: 0px;
-      --agent-y: 0px;
       position: relative;
       overflow: hidden;
       border-radius: 5px;
@@ -219,93 +217,192 @@
       isolation: isolate;
     }
 
-    .field-hero img {
+    .field-hero img.field-base-img {
       display: block;
       width: 100%;
       height: auto;
-      transform: translate3d(var(--terrain-x), var(--terrain-y), 0) scale(1.025);
-      transition: transform 0.28s ease-out;
       position: relative;
       z-index: 1;
     }
 
-    .field-hero-grid,
-    .field-hero-flow,
-    .field-hero-agent,
-    .field-hero-glow {
+    .field-hero-static-grid {
       position: absolute;
       inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.28;
+      mix-blend-mode: multiply;
+      background-image:
+        linear-gradient(rgba(0,107,104,0.20) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,107,104,0.20) 1px, transparent 1px);
+      background-size: 72px 72px;
+      background-position: var(--grid-x) var(--grid-y);
+      transition: background-position 0.18s ease-out;
+    }
+
+    .field-hero-static-grid::after {
+      content: "";
+      position: absolute;
+      right: 7%;
+      top: 12%;
+      width: 22%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      border: 1px solid rgba(193,127,0,0.42);
+      background:
+        radial-gradient(circle, transparent 0 46%, rgba(193,127,0,0.18) 47% 48%, transparent 49%),
+        linear-gradient(0deg, transparent 49%, rgba(193,127,0,0.35) 50%, transparent 51%),
+        linear-gradient(90deg, transparent 49%, rgba(193,127,0,0.35) 50%, transparent 51%);
+      opacity: 0.75;
+    }
+
+    .field-hero-resting-lens {
+      position: absolute;
+      left: 50%;
+      top: 54%;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px dashed rgba(255,255,255,0.72);
+      box-shadow: 0 0 0 7px rgba(0,139,135,0.10);
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .terrain-lens {
+      position: absolute;
+      left: var(--lens-left);
+      top: var(--lens-top);
+      width: 260px;
+      height: 260px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 6;
+      pointer-events: none;
+      opacity: 0.9;
+      transition: opacity 0.18s ease, width 0.18s ease, height 0.18s ease;
+      box-shadow:
+        0 0 0 2px rgba(255,255,255,0.96),
+        0 0 0 8px rgba(0,139,135,0.26),
+        0 18px 36px rgba(26,26,46,0.18);
+      background: rgba(255,255,255,0.2);
+    }
+
+    .field-hero.is-active .terrain-lens {
+      opacity: 1;
+      width: 300px;
+      height: 300px;
+    }
+
+    .terrain-lens::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.82);
+      z-index: 12;
       pointer-events: none;
     }
 
-    .field-hero-grid {
-      z-index: 2;
-      opacity: 0.22;
-      transform: translate3d(var(--grid-x), var(--grid-y), 0);
-      transition: transform 0.28s ease-out;
-      background-image:
-        linear-gradient(rgba(0,107,104,0.24) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,107,104,0.24) 1px, transparent 1px);
-      background-size: 68px 68px;
-      mix-blend-mode: multiply;
-    }
-
-    .field-hero-flow {
-      z-index: 3;
-      opacity: 0.24;
-      transform: translate3d(calc(var(--grid-x) * -1), calc(var(--grid-y) * -1), 0);
-      transition: transform 0.28s ease-out;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.4' stroke-opacity='0.55'%3E%3Cpath d='M-60 120 C 110 45, 240 185, 420 110 S 715 40, 880 140 S 1060 215, 1260 130'/%3E%3Cpath d='M-70 210 C 120 140, 285 285, 475 205 S 730 122, 940 240 S 1110 318, 1265 230'/%3E%3Cpath d='M-40 315 C 100 270, 270 380, 470 320 S 755 230, 930 350 S 1100 430, 1250 360'/%3E%3Cpath d='M-30 420 C 150 360, 300 495, 520 420 S 800 340, 990 455 S 1130 520, 1260 470'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
-      mix-blend-mode: screen;
-    }
-
-    .field-hero-glow {
-      z-index: 4;
-      opacity: 0.32;
-      transform: translate3d(calc(var(--terrain-x) * -1), calc(var(--terrain-y) * -1), 0);
-      transition: transform 0.28s ease-out;
-      background:
-        radial-gradient(circle at 42% 62%, rgba(255,111,97,0.20), transparent 14%),
-        radial-gradient(circle at 62% 38%, rgba(193,127,0,0.18), transparent 16%),
-        radial-gradient(circle at 26% 70%, rgba(79,189,186,0.18), transparent 18%);
-      mix-blend-mode: soft-light;
-    }
-
-    .field-hero-agent {
-      z-index: 5;
-    }
-
-    .field-hero-agent::before {
+    .terrain-lens::after {
       content: "";
       position: absolute;
-      left: calc(50% + var(--agent-x));
-      top: calc(62% + var(--agent-y));
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      width: 24px;
+      height: 24px;
       transform: translate(-50%, -50%);
-      background: var(--gold);
+      border-radius: 50%;
+      border: 1px solid rgba(255,180,0,0.95);
       box-shadow:
-        0 0 0 8px rgba(255,255,255,0.72),
-        0 0 0 13px rgba(0,139,135,0.22),
-        0 0 36px rgba(255,111,97,0.32);
-      transition: left 0.28s ease-out, top 0.28s ease-out;
-      animation: agentPulse 2.8s ease-in-out infinite;
+        0 0 0 1px rgba(255,255,255,0.92),
+        0 0 0 7px rgba(255,180,0,0.20),
+        0 0 28px rgba(255,111,97,0.22);
+      z-index: 13;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,180,0,0.95) 0 32%, transparent 35%);
+      animation: lensPulse 2.6s ease-in-out infinite;
     }
 
-    .field-hero-agent::after {
-      content: "";
+    .terrain-live-stage {
       position: absolute;
-      left: calc(50% + var(--agent-x));
-      top: calc(62% + var(--agent-y));
-      width: 86px;
-      height: 86px;
+      inset: 0;
+      overflow: hidden;
+      z-index: 8;
       border-radius: 50%;
-      border: 1px dashed rgba(255,255,255,0.72);
-      transform: translate(-50%, -50%);
-      transition: left 0.28s ease-out, top 0.28s ease-out;
+    }
+
+    .terrain-live-wrap {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: top left;
+      will-change: transform;
+    }
+
+    .terrain-live-img,
+    .terrain-live-ghost,
+    .terrain-live-lines,
+    .terrain-live-sheen {
+      position: absolute;
+      inset: 0;
+    }
+
+    .terrain-live-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.03);
+    }
+
+    .terrain-live-ghost {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.34;
+      mix-blend-mode: screen;
+      transform: translate(14px, -10px) scale(1.05);
+      filter: hue-rotate(-10deg) saturate(1.18);
+      animation: ghostDrift 7.5s ease-in-out infinite alternate;
+    }
+
+    .terrain-live-lines {
+      opacity: 0.42;
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.35' stroke-opacity='0.68'%3E%3Cpath d='M-12 96 C 76 56, 138 126, 222 94 S 364 54, 446 96 S 542 126, 612 94'/%3E%3Cpath d='M-24 166 C 66 134, 144 206, 236 172 S 372 134, 460 172 S 548 198, 624 168'/%3E%3Cpath d='M-10 248 C 82 216, 154 286, 250 252 S 386 212, 476 248 S 552 282, 620 248'/%3E%3Cpath d='M-18 330 C 72 300, 164 362, 264 332 S 390 294, 488 330 S 564 364, 628 330'/%3E%3Cpath d='M-20 416 C 74 386, 164 446, 266 418 S 392 380, 494 414 S 572 448, 632 416'/%3E%3Cpath d='M-8 506 C 90 470, 188 540, 298 508 S 420 476, 516 508 S 584 540, 640 512'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 120% 120%;
+      animation: lineDrift 12s linear infinite alternate;
+    }
+
+    .terrain-live-sheen {
+      background:
+        radial-gradient(circle at 30% 35%, rgba(255,255,255,0.28), transparent 21%),
+        radial-gradient(circle at 72% 62%, rgba(79,189,186,0.18), transparent 24%),
+        radial-gradient(circle at 52% 52%, rgba(255,180,0,0.16), transparent 20%);
+      mix-blend-mode: soft-light;
+      animation: sheenFloat 9s ease-in-out infinite alternate;
+    }
+
+    .field-hero-instruction {
+      position: absolute;
+      left: 1rem;
+      bottom: 0.85rem;
+      z-index: 10;
+      padding: 0.42rem 0.58rem;
+      background: rgba(255,255,255,0.72);
+      color: rgba(26,26,46,0.72);
+      font-size: 0.56rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border: 1px solid rgba(0,139,135,0.18);
+      backdrop-filter: blur(4px);
+      pointer-events: none;
     }
 
     .field-hero-caption {
@@ -317,16 +414,32 @@
       color: var(--muted);
     }
 
-    @keyframes agentPulse {
-      0%, 100% { box-shadow: 0 0 0 8px rgba(255,255,255,0.72), 0 0 0 13px rgba(0,139,135,0.22), 0 0 30px rgba(255,111,97,0.22); }
-      50% { box-shadow: 0 0 0 10px rgba(255,255,255,0.86), 0 0 0 18px rgba(0,139,135,0.16), 0 0 46px rgba(255,111,97,0.34); }
+    @keyframes lensPulse {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.92), 0 0 0 7px rgba(255,180,0,0.20), 0 0 28px rgba(255,111,97,0.22); }
+      50% { box-shadow: 0 0 0 1px rgba(255,255,255,0.96), 0 0 0 11px rgba(255,180,0,0.14), 0 0 40px rgba(255,111,97,0.32); }
+    }
+
+    @keyframes ghostDrift {
+      0% { transform: translate(14px, -10px) scale(1.05); opacity: 0.26; }
+      100% { transform: translate(-14px, 12px) scale(1.08); opacity: 0.38; }
+    }
+
+    @keyframes lineDrift {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 18% 10%; }
+    }
+
+    @keyframes sheenFloat {
+      0% { transform: translate(0px, 0px); opacity: 0.32; }
+      100% { transform: translate(12px, -8px); opacity: 0.45; }
     }
 
     @media (max-width: 768px) {
       .field-hero-wrap { margin-top: 1.5rem; }
+      .terrain-lens { width: 180px; height: 180px; }
+      .field-hero.is-active .terrain-lens { width: 210px; height: 210px; }
       .field-hero-caption { font-size: 0.92rem; padding: 0 0.5rem; }
-      .field-hero-agent::before { width: 16px; height: 16px; }
-      .field-hero-agent::after { width: 64px; height: 64px; }
+      .field-hero-instruction { display: none; }
     }
 
   </style>
@@ -390,13 +503,22 @@
     </div>
     <div class="field-hero-wrap reveal">
       <figure class="field-hero" id="orientation-field-hero">
-        <img src="orientation-crisis-field.png" alt="An abstract topographic field with a static navigation grid, compass markings, and a small agent marker trying to orient within a shifting terrain." />
-        <div class="field-hero-grid" aria-hidden="true"></div>
-        <div class="field-hero-flow" aria-hidden="true"></div>
-        <div class="field-hero-glow" aria-hidden="true"></div>
-        <div class="field-hero-agent" aria-hidden="true"></div>
+        <img class="field-base-img" src="orientation-crisis-field-v2.png" alt="A static cartographic view of a landscape with topographic forms and compass references." />
+        <div class="field-hero-static-grid" aria-hidden="true"></div>
+        <div class="field-hero-resting-lens" aria-hidden="true"></div>
+        <div class="terrain-lens" id="terrain-lens" aria-hidden="true">
+          <div class="terrain-live-stage">
+            <div class="terrain-live-wrap" id="terrain-live-wrap">
+              <img class="terrain-live-img" src="orientation-crisis-field-v2.png" alt="" />
+              <img class="terrain-live-ghost" src="orientation-crisis-field-v2.png" alt="" />
+              <div class="terrain-live-lines"></div>
+              <div class="terrain-live-sheen"></div>
+            </div>
+          </div>
+        </div>
+        <div class="field-hero-instruction">Move cursor across the field</div>
       </figure>
-      <p class="field-hero-caption">A static map. A moving field. An agent trying to find enough bearing to act.</p>
+      <p class="field-hero-caption">The map stays still. The terrain does not.</p>
     </div>
 
   </div>
@@ -729,40 +851,91 @@
   // INTERACTIVE ORIENTATION FIELD HERO
   (function() {
     const field = document.getElementById('orientation-field-hero');
-    if (!field) return;
+    const lens = document.getElementById('terrain-lens');
+    const liveWrap = document.getElementById('terrain-live-wrap');
+    if (!field || !lens || !liveWrap) return;
 
-    const reset = () => {
-      field.style.setProperty('--terrain-x', '0px');
-      field.style.setProperty('--terrain-y', '0px');
-      field.style.setProperty('--grid-x', '0px');
-      field.style.setProperty('--grid-y', '0px');
-      field.style.setProperty('--agent-x', '0px');
-      field.style.setProperty('--agent-y', '0px');
-    };
+    let lensSize = 260;
+    const zoom = 1.24;
 
-    const move = (clientX, clientY) => {
-      const r = field.getBoundingClientRect();
-      const x = ((clientX - r.left) / r.width) - 0.5;
-      const y = ((clientY - r.top) / r.height) - 0.5;
+    function updateLensSize() {
+      lensSize = window.innerWidth <= 768 ? (field.classList.contains('is-active') ? 210 : 180) : (field.classList.contains('is-active') ? 300 : 260);
+    }
 
-      field.style.setProperty('--terrain-x', `${x * -14}px`);
-      field.style.setProperty('--terrain-y', `${y * -10}px`);
-      field.style.setProperty('--grid-x', `${x * 22}px`);
-      field.style.setProperty('--grid-y', `${y * 16}px`);
-      field.style.setProperty('--agent-x', `${x * 8}px`);
-      field.style.setProperty('--agent-y', `${y * 6}px`);
-    };
+    function setInactive() {
+      field.classList.remove('is-active');
+      updateLensSize();
+    }
 
-    field.addEventListener('mousemove', e => move(e.clientX, e.clientY));
-    field.addEventListener('mouseleave', reset);
+    function setActive() {
+      field.classList.add('is-active');
+      updateLensSize();
+    }
 
-    field.addEventListener('touchmove', e => {
+    function moveLens(clientX, clientY) {
+      const rect = field.getBoundingClientRect();
+      let x = clientX - rect.left;
+      let y = clientY - rect.top;
+
+      x = Math.max(0, Math.min(rect.width, x));
+      y = Math.max(0, Math.min(rect.height, y));
+
+      field.style.setProperty('--lens-left', `${x}px`);
+      field.style.setProperty('--lens-top', `${y}px`);
+
+      const gridX = ((x / rect.width) - 0.5) * -18;
+      const gridY = ((y / rect.height) - 0.5) * -14;
+      field.style.setProperty('--grid-x', `${gridX}px`);
+      field.style.setProperty('--grid-y', `${gridY}px`);
+
+      const offsetX = -(x * zoom - lensSize / 2);
+      const offsetY = -(y * zoom - lensSize / 2);
+
+      liveWrap.style.width = `${rect.width}px`;
+      liveWrap.style.height = `${rect.height}px`;
+      liveWrap.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`;
+    }
+
+    function centerLens() {
+      const rect = field.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const cx = rect.left + rect.width * 0.5;
+      const cy = rect.top + rect.height * 0.54;
+      moveLens(cx, cy);
+    }
+
+    field.addEventListener('mouseenter', () => {
+      setActive();
+      centerLens();
+    });
+
+    field.addEventListener('mousemove', (e) => {
+      setActive();
+      moveLens(e.clientX, e.clientY);
+    });
+
+    field.addEventListener('mouseleave', setInactive);
+
+    field.addEventListener('touchstart', (e) => {
       if (!e.touches || !e.touches.length) return;
-      move(e.touches[0].clientX, e.touches[0].clientY);
+      setActive();
+      moveLens(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
 
-    field.addEventListener('touchend', reset);
-    reset();
+    field.addEventListener('touchmove', (e) => {
+      if (!e.touches || !e.touches.length) return;
+      moveLens(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    field.addEventListener('touchend', setInactive);
+
+    window.addEventListener('resize', () => {
+      updateLensSize();
+      centerLens();
+    });
+
+    updateLensSize();
+    requestAnimationFrame(centerLens);
   })();
 
 </script>
