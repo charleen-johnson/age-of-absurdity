@@ -32,30 +32,30 @@
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0.85rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: var(--teal-dark); border-bottom: 1px solid rgba(0,0,0,0.15); transition: padding 0.3s; }
     nav.scrolled { padding: 0.65rem 2.5rem; }
-    .nav-home { font-size: 1.4rem; color: white; text-decoration: none; font-weight: 900; line-height: 1; filter: drop-shadow(0 0 3px rgba(255,255,255,0.25)); transition: all 0.2s; }
-    .nav-home:hover { color: var(--gold); }
+    .nav-home { font-size: 1.2rem; color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 400; line-height: 1; transition: all 0.2s; }
+    .nav-home:hover { color: white; }
     .nav-right { display: flex; align-items: center; gap: 2rem; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: white; }
-    .nav-compass { font-size: 1.2rem; cursor: pointer; color: rgba(255,255,255,0.75); background: none; border: none; padding: 0; line-height: 1; transition: color 0.2s; }
+    .nav-compass { font-size: 1.2rem; cursor: pointer; color: rgba(255,255,255,0.75); background: none; border: none; border-radius: 0; outline: none; padding: 0; margin: 0; line-height: 1; box-shadow: none; -webkit-appearance: none; appearance: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; }
     .nav-compass:hover { color: var(--gold); }
 
-    #compass-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(26,26,46,0.97); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    #compass-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(232,248,246,0.97); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(8px); }
     #compass-overlay.open { display: flex; }
     #compass-overlay.visible { opacity: 1; }
     .compass-inner { max-width: 680px; width: 100%; padding: 3rem 2rem; }
-    .compass-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
-    .compass-title { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .compass-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0,139,135,0.18); }
+    .compass-title { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
     .compass-close { font-size: 1.5rem; color: var(--muted); cursor: pointer; background: none; border: none; line-height: 1; transition: color 0.2s; }
-    .compass-close:hover { color: white; }
+    .compass-close:hover { color: var(--charcoal); }
     .compass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .compass-section-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 1rem; font-weight: 500; }
-    .compass-link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; transition: all 0.2s; }
+    .compass-section-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 1rem; font-weight: 600; }
+    .compass-link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,139,135,0.12); text-decoration: none; transition: all 0.2s; }
     .compass-link:last-child { border-bottom: none; }
-    .compass-link:hover .cl-title { color: var(--gold); }
-    .cl-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 0.2rem; }
-    .cl-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    .compass-link:hover .cl-title { color: var(--coral); }
+    .cl-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 0.2rem; }
+    .cl-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--charcoal); transition: color 0.2s; }
     .cl-status { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-top: 0.2rem; }
 
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5rem 2rem 3rem; position: relative; overflow: hidden; text-align: center; background: var(--white); }
@@ -66,7 +66,7 @@
     .hero-title em { font-style: italic; color: var(--teal-deep); }
     .hero-subtitle { font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 400; font-style: normal; color: #1a1a2e; margin-bottom: 1.75rem; opacity: 0; animation: fadeUp 1s ease forwards 0.7s; }
     .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0; opacity: 0; animation: fadeUp 0.9s ease forwards 1.2s; }
-    .hero-rumi { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,139,135,0.2); text-align: center; }
+    .hero-rumi { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,139,135,0.2); text-align: center; margin-bottom: 2.5rem; }
     .rl { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 600; font-style: italic; color: var(--charcoal); line-height: 1.4; display: block; opacity: 0; transform: translateY(10px); transition: opacity 1s ease, transform 1s ease; }
     .rl.meet { color: var(--coral); font-size: clamp(1rem, 1.8vw, 1.3rem); }
     .rl.attr { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-style: normal; font-weight: 400; margin-top: 0.6rem; opacity: 0; transition: opacity 0.9s ease; }
@@ -86,7 +86,7 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .living-canvas-section { padding: 0; background: white; position: relative; height: 200px; overflow: hidden; }
+    .living-canvas-section { padding: 0; background: white; position: relative; height: 200px; overflow: hidden; margin-top: 3rem; }
     .living-canvas-section canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
     .living-canvas-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2; }
     .living-canvas-label p { font-family: var(--serif); font-size: clamp(0.95rem,1.6vw,1.15rem); font-style: italic; color: var(--charcoal); opacity: 0.85; letter-spacing: 0.03em; }
@@ -103,10 +103,6 @@
     .signal-closing .line2 { transition-delay: 0.3s; }
     .signal-closing .line3 { transition-delay: 0.6s; color: var(--coral); font-style: normal; font-weight: 600; }
     .signal-closing.animate .line1, .signal-closing.animate .line2, .signal-closing.animate .line3 { opacity: 1; transform: translateX(0); }
-
-    .wave-section { padding: 2.5rem 2rem 0.5rem; background: white; overflow: hidden; }
-    .wave-section canvas { width: 100%; height: 160px; display: block; cursor: crosshair; border-radius: 4px; }
-    .wave-nav-label { position: absolute; pointer-events: none; font-family: var(--serif); font-size: 0.9rem; font-style: italic; opacity: 0; transition: opacity 0.3s; }
 
     .essays-section { padding: 6rem 0; background: var(--off-white); }
     .essays-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 2.5rem; }
@@ -136,8 +132,8 @@
     .papers-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
     .bio-section { padding: 6rem 0; background: white; }
-    .bio-inner { display: grid; grid-template-columns: 1fr 180px; gap: 3rem; align-items: start; }
-    .bio-photo { width: 100%; border-radius: 4px; display: block; filter: grayscale(100%); }
+    .bio-inner { display: grid; grid-template-columns: 1fr 80px; gap: 2rem; align-items: start; }
+    .bio-photo { width: 80px; height: 80px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; filter: grayscale(100%); }
     .bio-photo-wrap { position: relative; }
     .bio-photo-wrap::after { content: ''; position: absolute; bottom: -6px; left: -6px; width: 100%; height: 100%; border: 2px solid var(--coral); border-radius: 4px; z-index: -1; }
     .bio-name { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.25rem; }
@@ -149,11 +145,11 @@
     .bio-link { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-deep); text-decoration: none; border: 1px solid var(--teal-rule); padding: 0.5rem 1rem; border-radius: 2px; font-weight: 500; transition: all 0.2s; }
     .bio-link:hover { background: var(--teal-card); border-color: var(--teal-deep); }
 
-    footer { background: var(--charcoal); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-mark { font-family: var(--serif); font-size: 0.9rem; color: rgba(255,255,255,0.5); }
-    .footer-mark span { color: var(--teal-light); }
+    footer { background: var(--teal-dark); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-mark { font-family: var(--serif); font-size: 0.9rem; color: rgba(255,255,255,0.72); }
+    .footer-mark span { color: var(--gold); }
     .footer-links { display: flex; gap: 2rem; list-style: none; }
-    .footer-links a { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--teal-light); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -165,7 +161,7 @@
 
     @media (max-width: 768px) {
       nav { padding: 0.85rem 1.25rem; }
-      .nav-links li:nth-child(2) { display: none; }
+
       .bio-inner { grid-template-columns: 1fr; gap: 2rem; }
       .papers-grid { grid-template-columns: 1fr; }
       .compass-grid { grid-template-columns: 1fr; }
@@ -186,7 +182,7 @@
     <div class="compass-grid">
       <div>
         <div class="compass-section-title">The Essays</div>
-        <a href="essay-01-orientation-crisis.html" class="compass-link">
+        <a href="https://charleen-johnson.github.io/orientation-crisis/" class="compass-link">
           <div class="cl-label">Essay One</div>
           <div class="cl-title">The Orientation Crisis</div>
           <div class="cl-status">&#9679; Live</div>
@@ -208,7 +204,7 @@
 </div>
 
 <nav id="main-nav">
-  <a href="https://charleen-johnson.github.io/age-of-absurdity/" class="nav-home" title="Home">&#x2302;</a>
+  <a href="https://charleen-johnson.github.io/age-of-absurdity/" class="nav-home" title="Home">&#x1F3E0;</a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#essays">Essays</a></li>
@@ -231,7 +227,7 @@
       <a href="https://doi.org/10.5281/zenodo.20292904" target="_blank" rel="noopener" class="btn btn-ghost">Field Paper 02 &#x2197;</a>
     </div>
     <div class="hero-rumi">
-      <span class="rl" id="rl1">Out beyond ideas of rightdoing and wrongdoing,</span>
+      <span class="rl" id="rl1">Out beyond ideas of right doing and wrongdoing,</span>
       <span class="rl" id="rl2">there is a field.</span>
       <span class="rl meet" id="rl3">I'll meet you there.</span>
       <span class="rl attr" id="rl4">Rumi, trans. Coleman Barks</span>
@@ -244,7 +240,7 @@
 <section class="living-canvas-section">
   <canvas id="mini-canvas"></canvas>
   <div class="living-canvas-label">
-    <p style="font-family:var(--serif);font-size:clamp(0.95rem,1.6vw,1.15rem);font-style:italic;color:#1a1a2e;opacity:0.85;letter-spacing:0.03em;">The orientation field is alive and co-creative. Interact with it.</p>
+    <p style="font-family:var(--serif);font-size:clamp(0.95rem,1.6vw,1.15rem);font-style:italic;color:var(--teal-deep);opacity:0.9;letter-spacing:0.03em;">The orientation field is alive and co-creative.</p>
   </div>
 </section>
 
@@ -263,9 +259,9 @@
       </div>
       <div class="signal-closing" id="signal">
         <p>
-          <span class="line1">Absurdity is a neutral signal.</span>
-          <span class="line2">What is not neutral is what happens next.</span>
-          <span class="line3"></span>
+          <span class="line1">Absurdity is not the problem. It is the messenger.</span>
+          <span class="line2">The question is whether anyone is still listening.</span>
+          <span class="line3">And what becomes possible when they do.</span>
         </p>
       </div>
     </div>
@@ -279,13 +275,13 @@
   <div class="container">
     <span class="section-label reveal">Field Dispatches</span>
     <h2 class="essays-title reveal">The Essays</h2>
-    <a href="essay-01-orientation-crisis.html" class="essay-card reveal" style="background:var(--teal-dark);border-color:var(--teal-dark);padding:2.5rem;margin-bottom:6px;">
+    <a href="https://charleen-johnson.github.io/orientation-crisis/" class="essay-card reveal" style="background:var(--teal-dark);border-color:var(--teal-dark);padding:2.5rem;margin-bottom:6px;">
       <div class="essay-meta">
         <span class="essay-number" style="color:var(--gold);">Essay One</span>
         <span class="essay-status live" style="color:var(--coral);">&#9679; Live Now</span>
       </div>
       <h3 style="color:white;font-size:2rem;margin-bottom:0.75rem;">The Orientation Crisis</h3>
-      <p style="color:rgba(255,255,255,0.72);font-size:1rem;max-width:560px;margin-bottom:1.5rem;line-height:1.8;">A broad opening essay on why the Age of Absurdity begins with losing our bearings, and what becomes possible when we learn to read absurdity as signal.</p>
+      <p style="color:rgba(255,255,255,0.72);font-size:1rem;max-width:560px;margin-bottom:1.5rem;line-height:1.8;">Why this age begins with losing our bearings. The maps no longer match the terrain. Absurdity is not dysfunction. It is the signal that something real is trying to get through.</p>
       <span style="display:inline-block;background:var(--coral);color:white;font-family:var(--sans);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.65rem 1.5rem;border-radius:2px;font-weight:500;">Read the Essay &#x2192;</span>
     </a>
     <div class="essay-card coming reveal">
@@ -494,56 +490,146 @@
     resize();init();draw();
   })();
 
-  // MINI FIELD CANVAS
+  // MINI FIELD CANVAS — with emergence ripple
   (function() {
     const mc = document.getElementById('mini-canvas');
     if (!mc) return;
     const mctx = mc.getContext('2d');
-    let mW, mH, mP, mMouse = {x:-999,y:-999};
+    let mW, mH, mP;
+    let mMouse = {x:-999, y:-999};
+    let lastInteract = 0;
+    let ripple = null;
+
     const mCOLS = ['#006b68','#008b87','#00a89e','#4FBDBA','#E6A600','#ff6f61','#ff4f3f'];
+
     function mResize() { mW = mc.width = mc.offsetWidth; mH = mc.height = mc.offsetHeight; }
     function mRnd(a,b) { return a + Math.random()*(b-a); }
+
     function mInit() {
       const n = Math.min(Math.floor(mW*mH/3500), 110);
-      mP = Array.from({length:n}, () => ({ x:mRnd(0,mW), y:mRnd(0,mH), vx:mRnd(-0.2,0.2), vy:mRnd(-0.15,0.15), r:mRnd(3,7), color:mCOLS[Math.floor(Math.random()*mCOLS.length)], alpha:mRnd(0.3,0.7), pulse:mRnd(0,Math.PI*2), ps:mRnd(0.01,0.025) }));
+      mP = Array.from({length:n}, () => ({
+        x: mRnd(0,mW), y: mRnd(0,mH),
+        vx: mRnd(-0.2,0.2), vy: mRnd(-0.15,0.15),
+        r: mRnd(3,7),
+        color: mCOLS[Math.floor(Math.random()*mCOLS.length)],
+        alpha: mRnd(0.3,0.7),
+        pulse: mRnd(0,Math.PI*2), ps: mRnd(0.01,0.025)
+      }));
     }
+
+    function triggerRipple() {
+      // Fire from last mouse position or random point on canvas
+      const ox = mMouse.x > 0 ? mMouse.x : mRnd(mW*0.2, mW*0.8);
+      const oy = mMouse.y > 0 ? mMouse.y : mRnd(mH*0.2, mH*0.8);
+      ripple = {
+        x: ox, y: oy,
+        radius: 0,
+        maxRadius: Math.sqrt(mW*mW + mH*mH),
+        speed: 3,
+        strength: 1.0,
+        done: false
+      };
+    }
+
+    // Fire ripple every 2.7s unconditionally
+    setInterval(triggerRipple, 7000);
+
     function mDraw() {
       mctx.clearRect(0,0,mW,mH);
-      // Apply emergence
-      if (window._mEmergence && mMouse.x < 0) {
-        const em = window._mEmergence;
-        if (em.growing) { em.strength += 0.035; if (em.strength >= em.max) em.growing = false; }
-        else { em.strength -= 0.02; if (em.strength <= 0) { window._mEmergence = null; } }
-        if (window._mEmergence) {
-          mMouse.x = em.x + Math.sin(Date.now()*0.003)*40*em.strength;
-          mMouse.y = em.y + Math.cos(Date.now()*0.002)*30*em.strength;
+
+      // Apply ripple push — gentler force, doesn't blast particles to edges
+      if (ripple && !ripple.done) {
+        ripple.radius += ripple.speed;
+        ripple.strength = Math.max(0, 1 - ripple.radius / ripple.maxRadius);
+        if (ripple.radius > ripple.maxRadius) ripple.done = true;
+
+        mP.forEach(p => {
+          const dx = p.x - ripple.x;
+          const dy = p.y - ripple.y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          const diff = Math.abs(dist - ripple.radius);
+          if (diff < 60) {
+            // Gentler force — reduced from 3.5 to 1.4 so particles don't flee to edges
+            const force = (1 - diff/60) * ripple.strength * 1.4;
+            if (dist > 0) { p.vx += (dx/dist) * force; p.vy += (dy/dist) * force; }
+          }
+        });
+
+        const ringAlpha = ripple.strength * 0.18;
+        if (ringAlpha > 0.01) {
+          mctx.beginPath();
+          mctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI*2);
+          mctx.strokeStyle = '#4FBDBA';
+          mctx.globalAlpha = ringAlpha;
+          mctx.lineWidth = 2;
+          mctx.stroke();
+          mctx.globalAlpha = 1;
         }
       }
+
+      // Draw connection lines
       for (let i=0;i<mP.length;i++) for (let j=i+1;j<mP.length;j++) {
         const a=mP[i],b=mP[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
         if(d<100){mctx.beginPath();mctx.moveTo(a.x,a.y);mctx.lineTo(b.x,b.y);mctx.strokeStyle='#4FBDBA';mctx.globalAlpha=(1-d/100)*0.13;mctx.lineWidth=0.7;mctx.stroke();}
       }
+
+      // Update and draw particles
       mP.forEach(p => {
-        const dx=mMouse.x-p.x,dy=mMouse.y-p.y,d=Math.sqrt(dx*dx+dy*dy);
+        // Mouse attraction
+        const dx=mMouse.x-p.x, dy=mMouse.y-p.y, d=Math.sqrt(dx*dx+dy*dy);
         if(d<160){p.vx+=(dx/d)*0.028;p.vy+=(dy/d)*0.028;}
-        p.vx*=0.97;p.vy*=0.97;
-        p.vx+=mRnd(-0.008,0.008);p.vy+=mRnd(-0.008,0.008);
-        p.x+=p.vx;p.y+=p.vy;
-        if(p.x<-10)p.x=mW+10;if(p.x>mW+10)p.x=-10;
-        if(p.y<-10)p.y=mH+10;if(p.y>mH+10)p.y=-10;
+
+        // Gentle centre pull — draws particles back toward middle after being disturbed
+        const cdx = mW/2 - p.x, cdy = mH/2 - p.y;
+        p.vx += cdx * 0.00012;
+        p.vy += cdy * 0.00012;
+
+        p.vx*=0.97; p.vy*=0.97;
+        p.vx+=mRnd(-0.008,0.008); p.vy+=mRnd(-0.008,0.008);
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<-10)p.x=mW+10; if(p.x>mW+10)p.x=-10;
+        if(p.y<-10)p.y=mH+10; if(p.y>mH+10)p.y=-10;
         p.pulse+=p.ps;
-        mctx.beginPath();mctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        mctx.fillStyle=p.color;mctx.globalAlpha=p.alpha*(0.9+0.1*Math.sin(p.pulse));mctx.fill();
+
+        mctx.beginPath();
+        mctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        mctx.fillStyle=p.color;
+        mctx.globalAlpha=p.alpha*(0.9+0.1*Math.sin(p.pulse));
+        mctx.fill();
       });
+
       mctx.globalAlpha=1;
       requestAnimationFrame(mDraw);
     }
-    mc.addEventListener('mousemove',e=>{const r=mc.getBoundingClientRect();mMouse.x=e.clientX-r.left;mMouse.y=e.clientY-r.top;window._mEmergence=null;});
-    window.addEventListener('resize',()=>{mResize();mInit();});
-    mResize();mInit();mDraw();
+
+    mc.addEventListener('mousemove', e => {
+      const r = mc.getBoundingClientRect();
+      mMouse.x = e.clientX - r.left;
+      mMouse.y = e.clientY - r.top;
+    });
+
+    mc.addEventListener('mouseleave', () => {
+      mMouse.x = -999;
+      mMouse.y = -999;
+    });
+
+    // Touch support
+    mc.addEventListener('touchmove', e => {
+      e.preventDefault();
+      const r = mc.getBoundingClientRect();
+      const t = e.touches[0];
+      mMouse.x = t.clientX - r.left;
+      mMouse.y = t.clientY - r.top;
+    }, { passive: false });
+
+    mc.addEventListener('touchend', () => {
+      mMouse.x = -999;
+      mMouse.y = -999;
+    });
+
+    window.addEventListener('resize', () => { mResize(); mInit(); });
+    mResize(); mInit(); mDraw();
   })();
-
-
 
 </script>
 </body>
