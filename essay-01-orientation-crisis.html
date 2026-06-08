@@ -32,30 +32,30 @@
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0.85rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: var(--teal-dark); border-bottom: 1px solid rgba(0,0,0,0.15); transition: padding 0.3s; }
     nav.scrolled { padding: 0.65rem 2.5rem; }
-    .nav-home { font-size: 1.85rem; color: white; text-decoration: none; font-weight: 900; line-height: 1; filter: drop-shadow(0 0 4px rgba(255,255,255,0.35)); transition: all 0.2s; transform: translateY(-1px); }
-    .nav-home:hover { color: var(--gold); }
+    .nav-home { font-size: 1.2rem; color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 400; line-height: 1; transition: all 0.2s; }
+    .nav-home:hover { color: white; }
     .nav-right { display: flex; align-items: center; gap: 2rem; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: white; }
-    .nav-compass { font-size: 1.2rem; cursor: pointer; color: rgba(255,255,255,0.75); background: none; border: none; padding: 0; line-height: 1; transition: color 0.2s; }
+    .nav-compass { font-size: 1.2rem; cursor: pointer; color: rgba(255,255,255,0.75); background: none; border: none; border-radius: 0; outline: none; padding: 0; margin: 0; line-height: 1; box-shadow: none; -webkit-appearance: none; appearance: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; }
     .nav-compass:hover { color: var(--gold); }
 
-    #compass-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(26,26,46,0.97); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    #compass-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(232,248,246,0.97); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(8px); }
     #compass-overlay.open { display: flex; }
     #compass-overlay.visible { opacity: 1; }
     .compass-inner { max-width: 680px; width: 100%; padding: 3rem 2rem; }
-    .compass-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
-    .compass-title { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .compass-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0,139,135,0.18); }
+    .compass-title { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
     .compass-close { font-size: 1.5rem; color: var(--muted); cursor: pointer; background: none; border: none; line-height: 1; transition: color 0.2s; }
-    .compass-close:hover { color: white; }
+    .compass-close:hover { color: var(--charcoal); }
     .compass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .compass-section-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 1rem; font-weight: 500; }
-    .compass-link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; transition: all 0.2s; }
+    .compass-section-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 1rem; font-weight: 600; }
+    .compass-link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,139,135,0.12); text-decoration: none; transition: all 0.2s; }
     .compass-link:last-child { border-bottom: none; }
-    .compass-link:hover .cl-title { color: var(--gold); }
-    .cl-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 0.2rem; }
-    .cl-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    .compass-link:hover .cl-title { color: var(--coral); }
+    .cl-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 0.2rem; }
+    .cl-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--charcoal); transition: color 0.2s; }
     .cl-status { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-top: 0.2rem; }
 
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5rem 2rem 3rem; position: relative; overflow: hidden; text-align: center; background: var(--white); }
@@ -66,11 +66,6 @@
     .hero-title em { font-style: italic; color: var(--teal-deep); }
     .hero-subtitle { font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 400; font-style: normal; color: #1a1a2e; margin-bottom: 1.75rem; opacity: 0; animation: fadeUp 1s ease forwards 0.7s; }
     .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0; opacity: 0; animation: fadeUp 0.9s ease forwards 1.2s; }
-    .hero-rumi { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,139,135,0.2); text-align: center; }
-    .rl { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 600; font-style: italic; color: var(--charcoal); line-height: 1.4; display: block; opacity: 0; transform: translateY(10px); transition: opacity 1s ease, transform 1s ease; }
-    .rl.meet { color: var(--coral); font-size: clamp(1rem, 1.8vw, 1.3rem); }
-    .rl.attr { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-style: normal; font-weight: 400; margin-top: 0.6rem; opacity: 0; transition: opacity 0.9s ease; }
-    .rl.vis { opacity: 1; transform: translateY(0); }
 
     .btn { display: inline-block; padding: 0.9rem 2.25rem; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.25s; font-weight: 500; }
     .btn-coral { background: var(--coral); color: white; }
@@ -82,95 +77,8 @@
 
     .container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
     .section-rule { border: none; border-top: 1px solid var(--teal-rule); }
-    .section-label { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 600; display: block; }
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    .living-canvas-section { padding: 0; background: white; position: relative; height: 200px; overflow: hidden; }
-    .living-canvas-section canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
-    .living-canvas-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2; }
-    .living-canvas-label p { font-family: var(--serif); font-size: clamp(0.95rem,1.6vw,1.15rem); font-style: italic; color: var(--charcoal); opacity: 0.85; letter-spacing: 0.03em; }
-
-    .spine-section { padding: 4rem 0 3rem; background: white; }
-    .spine-intro { max-width: 680px; margin: 0 auto; }
-    .spine-body p { font-size: 0.95rem; color: var(--body-text); line-height: 1.85; margin-bottom: 0.9rem; font-weight: 300; }
-    .spine-body em { font-style: italic; color: var(--teal-deep); font-weight: 400; }
-    .pull-quote { border-left: 4px solid var(--coral); padding: 1rem 1.5rem; margin: 1.25rem 0; background: rgba(255,111,97,0.05); }
-    .pull-quote p { font-family: var(--serif); font-size: clamp(1.1rem,2vw,1.4rem); font-style: italic; font-weight: 500; color: var(--charcoal); line-height: 1.65; margin-bottom: 0; }
-    .signal-closing { text-align: center; border-top: 3px solid var(--teal-deep); border-bottom: 3px solid var(--teal-deep); padding: 1.5rem 2rem; margin-top: 1.5rem; }
-    .signal-closing p { font-family: var(--serif); font-size: clamp(1.1rem,2vw,1.5rem); line-height: 1.7; }
-    .signal-closing .line1, .signal-closing .line2, .signal-closing .line3 { display: block; opacity: 0; transform: translateX(-12px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .signal-closing .line2 { transition-delay: 0.3s; }
-    .signal-closing .line3 { transition-delay: 0.6s; color: var(--coral); font-style: normal; font-weight: 600; }
-    .signal-closing.animate .line1, .signal-closing.animate .line2, .signal-closing.animate .line3 { opacity: 1; transform: translateX(0); }
-
-    .wave-section { padding: 2.5rem 2rem 0.5rem; background: white; overflow: hidden; }
-    .wave-section canvas { width: 100%; height: 160px; display: block; cursor: crosshair; border-radius: 4px; }
-    .wave-nav-label { position: absolute; pointer-events: none; font-family: var(--serif); font-size: 0.9rem; font-style: italic; opacity: 0; transition: opacity 0.3s; }
-
-    .essays-section { padding: 6rem 0; background: var(--off-white); }
-    .essays-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 2.5rem; }
-    .essay-card { display: block; background: white; border: 1px solid var(--teal-rule); border-radius: 3px; padding: 1.75rem 2.5rem 1.75rem 2.25rem; margin-bottom: 3px; text-decoration: none; transition: all 0.3s; position: relative; overflow: hidden; }
-    .essay-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--coral); transform: scaleY(0); transform-origin: bottom; transition: transform 0.35s ease; }
-    .essay-card:hover { border-color: rgba(255,111,97,0.3); transform: translateX(5px); }
-    .essay-card:hover::before { transform: scaleY(1); }
-    .essay-card.coming { opacity: 0.38; pointer-events: none; }
-    .essay-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.55rem; }
-    .essay-number { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
-    .essay-status { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .essay-status.live { color: var(--coral); font-weight: 600; }
-    .essay-card h3 { font-family: var(--serif); font-size: 1.55rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.45rem; line-height: 1.25; }
-    .essay-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; max-width: 580px; font-weight: 300; }
-    .essay-arrow { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); color: var(--coral); font-size: 1.2rem; opacity: 0; transition: all 0.2s; }
-    .essay-card:hover .essay-arrow { opacity: 1; transform: translateY(-50%) translateX(4px); }
-
-    .papers-section { padding: 6rem 0; background: var(--teal-card); }
-    .papers-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 0.5rem; }
-    .papers-intro { font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; font-weight: 300; line-height: 1.7; }
-    .papers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: rgba(0,139,135,0.15); border: 1px solid rgba(0,139,135,0.2); border-radius: 3px; overflow: hidden; }
-    .papers-card { background: white; padding: 2rem 2.25rem; text-decoration: none; transition: background 0.2s; }
-    .papers-card:hover { background: #f0faf9; }
-    .papers-card.dim { opacity: 0.45; pointer-events: none; }
-    .card-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; font-weight: 600; display: block; }
-    .papers-card h4 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.35; }
-    .papers-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
-
-    .bio-section { padding: 6rem 0; background: white; }
-    .bio-inner { display: grid; grid-template-columns: 1fr 180px; gap: 3rem; align-items: start; }
-    .bio-photo { width: 100%; border-radius: 4px; display: block; filter: grayscale(100%); }
-    .bio-photo-wrap { position: relative; }
-    .bio-photo-wrap::after { content: ''; position: absolute; bottom: -6px; left: -6px; width: 100%; height: 100%; border: 2px solid var(--coral); border-radius: 4px; z-index: -1; }
-    .bio-name { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.25rem; }
-    .bio-role { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; font-weight: 600; }
-    .bio-tagline { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem; font-style: italic; }
-    .bio-text { font-size: 0.97rem; color: var(--body-text); line-height: 1.88; font-weight: 300; }
-    .bio-text + .bio-text { margin-top: 0.9rem; }
-    .bio-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .bio-link { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-deep); text-decoration: none; border: 1px solid var(--teal-rule); padding: 0.5rem 1rem; border-radius: 2px; font-weight: 500; transition: all 0.2s; }
-    .bio-link:hover { background: var(--teal-card); border-color: var(--teal-deep); }
-
-    footer { background: var(--charcoal); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-mark { font-family: var(--serif); font-size: 0.9rem; color: rgba(255,255,255,0.5); }
-    .footer-mark span { color: var(--teal-light); }
-    .footer-links { display: flex; gap: 2rem; list-style: none; }
-    .footer-links a { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--teal-light); }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
-    @keyframes signalPulse { 0% { box-shadow: -3px 0 0 0 var(--coral); } 50% { box-shadow: -3px 0 0 8px rgba(255,111,97,0.12); } 100% { box-shadow: none; } }
-    .essay-card.pulse-once { animation: signalPulse 0.8s ease forwards; }
-    @keyframes goldPulse { 0%,100% { color: var(--gold); letter-spacing: 0.28em; } 50% { letter-spacing: 0.36em; } }
-    .section-label.pulse-gold { animation: goldPulse 1s ease forwards; }
-
-    @media (max-width: 768px) {
-      nav { padding: 0.85rem 1.25rem; }
-      .bio-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .papers-grid { grid-template-columns: 1fr; }
-      .compass-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; align-items: flex-start; }
-    }
-  
 
     .essay-hero { min-height: 46vh; padding: 7rem 2rem 3rem; }
     .essay-series { font-family: var(--serif); font-size: clamp(1.45rem, 3vw, 2.2rem); font-weight: 400; color: var(--teal-deep); margin-bottom: 0.35rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.15s; }
@@ -185,15 +93,11 @@
     .essay-article .section-kicker { display: block; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.35rem; }
     .essay-pullquote { border-left: 4px solid var(--coral); padding: 1.25rem 1.5rem; margin: 3rem 0; background: rgba(255,111,97,0.05); }
     .essay-pullquote p { font-family: var(--serif); font-size: clamp(1.35rem,2.4vw,1.85rem); font-style: italic; font-weight: 500; color: var(--charcoal); line-height: 1.5; margin-bottom: 0; }
-    .essay-visual { margin: 3rem 0; padding: 1.5rem; background: var(--teal-card); border: 1px solid rgba(0,139,135,0.18); border-radius: 3px; }
-    .essay-visual svg { width: 100%; height: auto; display: block; }
-    .essay-visual-caption { font-size: 0.68rem !important; line-height: 1.6 !important; color: var(--muted) !important; margin: 0.8rem 0 0 !important; letter-spacing: 0.04em; }
     .essay-divider { border: none; border-top: 1px solid var(--teal-rule); margin: 3.5rem 0 0; }
     .essay-article .essay-return { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--teal-rule); }
     .essay-article .essay-return a { color: var(--teal-deep); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
     .essay-article .essay-return a:hover { color: var(--coral); }
 
-  
     /* Orientation Crisis living terrain visual */
     .orientation-field-wrap {
       max-width: 1040px;
@@ -201,202 +105,74 @@
       opacity: 1;
       animation: fadeUp 0.9s ease forwards 0.9s;
     }
-
+    /* Richer map background — distinct colour zones */
     .orientation-field {
       --lens-left: 50%;
       --lens-top: 52%;
       position: relative;
       height: clamp(260px, 34vw, 430px);
-      overflow: hidden;
+      overflow: visible;
       border-radius: 6px;
       border: 1px solid rgba(0,139,135,0.22);
       box-shadow: 0 18px 50px rgba(26,26,46,0.12);
       background:
-        radial-gradient(circle at 12% 18%, rgba(255,255,255,0.82), transparent 22%),
-        linear-gradient(180deg, rgba(250,246,235,0.98), rgba(233,247,246,0.94));
+        radial-gradient(ellipse at 8%  18%, rgba(79,189,186,0.32), transparent 28%),
+        radial-gradient(ellipse at 10% 62%, rgba(50,150,70,0.26),  transparent 24%),
+        radial-gradient(ellipse at 85% 16%, rgba(140,120,170,0.20),transparent 26%),
+        radial-gradient(ellipse at 52% 80%, rgba(240,225,130,0.28),transparent 28%),
+        radial-gradient(ellipse at 88% 68%, rgba(190,152,65,0.28), transparent 26%),
+        linear-gradient(150deg, rgba(215,248,244,0.98) 0%, rgba(225,248,228,0.97) 28%, rgba(244,246,208,0.96) 60%, rgba(248,234,178,0.96) 100%);
       cursor: crosshair;
       isolation: isolate;
+      clip-path: inset(0 0 0 0 round 6px);
     }
-
-    .static-map-layer,
-    .static-grid-layer,
-    .static-contour-layer,
-    .static-route-layer,
-    .terrain-lens,
-    .orientation-field-label {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .static-map-layer {
-      z-index: 1;
+    .static-map-layer, .static-grid-layer, .static-contour-layer, .static-route-layer, .orientation-field-label { position: absolute; inset: 0; pointer-events: none; }
+    /* Elevation zone colouring — matches label positions */
+    .static-map-layer { z-index: 1;
       background:
-        radial-gradient(ellipse at 18% 70%, rgba(0,107,104,0.34), transparent 32%),
-        radial-gradient(ellipse at 62% 58%, rgba(0,139,135,0.24), transparent 34%),
-        radial-gradient(ellipse at 86% 28%, rgba(193,127,0,0.16), transparent 28%),
-        radial-gradient(ellipse at 74% 78%, rgba(255,111,97,0.13), transparent 26%);
-      opacity: 0.84;
-      filter: saturate(0.95);
-    }
+        radial-gradient(ellipse at 8%  58%, rgba(0,139,135,0.32),  transparent 26%),
+        radial-gradient(ellipse at 22% 36%, rgba(40,150,70,0.30),  transparent 22%),
+        radial-gradient(ellipse at 86% 16%, rgba(120,100,160,0.22),transparent 24%),
+        radial-gradient(ellipse at 50% 80%, rgba(205,195,110,0.26),transparent 28%),
+        radial-gradient(ellipse at 88% 65%, rgba(185,145,55,0.28), transparent 24%);
+      opacity: 0.90; filter: saturate(1.15); }
+    .static-grid-layer { z-index: 2; opacity: 0.22; mix-blend-mode: multiply; background-image: linear-gradient(rgba(0,80,70,0.32) 1px, transparent 1px), linear-gradient(90deg, rgba(0,80,70,0.32) 1px, transparent 1px); background-size: 74px 74px; }
+    /* Darker, more visible contour lines */
+    .static-contour-layer { z-index: 3; opacity: 0.85; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23005a50' stroke-width='1.4' stroke-opacity='0.55'%3E%3Cpath d='M-80 80 C 70 20, 190 126, 350 76 S 610 18, 780 88 S 1030 152, 1380 70'/%3E%3Cpath d='M-70 132 C 84 78, 208 180, 370 130 S 642 74, 822 142 S 1040 212, 1370 132'/%3E%3Cpath d='M-60 190 C 96 140, 236 242, 398 190 S 664 132, 850 204 S 1078 272, 1376 192'/%3E%3Cpath d='M-68 252 C 110 198, 264 306, 430 252 S 692 190, 888 270 S 1120 328, 1370 254'/%3E%3Cpath d='M-84 318 C 108 262, 296 374, 472 320 S 726 260, 932 330 S 1156 398, 1382 324'/%3E%3Cpath d='M-80 386 C 126 332, 322 444, 514 390 S 766 326, 976 396 S 1198 468, 1378 396'/%3E%3Cpath d='M-72 456 C 150 400, 356 512, 560 462 S 810 396, 1012 468 S 1220 528, 1370 470'/%3E%3C/g%3E%3Cg fill='none' stroke='%23996600' stroke-width='1.1' stroke-opacity='0.4'%3E%3Cpath d='M40 390 C 186 326, 314 342, 448 286 S 632 194, 842 240 S 1036 284, 1280 210'/%3E%3Cpath d='M-20 230 C 160 270, 254 190, 430 220 S 720 314, 930 272 S 1120 160, 1320 206'/%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
+    /* Darker, more legible terrain labels */
+    .static-route-layer { z-index: 4; opacity: 0.9; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23cc4433' stroke-width='2' stroke-opacity='0.55' stroke-dasharray='9 10'%3E%3Cpath d='M40 370 C 180 330, 280 356, 420 292 S 620 196, 810 238 S 1020 314, 1250 246'/%3E%3C/g%3E%3Cg fill='%231a1a2e' fill-opacity='0.72' font-family='Georgia,serif' font-size='17' letter-spacing='5' font-weight='bold'%3E%3Ctext x='110' y='116'%3ERIDGE%3C/text%3E%3Ctext x='750' y='152'%3EFIELD%3C/text%3E%3Ctext x='990' y='358'%3ELOWLAND%3C/text%3E%3C/g%3E%3Cg fill='%23005a50' fill-opacity='0.5' font-family='Georgia,serif' font-size='13' letter-spacing='3'%3E%3Ctext x='280' y='300'%3EVALLEY%3C/text%3E%3Ctext x='560' y='420'%3EPLAIN%3C/text%3E%3Ctext x='850' y='88'%3EHIGHLAND%3C/text%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
 
-    .static-grid-layer {
-      z-index: 2;
-      opacity: 0.30;
-      mix-blend-mode: multiply;
-      background-image:
-        linear-gradient(rgba(0,107,104,0.28) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,107,104,0.28) 1px, transparent 1px);
-      background-size: 74px 74px;
+    .terrain-lens { position: absolute; left: var(--lens-left); top: var(--lens-top); right: auto; bottom: auto; width: 240px; height: 240px; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: none; z-index: 9;
+      box-shadow: 0 0 0 2.5px rgba(79,189,186,0.88), 0 12px 32px rgba(26,26,46,0.20);
     }
+    .orientation-field.is-active .terrain-lens { width: 265px; height: 265px; }
+    #terrain-live-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 10; background: #f0faf9; }
+    .lens-sheen { position: absolute; inset: 0; z-index: 12; border-radius: 50%; background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.28), transparent 32%), radial-gradient(circle at 68% 68%, rgba(79,189,186,0.1), transparent 28%); mix-blend-mode: soft-light; animation: sheenFloat 8s ease-in-out infinite alternate; pointer-events: none; }
+    .orientation-field-label { inset: auto auto 0.85rem 1rem; z-index: 18; padding: 0.42rem 0.58rem; background: rgba(255,255,255,0.74); color: rgba(26,26,46,0.72); font-size: 0.56rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 500; border: 1px solid rgba(0,139,135,0.18); backdrop-filter: blur(4px); }
+    .orientation-field-caption { margin-top: 0.85rem; text-align: center; font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--muted); }
 
-    .static-contour-layer {
-      z-index: 3;
-      opacity: 0.58;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23006b68' stroke-width='1.15' stroke-opacity='0.38'%3E%3Cpath d='M-80 80 C 70 20, 190 126, 350 76 S 610 18, 780 88 S 1030 152, 1380 70'/%3E%3Cpath d='M-70 132 C 84 78, 208 180, 370 130 S 642 74, 822 142 S 1040 212, 1370 132'/%3E%3Cpath d='M-60 190 C 96 140, 236 242, 398 190 S 664 132, 850 204 S 1078 272, 1376 192'/%3E%3Cpath d='M-68 252 C 110 198, 264 306, 430 252 S 692 190, 888 270 S 1120 328, 1370 254'/%3E%3Cpath d='M-84 318 C 108 262, 296 374, 472 320 S 726 260, 932 330 S 1156 398, 1382 324'/%3E%3Cpath d='M-80 386 C 126 332, 322 444, 514 390 S 766 326, 976 396 S 1198 468, 1378 396'/%3E%3Cpath d='M-72 456 C 150 400, 356 512, 560 462 S 810 396, 1012 468 S 1220 528, 1370 470'/%3E%3C/g%3E%3Cg fill='none' stroke='%23C17F00' stroke-width='1' stroke-opacity='0.26'%3E%3Cpath d='M40 390 C 186 326, 314 342, 448 286 S 632 194, 842 240 S 1036 284, 1280 210'/%3E%3Cpath d='M-20 230 C 160 270, 254 190, 430 220 S 720 314, 930 272 S 1120 160, 1320 206'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes lensPulse { 0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.92), 0 0 0 7px rgba(255,180,0,0.19), 0 0 30px rgba(255,111,97,0.22); } 50% { box-shadow: 0 0 0 1px rgba(255,255,255,0.96), 0 0 0 11px rgba(255,180,0,0.13), 0 0 46px rgba(255,111,97,0.34); } }
+    @keyframes sheenFloat { 0% { transform: translate(0, 0); opacity: 0.38; } 100% { transform: translate(12px, -8px); opacity: 0.5; } }
 
-    .static-route-layer {
-      z-index: 4;
-      opacity: 0.44;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23ff6f61' stroke-width='2' stroke-opacity='0.45' stroke-dasharray='9 10'%3E%3Cpath d='M40 370 C 180 330, 280 356, 420 292 S 620 196, 810 238 S 1020 314, 1250 246'/%3E%3C/g%3E%3Cg fill='%231a1a2e' fill-opacity='0.36' font-family='serif' font-size='20' letter-spacing='6'%3E%3Ctext x='130' y='120'%3ERIDGE%3C/text%3E%3Ctext x='760' y='158'%3EFIELD%3C/text%3E%3Ctext x='1010' y='360'%3ELOWLAND%3C/text%3E%3C/g%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .terrain-lens {
-      z-index: 8;
-      left: var(--lens-left);
-      top: var(--lens-top);
-      right: auto;
-      bottom: auto;
-      width: 270px;
-      height: 270px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      overflow: hidden;
-      opacity: 0.96;
-      box-shadow:
-        0 0 0 2px rgba(255,255,255,0.96),
-        0 0 0 9px rgba(0,139,135,0.26),
-        0 20px 42px rgba(26,26,46,0.22);
-      background: rgba(255,255,255,0.18);
-      transition: width 0.18s ease, height 0.18s ease, opacity 0.18s ease;
-    }
-
-    .orientation-field.is-active .terrain-lens {
-      width: 315px;
-      height: 315px;
-      opacity: 1;
-    }
-
-    .terrain-lens::before {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border-radius: 50%;
-      border: 1px dashed rgba(255,255,255,0.82);
-      z-index: 15;
-    }
-
-    .terrain-lens::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 22px;
-      height: 22px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      border: 1px solid rgba(255,180,0,0.96);
-      background: radial-gradient(circle, rgba(255,180,0,0.95) 0 33%, transparent 36%);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.92),
-        0 0 0 7px rgba(255,180,0,0.19),
-        0 0 34px rgba(255,111,97,0.25);
-      z-index: 16;
-      animation: lensPulse 2.8s ease-in-out infinite;
-    }
-
-    #terrain-live-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      z-index: 10;
-      background: transparent;
-    }
-
-    .lens-grid {
-      position: absolute;
-      inset: 0;
-      z-index: 11;
-      opacity: 0.28;
-      mix-blend-mode: screen;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.34) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.34) 1px, transparent 1px);
-      background-size: 42px 42px;
-    }
-
-    .lens-sheen {
-      position: absolute;
-      inset: 0;
-      z-index: 12;
-      background:
-        radial-gradient(circle at 32% 28%, rgba(255,255,255,0.36), transparent 25%),
-        radial-gradient(circle at 70% 68%, rgba(79,189,186,0.18), transparent 28%),
-        radial-gradient(circle at 50% 50%, rgba(255,180,0,0.12), transparent 22%);
-      mix-blend-mode: soft-light;
-      animation: sheenFloat 8s ease-in-out infinite alternate;
-    }
-
-    .orientation-field-label {
-      inset: auto auto 0.85rem 1rem;
-      z-index: 18;
-      padding: 0.42rem 0.58rem;
-      background: rgba(255,255,255,0.74);
-      color: rgba(26,26,46,0.72);
-      font-size: 0.56rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      font-weight: 500;
-      border: 1px solid rgba(0,139,135,0.18);
-      backdrop-filter: blur(4px);
-    }
-
-    .orientation-field-caption {
-      margin-top: 0.85rem;
-      text-align: center;
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    @keyframes lensPulse {
-      0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.92), 0 0 0 7px rgba(255,180,0,0.19), 0 0 30px rgba(255,111,97,0.22); }
-      50% { box-shadow: 0 0 0 1px rgba(255,255,255,0.96), 0 0 0 11px rgba(255,180,0,0.13), 0 0 46px rgba(255,111,97,0.34); }
-    }
-
-    @keyframes sheenFloat {
-      0% { transform: translate(0, 0); opacity: 0.38; }
-      100% { transform: translate(12px, -8px); opacity: 0.5; }
-    }
+    footer { background: var(--charcoal); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-mark { font-family: var(--serif); font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+    .footer-mark span { color: var(--teal-light); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal-light); }
 
     @media (max-width: 768px) {
+      nav { padding: 0.85rem 1.25rem; }
+      .compass-grid { grid-template-columns: 1fr; }
       .orientation-field-wrap { margin-top: 1.5rem; }
       .orientation-field { height: 260px; }
-      .terrain-lens { width: 180px; height: 180px; }
-      .orientation-field.is-active .terrain-lens { width: 215px; height: 215px; }
+      .terrain-lens { width: 160px; height: 160px; }
+      .orientation-field.is-active .terrain-lens { width: 180px; height: 180px; }
       .orientation-field-label { display: none; }
       .orientation-field-caption { font-size: 0.92rem; padding: 0 0.5rem; }
+      footer { flex-direction: column; align-items: flex-start; }
     }
-
   </style>
 </head>
 <body>
@@ -433,7 +209,7 @@
 </div>
 
 <nav id="main-nav">
-  <a href="index.html" class="nav-home" title="Home">&#8962;</a>
+  <a href="index.html" class="nav-home" title="Home">&#x1F3E0;</a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="index.html#essays">Essays</a></li>
@@ -443,7 +219,6 @@
     <button class="nav-compass" id="compass-open" title="Field Map">&#x1F9ED;</button>
   </div>
 </nav>
-
 
 <section class="hero essay-hero">
   <canvas id="field-canvas"></canvas>
@@ -464,18 +239,16 @@
         <div class="static-route-layer" aria-hidden="true"></div>
         <div class="terrain-lens" id="terrain-lens" aria-hidden="true">
           <canvas id="terrain-live-canvas"></canvas>
-          <div class="lens-grid"></div>
           <div class="lens-sheen"></div>
         </div>
         <div class="orientation-field-label">Move cursor across the map</div>
       </figure>
       <p class="orientation-field-caption">The map stays still. The terrain does not.</p>
     </div>
-
   </div>
 </section>
 
-<hr class="section-rule" />
+<hr style="border:none;border-top:1px solid rgba(0,139,135,0.18);" />
 
 <section class="essay-section">
   <div class="container">
@@ -502,7 +275,7 @@
 
       <p>The trouble begins when the map keeps its authority after the terrain has changed. At first, the mismatch is subtle. People make small adjustments. They improvise. They work around contradictions. They explain away anomalies. They tell themselves the gap is temporary. They attend the meeting, complete the form, follow the process, use the language, nod at the slide. The map still carries enough legitimacy that questioning it feels premature, impolite, risky, or inconvenient.</p>
 
-      <p>Then the mismatch grows. The strategy still sounds impressive, although everyone can sense it belongs to a world that has already moved on. The policy solves the documentation problem while making the human problem worse. The meeting produces alignment without increasing anyone’s contact with reality. The institution speaks with certainty while the people inside it whisper more honestly in hallways, group chats, kitchens, and parked cars. The individual is told to be resilient, adaptable, emotionally regulated, digitally fluent, financially responsible, socially aware, physically well, professionally visible, and personally fulfilled while the ground underneath them rearranges itself like office furniture in a dream.</p>
+      <p>Then the mismatch grows. The strategy still sounds impressive, although everyone can sense it belongs to a world that has already moved on. The policy solves the documentation problem while making the human problem worse. The meeting produces alignment without increasing anyone's contact with reality. The institution speaks with certainty while the people inside it whisper more honestly in hallways, group chats, kitchens, and parked cars. The individual is told to be resilient, adaptable, emotionally regulated, digitally fluent, financially responsible, socially aware, physically well, professionally visible, and personally fulfilled while the ground underneath them rearranges itself like office furniture in a dream.</p>
 
       <div class="essay-pullquote">
         <p>We mistake motion for orientation. We mistake information for understanding. We mistake confidence for contact with reality.</p>
@@ -516,7 +289,7 @@
 
       <p>That is why the absurdity of the present moment matters. It is not just a workplace joke, although workplaces are spectacularly generous suppliers. It is a signal that something in the relationship between map and terrain has become unstable.</p>
 
-      <p>People living inside that instability rarely describe it in theoretical language. They say things like, “I don’t know what is going on anymore.” They say, “Nothing makes sense.” They say, “Everyone is pretending.” They say, “The rules keep changing.” They say, “I am doing everything right and still cannot get ahead.” They say, “The people in charge do not seem to understand what life is actually like.” They say, “There is so much information, and somehow I feel less clear.”</p>
+      <p>People living inside that instability rarely describe it in theoretical language. They say things like, "I don't know what is going on anymore." They say, "Nothing makes sense." They say, "Everyone is pretending." They say, "The rules keep changing." They say, "I am doing everything right and still cannot get ahead." They say, "The people in charge do not seem to understand what life is actually like." They say, "There is so much information, and somehow I feel less clear."</p>
 
       <p>These are field notes from inside an orientation crisis.</p>
 
@@ -524,48 +297,21 @@
 
       <p>The body often notices before language does. The clenched jaw. The shallow sleep. The low-grade dread before opening the news. The strange fatigue after another meeting where everything was discussed except the thing everyone knows is happening. The laugh that escapes because the alternative is screaming into a decorative throw pillow. The sense of being asked to participate in a story that no longer fully holds, while everyone continues behaving as though the story itself will become true if enough people repeat it in the correct tone.</p>
 
-      <div class="essay-visual" aria-label="Abstract map and compass illustration">
-        <svg viewBox="0 0 760 260" role="img" aria-labelledby="visualTitle visualDesc" xmlns="http://www.w3.org/2000/svg">
-          <title id="visualTitle">Map and compass losing alignment</title>
-          <desc id="visualDesc">An abstract map with diverging paths and a compass needle pointing away from the marked route.</desc>
-          <rect width="760" height="260" fill="#eaf9f8"/>
-          <path d="M40 205 C160 90, 260 250, 380 115 S610 105, 720 40" fill="none" stroke="#008b87" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
-          <path d="M55 72 C180 160, 285 70, 390 155 S575 220, 710 130" fill="none" stroke="#4FBDBA" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-          <path d="M120 30 C210 80, 195 150, 300 205 S485 215, 555 85" fill="none" stroke="#C17F00" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-          <g transform="translate(505 132)">
-            <circle r="54" fill="#ffffff" stroke="#008b87" stroke-width="3" opacity="0.94"/>
-            <circle r="5" fill="#1a1a2e"/>
-            <path d="M0 -42 L13 6 L0 0 L-13 6 Z" fill="#ff6f61" transform="rotate(34)"/>
-            <path d="M0 42 L13 -6 L0 0 L-13 -6 Z" fill="#006b68" transform="rotate(34)" opacity="0.8"/>
-          </g>
-          <g stroke="#ff6f61" stroke-width="3" stroke-linecap="round" opacity="0.7">
-            <line x1="210" y1="108" x2="242" y2="78"/>
-            <line x1="242" y1="78" x2="274" y2="107"/>
-            <line x1="345" y1="185" x2="376" y2="154"/>
-            <line x1="376" y1="154" x2="409" y2="184"/>
-          </g>
-          <g fill="#1a1a2e" opacity="0.25">
-            <circle cx="95" cy="185" r="4"/><circle cx="160" cy="105" r="4"/><circle cx="310" cy="122" r="4"/><circle cx="650" cy="88" r="4"/>
-          </g>
-        </svg>
-        <p class="essay-visual-caption">A map may still be present. The question is whether it still helps us locate the terrain.</p>
-      </div>
-
       <h2><span class="section-kicker">03</span>Why organizations made the pattern visible</h2>
 
       <p>My work began in organizations because organizations make this pattern unusually visible. They produce artifacts. Meetings, metrics, dashboards, role descriptions, transformation plans, governance forums, engagement surveys, risk registers, town halls, culture statements, operating models, and email threads long enough to require their own ecosystem. Organizations leave traces of how they interpret reality and how they lose contact with it.</p>
 
       <p>A leadership team says people are empowered, while every meaningful decision quietly travels upward for approval. A transformation program promises agility while requiring fourteen layers of sign-off to change a slide. A company says people are its greatest asset while designing work as if humans are unfortunate interruptions between software subscriptions. A meeting is called to create clarity, and everyone leaves with more action items and less truth. A strategy deck describes the future in language so abstract that the future itself would need a consultant to understand it.</p>
 
-      <p>These examples are easy to satirize because they are recognizable. Yet their importance is larger than comedy. Organizational absurdity reveals how systems preserve the appearance of coherence after their ability to interpret reality has weakened. The meeting still happens. The dashboard still updates. The language still sounds strategic. The operating rhythm continues. But the system’s picture of reality is no longer being updated by the signals it most needs to hear.</p>
+      <p>These examples are easy to satirize because they are recognizable. Yet their importance is larger than comedy. Organizational absurdity reveals how systems preserve the appearance of coherence after their ability to interpret reality has weakened. The meeting still happens. The dashboard still updates. The language still sounds strategic. The operating rhythm continues. But the system's picture of reality is no longer being updated by the signals it most needs to hear.</p>
 
-      <p>That is why the familiar phrase “knowing-doing gap” has always felt too small to me. In many cases, the issue is not that people know what to do and fail to do it. The deeper issue is that the system cannot stabilize what it knows. Signals are present, but they remain private, informal, softened, delayed, politicized, or stripped of consequence. People notice things, but the noticing does not become shared interpretation. Concerns circulate in side conversations while formal channels remain clean. Contradictions are felt, but not named. The system continues to generate information that it cannot absorb.</p>
+      <p>That is why the familiar phrase "knowing-doing gap" has always felt too small to me. In many cases, the issue is not that people know what to do and fail to do it. The deeper issue is that the system cannot stabilize what it knows. Signals are present, but they remain private, informal, softened, delayed, politicized, or stripped of consequence. People notice things, but the noticing does not become shared interpretation. Concerns circulate in side conversations while formal channels remain clean. Contradictions are felt, but not named. The system continues to generate information that it cannot absorb.</p>
 
       <p>The gap, then, runs through sensing, interpreting, sharing, and acting. A system can be rich in data and poor in orientation. It can have intelligent people, sincere intentions, advanced tools, and an impressive number of workshops involving sticky notes with the emotional range of tropical birds, and still lose contact with reality.</p>
 
       <h2><span class="section-kicker">04</span>Recovering orientation</h2>
 
-      <p>Orientation is the capacity to stay in contact with what is actually happening, to interpret it without collapsing too quickly into certainty, and to act from a picture of reality that can still be updated. At an individual level, orientation helps us notice what is changing in our lives, bodies, relationships, work, and surroundings. It helps us distinguish signal from noise. It lets us say, “Something is happening here, and I need to pay attention.”</p>
+      <p>Orientation is the capacity to stay in contact with what is actually happening, to interpret it without collapsing too quickly into certainty, and to act from a picture of reality that can still be updated. At an individual level, orientation helps us notice what is changing in our lives, bodies, relationships, work, and surroundings. It helps us distinguish signal from noise. It lets us say, "Something is happening here, and I need to pay attention."</p>
 
       <p>At a collective level, orientation becomes more difficult. It requires conditions that allow signals to travel. It requires enough trust for people to say what they are seeing. It requires enough time for weak signals to become legible. It requires enough humility for leaders, experts, institutions, communities, and professions to revise their maps. It also requires contact with the edges, because the edges of a system often encounter reality first.</p>
 
@@ -579,7 +325,7 @@
 
       <p>This matters for the ethical stance of the work. The age we are living in cannot be understood well by turning one group into the whole problem and another into the pure witness. People stand in different locations, with different responsibilities and consequences. Those differences must stay visible. Yet orientation is a field condition. It affects everyone inside the field, although never evenly.</p>
 
-      <p>For people at the edges, this work says: you are not imagining it. What you are sensing has pattern, structure, and meaning. The absurdity around you is not simply your private frustration leaking into the carpet. It may be evidence that the system’s official map no longer fits the terrain you are standing on.</p>
+      <p>For people at the edges, this work says: you are not imagining it. What you are sensing has pattern, structure, and meaning. The absurdity around you is not simply your private frustration leaking into the carpet. It may be evidence that the system's official map no longer fits the terrain you are standing on.</p>
 
       <p>For people at the centre, this work says: you are not required to become a villain before you are allowed to see more clearly. You may be operating inside conditions that make the world harder to perceive accurately. If you want to help, lead, fund, repair, or build something that matters, the first task is to recover contact with what is actually happening beyond the protected reality around you.</p>
 
@@ -626,18 +372,15 @@
 </footer>
 
 <script>
-  // PROGRESS BAR
   const bar = document.getElementById('progress-bar');
   window.addEventListener('scroll', () => {
     const h = document.documentElement;
     bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
   });
 
-  // NAV SCROLL
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 
-  // COMPASS
   const overlay = document.getElementById('compass-overlay');
   document.getElementById('compass-open').addEventListener('click', () => {
     overlay.classList.add('open');
@@ -649,58 +392,11 @@
   document.querySelectorAll('#compass-overlay a').forEach(a => a.addEventListener('click', () => setTimeout(closeCompass, 150)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCompass(); });
 
-  // RUMI LINES
-  [['rl1',1400],['rl2',2100],['rl3',2800],['rl4',3400]].forEach(([id,d]) => {
-    setTimeout(() => { const el = document.getElementById(id); if(el) el.classList.add('vis'); }, d);
-  });
-
-  // SCROLL REVEAL
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-  // SIGNAL CLOSING LINES
-  const sc = document.querySelector('.signal-closing');
-  if (sc) {
-    const scObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate'); scObs.unobserve(e.target); } });
-    }, { threshold: 0.5 });
-    scObs.observe(sc);
-  }
-
-  // ESSAY CARD PULSE
-  const cardObs = new IntersectionObserver(entries => {
-    entries.forEach((e,i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => { e.target.classList.add('pulse-once'); setTimeout(() => e.target.classList.remove('pulse-once'), 900); }, i * 150);
-        cardObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.essay-card').forEach(c => cardObs.observe(c));
-
-  // SECTION LABEL PULSE
-  const labelObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('pulse-gold'); setTimeout(() => e.target.classList.remove('pulse-gold'), 1100); labelObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.8 });
-  document.querySelectorAll('.section-label').forEach(l => labelObs.observe(l));
-
-  // BIO PHOTO OFFSET ON SCROLL
-  const bioWrap = document.querySelector('.bio-photo-wrap');
-  if (bioWrap) {
-    const bioObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { bioWrap.style.transition = 'transform 0.8s ease'; bioWrap.style.transform = 'translateY(0)'; bioObs.unobserve(e.target); }
-      });
-    }, { threshold: 0.3 });
-    bioWrap.style.transform = 'translateY(20px)';
-    bioObs.observe(bioWrap);
-  }
-
-  // HERO PARALLAX
   const heroCanvas = document.getElementById('field-canvas');
   const heroInner = document.querySelector('.hero-inner');
   window.addEventListener('scroll', () => {
@@ -709,7 +405,6 @@
     if (heroInner) heroInner.style.transform = 'translateY(' + s * 0.1 + 'px)';
   });
 
-  // HERO FIELD CANVAS
   (function() {
     const canvas = document.getElementById('field-canvas');
     const ctx = canvas.getContext('2d');
@@ -730,11 +425,9 @@
       P.forEach(p => {
         const dx=mouse.x-p.x,dy=mouse.y-p.y,d=Math.sqrt(dx*dx+dy*dy);
         if(d<200){p.vx+=(dx/d)*0.014;p.vy+=(dy/d)*0.014;}
-        p.vx*=0.983;p.vy*=0.983;
-        p.vx+=rnd(-0.006,0.006);p.vy+=rnd(-0.005,0.002);
+        p.vx*=0.983;p.vy*=0.983;p.vx+=rnd(-0.006,0.006);p.vy+=rnd(-0.005,0.002);
         p.x+=p.vx;p.y+=p.vy;
-        if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;
-        if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+        if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
         p.pulse+=p.ps;
         ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
         ctx.fillStyle=p.color;ctx.globalAlpha=p.alpha*(0.7+0.3*Math.sin(p.pulse));ctx.fill();
@@ -748,93 +441,30 @@
     resize();init();draw();
   })();
 
-  // MINI FIELD CANVAS
-  (function() {
-    const mc = document.getElementById('mini-canvas');
-    if (!mc) return;
-    const mctx = mc.getContext('2d');
-    let mW, mH, mP, mMouse = {x:-999,y:-999};
-    const mCOLS = ['#006b68','#008b87','#00a89e','#4FBDBA','#E6A600','#ff6f61','#ff4f3f'];
-    function mResize() { mW = mc.width = mc.offsetWidth; mH = mc.height = mc.offsetHeight; }
-    function mRnd(a,b) { return a + Math.random()*(b-a); }
-    function mInit() {
-      const n = Math.min(Math.floor(mW*mH/3500), 110);
-      mP = Array.from({length:n}, () => ({ x:mRnd(0,mW), y:mRnd(0,mH), vx:mRnd(-0.2,0.2), vy:mRnd(-0.15,0.15), r:mRnd(3,7), color:mCOLS[Math.floor(Math.random()*mCOLS.length)], alpha:mRnd(0.3,0.7), pulse:mRnd(0,Math.PI*2), ps:mRnd(0.01,0.025) }));
-    }
-    function mDraw() {
-      mctx.clearRect(0,0,mW,mH);
-      // Apply emergence
-      if (window._mEmergence && mMouse.x < 0) {
-        const em = window._mEmergence;
-        if (em.growing) { em.strength += 0.035; if (em.strength >= em.max) em.growing = false; }
-        else { em.strength -= 0.02; if (em.strength <= 0) { window._mEmergence = null; } }
-        if (window._mEmergence) {
-          mMouse.x = em.x + Math.sin(Date.now()*0.003)*40*em.strength;
-          mMouse.y = em.y + Math.cos(Date.now()*0.002)*30*em.strength;
-        }
-      }
-      for (let i=0;i<mP.length;i++) for (let j=i+1;j<mP.length;j++) {
-        const a=mP[i],b=mP[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<100){mctx.beginPath();mctx.moveTo(a.x,a.y);mctx.lineTo(b.x,b.y);mctx.strokeStyle='#4FBDBA';mctx.globalAlpha=(1-d/100)*0.13;mctx.lineWidth=0.7;mctx.stroke();}
-      }
-      mP.forEach(p => {
-        const dx=mMouse.x-p.x,dy=mMouse.y-p.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<160){p.vx+=(dx/d)*0.028;p.vy+=(dy/d)*0.028;}
-        p.vx*=0.97;p.vy*=0.97;
-        p.vx+=mRnd(-0.008,0.008);p.vy+=mRnd(-0.008,0.008);
-        p.x+=p.vx;p.y+=p.vy;
-        if(p.x<-10)p.x=mW+10;if(p.x>mW+10)p.x=-10;
-        if(p.y<-10)p.y=mH+10;if(p.y>mH+10)p.y=-10;
-        p.pulse+=p.ps;
-        mctx.beginPath();mctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        mctx.fillStyle=p.color;mctx.globalAlpha=p.alpha*(0.9+0.1*Math.sin(p.pulse));mctx.fill();
-      });
-      mctx.globalAlpha=1;
-      requestAnimationFrame(mDraw);
-    }
-    mc.addEventListener('mousemove',e=>{const r=mc.getBoundingClientRect();mMouse.x=e.clientX-r.left;mMouse.y=e.clientY-r.top;window._mEmergence=null;});
-    window.addEventListener('resize',()=>{mResize();mInit();});
-    mResize();mInit();mDraw();
-  })();
-
-
-
-  // ORIENTATION CRISIS LIVING TERRAIN
   (function() {
     const field = document.getElementById('orientation-living-field');
     const lens = document.getElementById('terrain-lens');
     const canvas = document.getElementById('terrain-live-canvas');
     if (!field || !lens || !canvas) return;
-
     const ctx = canvas.getContext('2d');
-    let w = 0;
-    let h = 0;
-    let lensSize = 270;
-    let t = 0;
-    let mx = 0.5;
-    let my = 0.52;
+    let w = 0, h = 0, t = 0, mx = 0.5, my = 0.52, isActive = false;
 
     function resize() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = lens.getBoundingClientRect();
-      w = Math.max(1, rect.width);
-      h = Math.max(1, rect.height);
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
+      w = Math.max(1, rect.width); h = Math.max(1, rect.height);
+      canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      lensSize = w;
     }
 
     function setLensFromPoint(clientX, clientY) {
       const rect = field.getBoundingClientRect();
       const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
       const y = Math.max(0, Math.min(rect.height, clientY - rect.top));
-      mx = x / rect.width;
-      my = y / rect.height;
-      field.style.setProperty('--lens-left', `${x}px`);
-      field.style.setProperty('--lens-top', `${y}px`);
+      mx = x / rect.width; my = y / rect.height;
+      field.style.setProperty('--lens-left', x + 'px');
+      field.style.setProperty('--lens-top', y + 'px');
     }
 
     function centerLens() {
@@ -846,103 +476,130 @@
       t += 0.010;
       ctx.clearRect(0, 0, w, h);
 
-      const grad = ctx.createRadialGradient(w * 0.45, h * 0.42, 12, w * 0.5, h * 0.5, w * 0.72);
-      grad.addColorStop(0, 'rgba(255,255,255,0.74)');
-      grad.addColorStop(0.34, 'rgba(79,189,186,0.34)');
-      grad.addColorStop(0.68, 'rgba(0,107,104,0.34)');
-      grad.addColorStop(1, 'rgba(26,26,46,0.18)');
+      // Fill full canvas — border-radius:50% on the div clips to circle
+      ctx.clearRect(0, 0, w, h);
+      const cx = w / 2, cy = h / 2;
+
+      // Solid white base — eliminates any transparent pixel showing canvas boundary
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, w, h);
+
+      // Terrain background — teal at ridge (top-left), green at valley (left-centre)
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0,    'rgb(195,242,238)');   // teal ridge top-left
+      grad.addColorStop(0.28, 'rgb(215,240,220)');   // sage mid transition
+      grad.addColorStop(0.52, 'rgb(242,244,210)');   // pale yellow plain
+      grad.addColorStop(0.75, 'rgb(250,238,175)');   // bright light yellow
+      grad.addColorStop(1,    'rgb(242,222,155)');   // warm gold lowland
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
 
+      // Ridge: teal top-left
+      const rgrad = ctx.createRadialGradient(w*0.08, h*0.12, 3, w*0.08, h*0.12, w*0.45);
+      rgrad.addColorStop(0,   'rgba(79,189,186,0.30)');
+      rgrad.addColorStop(0.5, 'rgba(79,189,186,0.12)');
+      rgrad.addColorStop(1,   'transparent');
+      ctx.fillStyle = rgrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Valley: green left-centre (below ridge)
+      const vgrad = ctx.createRadialGradient(w*0.18, h*0.58, 3, w*0.18, h*0.58, w*0.38);
+      vgrad.addColorStop(0,   'rgba(60,155,80,0.26)');
+      vgrad.addColorStop(0.5, 'rgba(80,165,90,0.11)');
+      vgrad.addColorStop(1,   'transparent');
+      ctx.fillStyle = vgrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Highland: cool purple-grey top-right
+      const hgrad = ctx.createRadialGradient(w*0.80, h*0.15, 3, w*0.80, h*0.15, w*0.40);
+      hgrad.addColorStop(0,   'rgba(160,145,195,0.26)');
+      hgrad.addColorStop(0.5, 'rgba(145,132,180,0.10)');
+      hgrad.addColorStop(1,   'transparent');
+      ctx.fillStyle = hgrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Lowland: warm gold right
+      const lgrad = ctx.createRadialGradient(w*0.82, h*0.70, 3, w*0.82, h*0.70, w*0.38);
+      lgrad.addColorStop(0,   'rgba(195,155,50,0.26)');
+      lgrad.addColorStop(0.5, 'rgba(205,165,70,0.10)');
+      lgrad.addColorStop(1,   'transparent');
+      ctx.fillStyle = lgrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Animated terrain contour lines — horizontal
       const baseShift = (mx - 0.5) * 46;
       const verticalShift = (my - 0.5) * 34;
-
-      for (let k = 0; k < 16; k++) {
+      for (let k = 0; k < 18; k++) {
         ctx.beginPath();
-        const yBase = (k / 15) * h + Math.sin(t * 0.8 + k * 0.7) * 18 + verticalShift;
-        for (let x = -20; x <= w + 20; x += 8) {
-          const y =
-            yBase
-            + Math.sin(x * 0.018 + t * 1.7 + k * 0.72 + mx * 2.5) * (15 + k * 0.35)
-            + Math.cos(x * 0.034 - t * 1.1 + my * 3.5) * 7
+        const yBase = (k / 17) * h + Math.sin(t * 0.8 + k * 0.7) * 14 + verticalShift;
+        for (let x = -10; x <= w + 10; x += 6) {
+          const y = yBase
+            + Math.sin(x * 0.018 + t * 1.7 + k * 0.72 + mx * 2.5) * (12 + k * 0.3)
+            + Math.cos(x * 0.034 - t * 1.1 + my * 3.5) * 6
             + baseShift * Math.sin(k * 0.42);
-          if (x === -20) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+          if (x === -10) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = k % 3 === 0 ? 'rgba(255,255,255,0.62)' : 'rgba(234,249,248,0.46)';
-        ctx.lineWidth = k % 3 === 0 ? 1.2 : 0.75;
+        const even = k % 4 === 0;
+        ctx.strokeStyle = even ? 'rgba(0,107,104,0.32)' : 'rgba(79,189,186,0.18)';
+        ctx.lineWidth = even ? 1.1 : 0.6;
         ctx.stroke();
       }
 
-      for (let k = 0; k < 7; k++) {
+      // Vertical flow lines
+      for (let k = 0; k < 8; k++) {
         ctx.beginPath();
-        const start = -40 + k * 45;
-        for (let y = -20; y <= h + 20; y += 8) {
-          const x =
-            start
-            + (mx * w * 0.22)
-            + Math.sin(y * 0.026 + t * 1.4 + k) * 18
-            + Math.cos(y * 0.015 - t * 1.8 + my * 4) * 10;
-          if (y === -20) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+        const start = -20 + k * (w / 6);
+        for (let y = -10; y <= h + 10; y += 6) {
+          const x = start + (mx * w * 0.18)
+            + Math.sin(y * 0.026 + t * 1.4 + k) * 14
+            + Math.cos(y * 0.015 - t * 1.8 + my * 4) * 8;
+          if (y === -10) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = k % 2 === 0 ? 'rgba(193,127,0,0.36)' : 'rgba(255,111,97,0.24)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = k % 2 === 0 ? 'rgba(160,120,60,0.20)' : 'rgba(140,100,50,0.14)';
+        ctx.lineWidth = 0.9;
         ctx.stroke();
       }
 
-      for (let i = 0; i < 90; i++) {
-        const x = (Math.sin(i * 12.989 + t * 0.2) * 43758.5453) % 1;
-        const y = (Math.sin(i * 78.233 + t * 0.17) * 24634.6345) % 1;
-        const px = Math.abs(x) * w;
-        const py = Math.abs(y) * h;
-        ctx.fillStyle = i % 4 === 0 ? 'rgba(255,180,0,0.34)' : 'rgba(255,255,255,0.22)';
-        ctx.fillRect(px, py, 1.4, 1.4);
+      // Scattered terrain dots
+      for (let i = 0; i < 60; i++) {
+        const px = Math.abs((Math.sin(i * 12.989 + t * 0.2) * 43758.5453) % 1) * w;
+        const py = Math.abs((Math.sin(i * 78.233 + t * 0.17) * 24634.6345) % 1) * h;
+        ctx.fillStyle = i % 4 === 0 ? 'rgba(200,140,0,0.45)' : 'rgba(255,255,255,0.25)';
+        ctx.fillRect(px, py, 1.5, 1.5);
       }
+
+      // --- Crosshair reticle ---
+      const cr = 6, armLen = 13;
+      ctx.beginPath();
+      ctx.arc(cx, cy, cr, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255,255,255,0.88)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,180,0,0.95)';
+      ctx.fill();
+      [[0,-1],[0,1],[1,0],[-1,0]].forEach(([dx,dy]) => {
+        ctx.beginPath();
+        ctx.moveTo(cx + dx*(cr+3), cy + dy*(cr+3));
+        ctx.lineTo(cx + dx*(cr+armLen), cy + dy*(cr+armLen));
+        ctx.strokeStyle = 'rgba(255,255,255,0.82)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      });
 
       requestAnimationFrame(drawTerrain);
     }
 
-    field.addEventListener('mouseenter', () => {
-      field.classList.add('is-active');
-      resize();
-    });
-
-    field.addEventListener('mousemove', (e) => {
-      field.classList.add('is-active');
-      setLensFromPoint(e.clientX, e.clientY);
-    });
-
-    field.addEventListener('mouseleave', () => {
-      field.classList.remove('is-active');
-    });
-
-    field.addEventListener('touchstart', (e) => {
-      if (!e.touches || !e.touches.length) return;
-      field.classList.add('is-active');
-      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY);
-      resize();
-    }, { passive: true });
-
-    field.addEventListener('touchmove', (e) => {
-      if (!e.touches || !e.touches.length) return;
-      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY);
-    }, { passive: true });
-
-    field.addEventListener('touchend', () => field.classList.remove('is-active'));
-
-    window.addEventListener('resize', () => {
-      resize();
-      centerLens();
-    });
-
-    requestAnimationFrame(() => {
-      resize();
-      centerLens();
-      drawTerrain();
-    });
+    field.addEventListener('mouseenter', () => { isActive = true; field.classList.add('is-active'); resize(); });
+    field.addEventListener('mousemove', (e) => { isActive = true; field.classList.add('is-active'); setLensFromPoint(e.clientX, e.clientY); resize(); });
+    field.addEventListener('mouseleave', () => { isActive = false; field.classList.remove('is-active'); });
+    field.addEventListener('touchstart', (e) => { if (!e.touches||!e.touches.length) return; isActive = true; field.classList.add('is-active'); setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); resize(); }, { passive: true });
+    field.addEventListener('touchmove', (e) => { if (!e.touches||!e.touches.length) return; setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+    field.addEventListener('touchend', () => { isActive = false; field.classList.remove('is-active'); });
+    window.addEventListener('resize', () => { resize(); centerLens(); });
+    requestAnimationFrame(() => { resize(); centerLens(); drawTerrain(); });
   })();
-
 </script>
 </body>
 </html>
