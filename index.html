@@ -132,8 +132,8 @@
     .papers-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
     .bio-section { padding: 6rem 0; background: white; }
-    .bio-inner { display: grid; grid-template-columns: 1fr 80px; gap: 2rem; align-items: start; }
-    .bio-photo { width: 80px; height: 80px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; filter: grayscale(100%); }
+    .bio-inner { display: grid; grid-template-columns: 1fr 120px; gap: 2rem; align-items: start; }
+    .bio-photo { width: 120px; height: 120px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; filter: grayscale(100%); }
     .bio-photo-wrap { position: relative; }
     .bio-photo-wrap::after { content: ''; position: absolute; bottom: -6px; left: -6px; width: 100%; height: 100%; border: 2px solid var(--coral); border-radius: 4px; z-index: -1; }
     .bio-name { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.25rem; }
@@ -509,11 +509,11 @@
       const n = Math.min(Math.floor(mW*mH/3500), 110);
       mP = Array.from({length:n}, () => ({
         x: mRnd(0,mW), y: mRnd(0,mH),
-        vx: mRnd(-0.2,0.2), vy: mRnd(-0.15,0.15),
+        vx: mRnd(-0.1,0.1), vy: mRnd(-0.08,0.08),
         r: mRnd(3,7),
         color: mCOLS[Math.floor(Math.random()*mCOLS.length)],
         alpha: mRnd(0.3,0.7),
-        pulse: mRnd(0,Math.PI*2), ps: mRnd(0.01,0.025)
+        pulse: mRnd(0,Math.PI*2), ps: mRnd(0.005,0.012)
       }));
     }
 
@@ -532,7 +532,7 @@
     }
 
     // Fire ripple every 2.7s unconditionally
-    setInterval(triggerRipple, 7000);
+    setInterval(triggerRipple, 12000);
 
     function mDraw() {
       mctx.clearRect(0,0,mW,mH);
@@ -575,17 +575,12 @@
 
       // Update and draw particles
       mP.forEach(p => {
-        // Mouse attraction
+        // Mouse attraction — tighter radius so only nearby particles cluster (1-3 at a time)
         const dx=mMouse.x-p.x, dy=mMouse.y-p.y, d=Math.sqrt(dx*dx+dy*dy);
-        if(d<160){p.vx+=(dx/d)*0.028;p.vy+=(dy/d)*0.028;}
-
-        // Gentle centre pull — draws particles back toward middle after being disturbed
-        const cdx = mW/2 - p.x, cdy = mH/2 - p.y;
-        p.vx += cdx * 0.00012;
-        p.vy += cdy * 0.00012;
+        if(d<80){p.vx+=(dx/d)*0.018;p.vy+=(dy/d)*0.018;}
 
         p.vx*=0.97; p.vy*=0.97;
-        p.vx+=mRnd(-0.008,0.008); p.vy+=mRnd(-0.008,0.008);
+        p.vx+=mRnd(-0.004,0.004); p.vy+=mRnd(-0.004,0.004);
         p.x+=p.vx; p.y+=p.vy;
         if(p.x<-10)p.x=mW+10; if(p.x>mW+10)p.x=-10;
         if(p.y<-10)p.y=mH+10; if(p.y>mH+10)p.y=-10;
