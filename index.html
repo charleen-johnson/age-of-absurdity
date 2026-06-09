@@ -84,7 +84,7 @@
 
     .container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
     .section-rule { border: none; border-top: 1px solid var(--teal-rule); }
-    .section-label { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 600; display: block; }
+    .section-label { font-size: 0.85rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 600; display: block; }
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -127,6 +127,7 @@
     .papers-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 0.5rem; }
     .papers-intro { font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; font-weight: 300; line-height: 1.7; }
     .papers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: rgba(0,139,135,0.15); border: 1px solid rgba(0,139,135,0.2); border-radius: 3px; overflow: hidden; }
+    .papers-grid .papers-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
     .paper-links { display: flex; gap: 1.25rem; margin-top: 1rem; }
     .paper-link { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-deep); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--teal-rule); padding-bottom: 0.1rem; transition: color 0.2s, border-color 0.2s; }
     .paper-link:hover { color: var(--coral); border-color: var(--coral); }
@@ -241,7 +242,7 @@
 <section class="living-canvas-section" id="field">
   <canvas id="mini-canvas"></canvas>
   <div class="living-canvas-label">
-    <p style="font-family:var(--serif);font-size:clamp(0.95rem,1.6vw,1.15rem);font-style:italic;color:var(--teal-dark);opacity:1;letter-spacing:0.03em;text-shadow:0 1px 8px rgba(255,255,255,0.85);">The orientation field is alive and co-creative.</p>
+    <p style="font-family:var(--serif);font-size:clamp(0.95rem,1.6vw,1.15rem);font-style:italic;color:var(--teal-dark);opacity:1;letter-spacing:0.03em;text-shadow:0 1px 8px rgba(255,255,255,0.85);">The orientation field is alive and co-creative. Move your cursor or tap to interact.</p>
   </div>
 </section>
 
@@ -323,6 +324,11 @@
         <h4>Join the Inquiry</h4>
         <p>Essays, field notes, and emerging ideas as the inquiry unfolds. The conversation home. Subscribe to follow along and join the discussion.</p>
       </a>
+      <div class="papers-card dim">
+        <span class="card-label">Field Paper 02 · In Progress</span>
+        <h4>Absurdity Signals: How to Read What Systems Are Actually Telling You</h4>
+        <p>The practice layer. Once orientation capacity is understood, how do absurdity signals get read, surfaced, and acted on? The second paper in the field series.</p>
+      </div>
       <div class="papers-card dim">
         <span class="card-label">Book · In Progress</span>
         <h4>Reclaim</h4>
@@ -446,7 +452,7 @@
     resize();init();draw();
   })();
 
-  // Mini canvas strip — orientation field
+  // Mini canvas strip - orientation field
   (function() {
     const canvas = document.getElementById('mini-canvas');
     if (!canvas) return;
@@ -569,9 +575,28 @@
       const r = canvas.getBoundingClientRect();
       spawnRipple(e.clientX - r.left, e.clientY - r.top);
     });
+    // Touch support for mobile
+    canvas.addEventListener('touchmove', e => {
+      e.preventDefault();
+      const r = canvas.getBoundingClientRect();
+      mouse.x = e.touches[0].clientX - r.left;
+      mouse.y = e.touches[0].clientY - r.top;
+    }, { passive: false });
+    canvas.addEventListener('touchstart', e => {
+      e.preventDefault();
+      const r = canvas.getBoundingClientRect();
+      const tx = e.touches[0].clientX - r.left;
+      const ty = e.touches[0].clientY - r.top;
+      mouse.x = tx; mouse.y = ty;
+      spawnRipple(tx, ty);
+    }, { passive: false });
+    canvas.addEventListener('touchend', () => { mouse.x=-999; mouse.y=-999; });
     window.addEventListener('resize', () => { resize(); init(); });
     resize(); init(); draw();
   })();
 </script>
 </body>
 </html>
+
+    
+    
