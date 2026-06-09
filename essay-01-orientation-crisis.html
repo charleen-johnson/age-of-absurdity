@@ -465,20 +465,22 @@
         ctx.lineWidth = even ? 1.1 : 0.6;
         ctx.stroke();
       }
+      // Crosshair always at exact canvas centre
+      const ccx = Math.floor(w / 2), ccy = Math.floor(h / 2);
       const cr = 6, armLen = 13;
       ctx.beginPath();
-      ctx.arc(cx, cy, cr, 0, Math.PI * 2);
+      ctx.arc(ccx, ccy, cr, 0, Math.PI * 2);
       ctx.strokeStyle = 'rgba(255,255,255,0.88)';
       ctx.lineWidth = 1.5;
       ctx.stroke();
       ctx.beginPath();
-      ctx.arc(cx, cy, 2.2, 0, Math.PI * 2);
+      ctx.arc(ccx, ccy, 2.2, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255,180,0,0.95)';
       ctx.fill();
       [[0,-1],[0,1],[1,0],[-1,0]].forEach(([dx,dy]) => {
         ctx.beginPath();
-        ctx.moveTo(cx + dx*(cr+3), cy + dy*(cr+3));
-        ctx.lineTo(cx + dx*(cr+armLen), cy + dy*(cr+armLen));
+        ctx.moveTo(ccx + dx*(cr+3), ccy + dy*(cr+3));
+        ctx.lineTo(ccx + dx*(cr+armLen), ccy + dy*(cr+armLen));
         ctx.strokeStyle = 'rgba(255,255,255,0.82)';
         ctx.lineWidth = 1.2;
         ctx.stroke();
