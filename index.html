@@ -19,7 +19,7 @@
       --gold:       #C17F00;
       --coral:      #ff6f61;
       --charcoal:   #1a1a2e;
-      --body-text:  #1a1a2e;
+      --body-text:  #111111;
       --muted:      #4a5568;
       --serif:      'Cormorant Garamond', Georgia, serif;
       --sans:       'Montserrat', system-ui, sans-serif;
@@ -94,9 +94,9 @@
     .living-canvas-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2; }
 
     /* SPINE SECTION */
-    .spine-section { padding: 4rem 0 3rem; background: white; }
+    .spine-section { padding: 4rem 0 3rem; background: var(--teal-card); }
     .spine-intro { max-width: 680px; margin: 0 auto; }
-    .spine-body p { font-size: 0.95rem; color: var(--body-text); line-height: 1.85; margin-bottom: 0.9rem; font-weight: 300; }
+    .spine-body p { font-size: 1.05rem; color: var(--body-text); line-height: 1.88; margin-bottom: 0.9rem; font-weight: 300; }
     .rumi-quote { border-left: 3px solid var(--teal-deep); padding: 0.85rem 1.5rem; margin: 1.25rem 0 1.25rem 1.5rem; }
     .rumi-quote p { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.2rem); font-style: italic; font-weight: 400; color: var(--teal-deep); line-height: 1.7; margin-bottom: 0.2rem; }
     .rumi-quote cite { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-style: normal; }
@@ -133,10 +133,10 @@
     .paper-link:hover { color: var(--coral); border-color: var(--coral); }
     .papers-card { background: white; padding: 2rem 2.25rem; text-decoration: none; transition: background 0.2s; display: block; }
     .papers-card:hover { background: #f0faf9; }
-    .papers-card.dim { opacity: 0.45; pointer-events: none; }
+    .papers-card.dim { opacity: 0.62; pointer-events: none; }
     .card-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; font-weight: 600; display: block; }
-    .papers-card h4 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.35; }
-    .papers-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .papers-card h4 { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.35; }
+    .papers-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
     /* ABOUT */
     .bio-section { padding: 3.5rem 0 6rem; background: white; }
@@ -597,6 +597,3 @@
 </script>
 </body>
 </html>
-
-    
-    
