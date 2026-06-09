@@ -152,7 +152,11 @@
     .compass-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(79,189,186,0.6); background: transparent; box-shadow: 0 0 0 1px rgba(79,189,186,0.2), 0 8px 24px rgba(26,26,46,0.18); z-index: 11; pointer-events: none; }
     .compass-ring::before { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px solid rgba(79,189,186,0.25); }
     .compass-cardinal { position: absolute; width: 100%; height: 100%; z-index: 13; pointer-events: none; }
-    .compass-cardinal span { position: absolute; font-family: var(--sans); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gold); }
+    .compass-centre { position: absolute; inset: 0; z-index: 14; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+    .compass-centre::before { content: ''; position: absolute; width: 1px; height: 20px; background: rgba(255,255,255,0.85); }
+    .compass-centre::after { content: ''; position: absolute; width: 20px; height: 1px; background: rgba(255,255,255,0.85); }
+    .compass-dot { position: absolute; width: 5px; height: 5px; background: rgba(255,180,0,0.95); border-radius: 50%; z-index: 15; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+    .compass-circle { position: absolute; width: 14px; height: 14px; border: 1.5px solid rgba(255,255,255,0.75); border-radius: 50%; z-index: 15; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
     .compass-cardinal .cn { top: 1px; left: 50%; transform: translateX(-50%); }
     .compass-cardinal .cs { bottom: 1px; left: 50%; transform: translateX(-50%); }
     .compass-cardinal .cw { left: 1px; top: 50%; transform: translateY(-50%); }
@@ -210,6 +214,9 @@
       <div class="terrain-lens" id="terrain-lens">
         <canvas id="terrain-live-canvas"></canvas>
         <div class="lens-sheen"></div>
+        <div class="compass-centre"></div>
+        <div class="compass-dot"></div>
+        <div class="compass-circle"></div>
       </div>
     </div>
     <div class="orientation-field-label">Move cursor across the map</div>
@@ -456,26 +463,6 @@
         ctx.lineWidth = even ? 1.1 : 0.6;
         ctx.stroke();
       }
-      // Crosshair always at exact canvas centre
-      const ccx = Math.floor(w / 2), ccy = Math.floor(h / 2);
-      const cr = 6, armLen = 13;
-      ctx.beginPath();
-      ctx.arc(ccx, ccy, cr, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(255,255,255,0.88)';
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(ccx, ccy, 2.2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,180,0,0.95)';
-      ctx.fill();
-      [[0,-1],[0,1],[1,0],[-1,0]].forEach(([dx,dy]) => {
-        ctx.beginPath();
-        ctx.moveTo(ccx + dx*(cr+3), ccy + dy*(cr+3));
-        ctx.lineTo(ccx + dx*(cr+armLen), ccy + dy*(cr+armLen));
-        ctx.strokeStyle = 'rgba(255,255,255,0.82)';
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
-      });
       requestAnimationFrame(drawTerrain);
     }
 
