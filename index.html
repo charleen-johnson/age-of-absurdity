@@ -60,15 +60,15 @@
     .cl-status { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-top: 0.2rem; }
 
     /* HERO */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5rem 2rem 3rem; position: relative; overflow: hidden; text-align: center; background: var(--white); }
-    #field-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: auto; cursor: crosshair; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5rem 2rem 0; position: relative; overflow: hidden; text-align: center; background: var(--white); }
+    #field-canvas { position: absolute; top: 0; left: 0; right: 0; bottom: 140px; width: 100%; pointer-events: auto; cursor: crosshair; }
     .hero-inner { position: relative; z-index: 2; max-width: 780px; width: 100%; }
     .hero-eyebrow { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; font-weight: 600; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
     .hero-title { font-family: var(--serif); font-size: clamp(4.5rem, 10vw, 8.5rem); font-weight: 300; line-height: 1.0; color: var(--charcoal); margin-bottom: 0.75rem; opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
     .hero-title em { font-style: italic; color: var(--teal-deep); }
     .hero-subtitle { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 400; font-style: italic; color: var(--muted); margin-bottom: 1.75rem; opacity: 0; animation: fadeUp 1s ease forwards 0.7s; }
     .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0; opacity: 0; animation: fadeUp 0.9s ease forwards 1.2s; }
-    .hero-rumi { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,139,135,0.2); text-align: center; margin-bottom: 2.5rem; }
+    .hero-rumi { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(0,139,135,0.2); text-align: center; margin-bottom: 0; background: var(--white); position: relative; z-index: 2; padding-bottom: 1.5rem; }
     .rl { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 600; font-style: italic; color: var(--charcoal); line-height: 1.4; display: block; opacity: 0; transform: translateY(10px); transition: opacity 1s ease, transform 1s ease; }
     .rl.meet { color: var(--coral); }
     .rl.attr { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-style: normal; font-weight: 400; margin-top: 0.6rem; opacity: 0; transition: opacity 0.9s ease; }
@@ -89,7 +89,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* MINI CANVAS STRIP */
-    .living-canvas-section { padding: 0; background: white; position: relative; height: 200px; overflow: hidden; margin-top: 3rem; }
+    .living-canvas-section { padding: 0; background: white; position: relative; height: 200px; overflow: hidden; margin-top: 0; }
     .living-canvas-section canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
     .living-canvas-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2; }
 
@@ -108,7 +108,7 @@
     .signal-closing.animate .line1, .signal-closing.animate .line2, .signal-closing.animate .line3 { opacity: 1; transform: translateX(0); }
 
     /* ESSAYS */
-    .essays-section { padding: 6rem 0; background: var(--off-white); }
+    .essays-section { padding: 3.5rem 0 6rem; background: var(--off-white); }
     .essays-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 2.5rem; }
     .essay-card { display: block; background: white; border: 1px solid var(--teal-rule); border-radius: 3px; padding: 1.75rem 2.5rem 1.75rem 2.25rem; margin-bottom: 3px; text-decoration: none; transition: all 0.3s; position: relative; overflow: hidden; }
     .essay-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--coral); transform: scaleY(0); transform-origin: bottom; transition: transform 0.35s ease; }
@@ -123,7 +123,7 @@
     .essay-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; max-width: 580px; font-weight: 300; }
 
     /* FIELD PAPERS */
-    .papers-section { padding: 6rem 0; background: var(--teal-card); }
+    .papers-section { padding: 3.5rem 0 6rem; background: var(--teal-card); }
     .papers-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 0.5rem; }
     .papers-intro { font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; font-weight: 300; line-height: 1.7; }
     .papers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: rgba(0,139,135,0.15); border: 1px solid rgba(0,139,135,0.2); border-radius: 3px; overflow: hidden; }
@@ -138,7 +138,7 @@
     .papers-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
     /* ABOUT */
-    .bio-section { padding: 6rem 0; background: white; }
+    .bio-section { padding: 3.5rem 0 6rem; background: white; }
     .bio-inner { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; }
     .bio-photo { width: 320px; height: 320px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; filter: grayscale(100%); }
     .bio-photo-wrap { position: relative; }
@@ -250,6 +250,7 @@
 <section class="spine-section" id="what">
   <div class="container">
     <div class="spine-intro reveal">
+      <span class="section-label" style="margin-bottom:1rem;">The Condition</span>
       <div class="spine-body">
         <p>We are living through <strong>the Great Untethering</strong>. It shows up differently depending on where you sit: as exhaustion, as apathy, as the quiet vertigo of leading systems that no longer respond the way they should, as the rage of being inside those systems with no visible way to change them. But the condition underneath is the same. Something has come loose from its moorings, and the pace of the loosening is accelerating. The people holding the megaphone, the large corporations, the governments, the concentrated power deciding the shape of things, are not going to be the ones who name it. That work belongs to the rest of us.</p>
         <p>This is not a modern invention. Every major civilisational transition in recorded history has produced this signal at this moment in the arc, when inherited ways of making sense stop holding and systems keep running on momentum long after they have lost contact with what they were for. The loss of contact with what is real, with each other, with what the work was actually for, with the felt sense of being part of something that matters: this is as old as the human story.</p>
@@ -271,6 +272,7 @@
 
 <section class="essays-section" id="essays">
   <div class="container">
+    <span class="section-label reveal">The Inquiry</span>
     <h2 class="essays-title reveal">The Essays</h2>
     <a href="https://charleen-johnson.github.io/age-of-absurdity/essay-01-orientation-crisis.html" class="essay-card reveal" style="background:var(--teal-dark);border-color:var(--teal-dark);padding:2.5rem;margin-bottom:6px;">
       <div class="essay-meta">
@@ -284,7 +286,7 @@
     <div class="essay-card coming reveal">
       <div class="essay-meta"><span class="essay-number">Essay Two</span><span class="essay-status">Coming Soon</span></div>
       <h3>Complicit Incoherence</h3>
-      <p>Not dishonesty. Organised participation in conditions that prevent integrated seeing from forming. Two forms, its mechanisms, and why naming it changes what becomes possible.</p>
+      <p>How intelligent people and well-intentioned systems organise themselves around conditions that make clear seeing impossible. Its two forms, its mechanisms, and why naming it changes what becomes possible.</p>
     </div>
     <div class="essay-card coming reveal">
       <div class="essay-meta"><span class="essay-number">Essay Three</span><span class="essay-status">Coming Soon</span></div>
@@ -294,7 +296,7 @@
     <div class="essay-card coming reveal">
       <div class="essay-meta"><span class="essay-number">Essay Four</span><span class="essay-status">Coming Soon</span></div>
       <h3>Orientation Development</h3>
-      <p>Same initials as Organisation Development. Different unit of analysis. What the next generation of this work looks like when the condition, not the behaviour, becomes the object of attention.</p>
+      <p>The next evolution of organisation development practice. What changes when orientation capacity becomes the unit of attention, and what practitioners, leaders, and systems can actually do about it.</p>
     </div>
   </div>
 </section>
@@ -308,7 +310,7 @@
     <p class="papers-intro reveal">The academic work and publications behind the inquiry. The broader research program, including the Organizational Absurdity Research Program and the annual Workplace Absurdities Report, lives at <a href="https://insparkgroup.com/our-research-program" target="_blank" rel="noopener" style="color:var(--teal-deep);font-weight:500;text-decoration:none;border-bottom:1px solid var(--teal-rule);">InSpark Group</a>.</p>
     <div class="papers-grid reveal">
       <div class="papers-card">
-        <span class="card-label">Field Paper 02 · Zenodo</span>
+        <span class="card-label">Field Paper 01 · Zenodo</span>
         <h4>Orientation Capacity: Why Organizations Lose Their Ability to Interpret Reality</h4>
         <p>The scholarly argument behind the essays. Mechanisms, evidence, and the framework these essays draw on and build from.</p>
         <div class="paper-links">
@@ -359,7 +361,7 @@
   <p class="footer-mark">The <span>Age of Absurdity</span> · Charleen Johnson · InSpark Group</p>
   <ul class="footer-links">
     <li><a href="https://ageofabsurdity.substack.com" target="_blank" rel="noopener">Substack</a></li>
-    <li><a href="https://doi.org/10.5281/zenodo.20292903" target="_blank" rel="noopener">Field Paper 02</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20292903" target="_blank" rel="noopener">Field Paper 01</a></li>
     <li><a href="https://www.insparkgroup.com" target="_blank" rel="noopener">InSpark</a></li>
     <li><a href="https://www.linkedin.com/in/charleenjohnson" target="_blank" rel="noopener">LinkedIn</a></li>
   </ul>
