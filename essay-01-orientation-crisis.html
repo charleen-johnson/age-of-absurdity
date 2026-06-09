@@ -34,8 +34,8 @@
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0.85rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: var(--teal-dark); border-bottom: 1px solid rgba(0,0,0,0.15); transition: padding 0.3s; }
     nav.scrolled { padding: 0.65rem 2.5rem; }
     .nav-left { display: flex; align-items: center; gap: 0.5rem; }
-    .nav-home-icon { font-size: 1rem; color: rgba(255,255,255,0.55); text-decoration: none; line-height: 1; transition: color 0.2s; flex-shrink: 0; }
-    .nav-home-icon:hover { color: rgba(255,255,255,0.9); }
+    .nav-home-icon { font-size: 1rem; color: rgba(255,255,255,0.75); text-decoration: none; line-height: 1; transition: color 0.2s; flex-shrink: 0; }
+    .nav-home-icon:hover { color: white; }
     .nav-sep { display: none; }
     .nav-series-link { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .nav-series-link:hover { color: white; }
@@ -90,7 +90,6 @@
     .section-break::before, .section-break::after { content: ''; flex: 1; height: 1px; background: var(--teal-rule); }
     .section-break span { font-family: var(--serif); font-size: 0.9rem; color: var(--teal-deep); }
 
-    /* Closing */
     .essay-closing { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--teal-rule); }
     .essay-closing-label { font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1.25rem; display: block; }
     .signal-lines { border-top: 3px solid var(--teal-deep); border-bottom: 3px solid var(--teal-deep); padding: 1.5rem 2rem; }
@@ -134,7 +133,7 @@
 <nav id="main-nav">
   <div class="nav-left">
     <a href="https://charleen-johnson.github.io/age-of-absurdity/" class="nav-home-icon" title="Home">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3L3 9.5V20a1 1 0 001 1h6v-6h4v6h6a1 1 0 001-1V9.5L12 3z"/></svg>
   </a>
     <a href="https://charleen-johnson.github.io/age-of-absurdity/" class="nav-series-link">The Age of Absurdity</a>
   </div>
@@ -293,7 +292,11 @@
 
     <p class="essay-p">This is where possibility begins.</p>
 
-    <p class="essay-p">Possibility does not come from another grand map promising to simplify complexity by Thursday. It does not come from one heroic leader, one technology, one methodology, one platform, one policy, or one moral awakening. It begins more quietly, with the disciplined practice of reading the signals already present.</p>
+    <div class="essay-pullquote reveal">
+      <p>Complexity is not dysfunction. It is simply life trying to recreate itself.</p>
+    </div>
+
+    <p class="essay-p">The move is not to fix it, but to work with it by staying connected to what is present. Possibility does not come from another grand map promising to simplify complexity by Thursday. It does not come from one heroic leader, one technology, one methodology, one platform, one policy, or one moral awakening. It begins more quietly, with the disciplined practice of reading the signals already present.</p>
 
     <p class="essay-p">The joke that lands too precisely. The contradiction that keeps returning. The policy that works on paper and fails in practice. The meeting where everyone agrees and no one believes. The consultation that collects voices without changing what can be heard. The philanthropic initiative that responds to suffering while leaving the producing conditions untouched. The strategy that moves with confidence in the wrong direction.</p>
 
