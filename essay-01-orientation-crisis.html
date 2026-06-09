@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -127,7 +127,7 @@
     /* Orientation field map */
     .orientation-field-wrap { max-width: 900px; margin: 2rem auto 0; padding: 0 1.5rem; }
     .orientation-field {
-      --lens-left: 50%; --lens-top: 52%;
+      --lens-left: 50%; --lens-top: 50%;
       position: relative; height: clamp(240px, 30vw, 400px);
       overflow: hidden; border-radius: 6px;
       border: 1px solid rgba(0,139,135,0.22);
@@ -146,21 +146,9 @@
     .static-grid-layer { z-index: 2; opacity: 0.22; mix-blend-mode: multiply; background-image: linear-gradient(rgba(0,80,70,0.32) 1px, transparent 1px), linear-gradient(90deg, rgba(0,80,70,0.32) 1px, transparent 1px); background-size: 74px 74px; }
     .static-contour-layer { z-index: 3; opacity: 0.85; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23005a50' stroke-width='1.4' stroke-opacity='0.55'%3E%3Cpath d='M-80 80 C 70 20, 190 126, 350 76 S 610 18, 780 88 S 1030 152, 1380 70'/%3E%3Cpath d='M-70 132 C 84 78, 208 180, 370 130 S 642 74, 822 142 S 1040 212, 1370 132'/%3E%3Cpath d='M-60 190 C 96 140, 236 242, 398 190 S 664 132, 850 204 S 1078 272, 1376 192'/%3E%3Cpath d='M-68 252 C 110 198, 264 306, 430 252 S 692 190, 888 270 S 1120 328, 1370 254'/%3E%3Cpath d='M-84 318 C 108 262, 296 374, 472 320 S 726 260, 932 330 S 1156 398, 1382 324'/%3E%3Cpath d='M-80 386 C 126 332, 322 444, 514 390 S 766 326, 976 396 S 1198 468, 1378 396'/%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
     .static-route-layer { z-index: 4; opacity: 0.9; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23cc4433' stroke-width='2' stroke-opacity='0.55' stroke-dasharray='9 10'%3E%3Cpath d='M40 370 C 180 330, 280 356, 420 292 S 620 196, 810 238 S 1020 314, 1250 246'/%3E%3C/g%3E%3Cg fill='%231a1a2e' fill-opacity='0.90' font-family='Georgia,serif' font-size='19' letter-spacing='5' font-weight='bold'%3E%3Ctext x='280' y='116'%3ERIDGE%3C/text%3E%3Ctext x='750' y='152'%3EFIELD%3C/text%3E%3Ctext x='860' y='358'%3ELOWLAND%3C/text%3E%3C/g%3E%3Cg fill='%23005a50' fill-opacity='0.90' font-family='Georgia,serif' font-size='15' letter-spacing='3' font-weight='bold'%3E%3Ctext x='280' y='300'%3EVALLEY%3C/text%3E%3Ctext x='560' y='420'%3EPLAIN%3C/text%3E%3Ctext x='850' y='88'%3EHIGHLAND%3C/text%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
-    .terrain-lens-wrap { position: absolute; left: var(--lens-left); top: var(--lens-top); transform: translate(-50%,-50%); width: 180px; height: 180px; pointer-events: none; z-index: 9; }
+    .terrain-lens-wrap { position: absolute; width: 180px; height: 180px; pointer-events: none; z-index: 9; transform: translate(-50%,-50%); left: 50%; top: 50%; }
     .orientation-field.is-active .terrain-lens-wrap { width: 200px; height: 200px; }
     .terrain-lens { position: absolute; inset: 12px; border-radius: 50%; overflow: hidden; clip-path: circle(50%); box-shadow: inset 0 0 20px rgba(0,107,104,0.15); }
-    .compass-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(79,189,186,0.6); background: transparent; box-shadow: 0 0 0 1px rgba(79,189,186,0.2), 0 8px 24px rgba(26,26,46,0.18); z-index: 11; pointer-events: none; }
-    .compass-ring::before { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px solid rgba(79,189,186,0.25); }
-    .compass-cardinal { position: absolute; width: 100%; height: 100%; z-index: 13; pointer-events: none; }
-    .compass-centre { position: absolute; inset: 0; z-index: 14; pointer-events: none; display: flex; align-items: center; justify-content: center; }
-    .compass-centre::before { content: ''; position: absolute; width: 1px; height: 20px; background: rgba(255,255,255,0.85); }
-    .compass-centre::after { content: ''; position: absolute; width: 20px; height: 1px; background: rgba(255,255,255,0.85); }
-    .compass-dot { position: absolute; width: 5px; height: 5px; background: rgba(255,180,0,0.95); border-radius: 50%; z-index: 15; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
-    .compass-circle { position: absolute; width: 14px; height: 14px; border: 1.5px solid rgba(255,255,255,0.75); border-radius: 50%; z-index: 15; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
-    .compass-cardinal .cn { top: 1px; left: 50%; transform: translateX(-50%); }
-    .compass-cardinal .cs { bottom: 1px; left: 50%; transform: translateX(-50%); }
-    .compass-cardinal .cw { left: 1px; top: 50%; transform: translateY(-50%); }
-    .compass-cardinal .ce { right: 1px; top: 50%; transform: translateY(-50%); }
     #terrain-live-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 10; background: transparent; border-radius: 50%; }
     .lens-sheen { position: absolute; inset: 0; z-index: 12; border-radius: 50%; background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.28), transparent 32%); mix-blend-mode: soft-light; pointer-events: none; }
     .orientation-field-label { inset: auto auto 0.85rem 1rem; z-index: 18; padding: 0.42rem 0.58rem; background: rgba(255,255,255,0.74); color: rgba(26,26,46,0.72); font-size: 0.65rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 500; border: 1px solid rgba(0,139,135,0.18); backdrop-filter: blur(4px); }
@@ -204,20 +192,42 @@
     <div class="static-contour-layer" aria-hidden="true"></div>
     <div class="static-route-layer" aria-hidden="true"></div>
     <div class="terrain-lens-wrap" id="terrain-lens-wrap" aria-hidden="true">
-      <div class="compass-ring"></div>
-      <div class="compass-cardinal">
-        <span class="cn">N</span>
-        <span class="cs">S</span>
-        <span class="cw">W</span>
-        <span class="ce">E</span>
-      </div>
       <div class="terrain-lens" id="terrain-lens">
         <canvas id="terrain-live-canvas"></canvas>
         <div class="lens-sheen"></div>
-        <div class="compass-centre"></div>
-        <div class="compass-dot"></div>
-        <div class="compass-circle"></div>
       </div>
+      <!-- Single SVG compass overlay: ring, ticks, nodules, labels, crosshair all in one coordinate space -->
+      <svg class="compass-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:14;">
+        <!-- Outer ring -->
+        <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(79,189,186,0.65)" stroke-width="1.8"/>
+        <!-- Inner ring -->
+        <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(79,189,186,0.25)" stroke-width="0.8"/>
+        <!-- Cardinal nodules (filled circles on the ring) -->
+        <circle cx="50" cy="2" r="2.5" fill="#C17F00"/>
+        <circle cx="50" cy="98" r="2.5" fill="#C17F00"/>
+        <circle cx="2" cy="50" r="2.5" fill="#C17F00"/>
+        <circle cx="98" cy="50" r="2.5" fill="#C17F00"/>
+        <!-- Minor tick marks -->
+        <line x1="50" y1="4.5" x2="50" y2="8" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
+        <line x1="50" y1="92" x2="50" y2="95.5" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
+        <line x1="4.5" y1="50" x2="8" y2="50" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
+        <line x1="92" y1="50" x2="95.5" y2="50" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
+        <!-- Diagonal minor ticks -->
+        <line x1="15" y1="15" x2="18" y2="18" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
+        <line x1="85" y1="15" x2="82" y2="18" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
+        <line x1="15" y1="85" x2="18" y2="82" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
+        <line x1="85" y1="85" x2="82" y2="82" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
+        <!-- Cardinal labels -->
+        <text x="50" y="13" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">N</text>
+        <text x="50" y="89" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">S</text>
+        <text x="11" y="50" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">W</text>
+        <text x="89" y="50" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">E</text>
+        <!-- Crosshair -->
+        <line x1="50" y1="43" x2="50" y2="57" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/>
+        <line x1="43" y1="50" x2="57" y2="50" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/>
+        <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1"/>
+        <circle cx="50" cy="50" r="2" fill="rgba(255,180,0,0.98)"/>
+      </svg>
     </div>
     <div class="orientation-field-label">Move cursor across the map</div>
   </figure>
@@ -426,13 +436,19 @@
       const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
       const y = Math.max(0, Math.min(rect.height, clientY - rect.top));
       mx = x / rect.width; my = y / rect.height;
-      field.style.setProperty('--lens-left', x + 'px');
-      field.style.setProperty('--lens-top', y + 'px');
+      if (lensWrap) {
+        lensWrap.style.left = x + 'px';
+        lensWrap.style.top = y + 'px';
+      }
     }
 
     function centerLens() {
       const rect = field.getBoundingClientRect();
-      setLensFromPoint(rect.left + rect.width * 0.5, rect.top + rect.height * 0.52);
+      if (lensWrap) {
+        lensWrap.style.left = (rect.width * 0.5) + 'px';
+        lensWrap.style.top = (rect.height * 0.5) + 'px';
+      }
+      mx = 0.5; my = 0.5;
     }
 
     function drawTerrain() {
@@ -483,8 +499,18 @@
     }, { passive: false });
     field.addEventListener('touchend', () => { field.classList.remove('is-active'); });
     window.addEventListener('resize', () => { resize(); centerLens(); });
-    // Delay init slightly to ensure layout is complete
-    setTimeout(() => { resize(); centerLens(); drawTerrain(); }, 100);
+    // Wait for field to be fully rendered before initialising
+    function initWhenReady() {
+      const rect = field.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        resize();
+        centerLens();
+        drawTerrain();
+      } else {
+        setTimeout(initWhenReady, 100);
+      }
+    }
+    setTimeout(initWhenReady, 200);
   })();
 </script>
 
