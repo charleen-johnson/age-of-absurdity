@@ -25,7 +25,8 @@
       --sans:       'Montserrat', system-ui, sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    @media (max-width: 480px) { html { font-size: 17px; } }
     body { background: var(--white); color: var(--body-text); font-family: var(--sans); font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
     #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--coral), var(--gold)); z-index: 300; transition: width 0.1s linear; }
@@ -55,7 +56,7 @@
     .compass-link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,139,135,0.12); text-decoration: none; transition: all 0.2s; }
     .compass-link:last-child { border-bottom: none; }
     .compass-link:hover .cl-title { color: var(--coral); }
-    .cl-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 0.2rem; }
+    .cl-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 0.2rem; }
     .cl-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--charcoal); transition: color 0.2s; }
     .cl-status { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-top: 0.2rem; }
 
@@ -66,10 +67,10 @@
     .hero-eyebrow { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; font-weight: 600; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
     .hero-title { font-family: var(--serif); font-size: clamp(4.5rem, 10vw, 8.5rem); font-weight: 300; line-height: 1.0; color: var(--charcoal); margin-bottom: 0.75rem; opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
     .hero-title em { font-style: italic; color: var(--teal-deep); }
-    .hero-subtitle { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 400; font-style: italic; color: var(--muted); margin-bottom: 1.75rem; opacity: 0; animation: fadeUp 1s ease forwards 0.7s; }
+    .hero-subtitle { font-family: var(--serif); font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-weight: 400; font-style: italic; color: var(--muted); margin-bottom: 1.75rem; opacity: 0; animation: fadeUp 1s ease forwards 0.7s; }
     .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0; opacity: 0; animation: fadeUp 0.9s ease forwards 1.2s; }
     .hero-rumi { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(0,139,135,0.2); text-align: center; margin-bottom: 0; background: var(--white); position: relative; z-index: 2; padding-bottom: 1.5rem; }
-    .rl { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 600; font-style: italic; color: var(--charcoal); line-height: 1.4; display: block; opacity: 0; transform: translateY(10px); transition: opacity 1s ease, transform 1s ease; }
+    .rl { font-family: var(--serif); font-size: clamp(1.2rem, 2.2vw, 1.7rem); font-weight: 600; font-style: italic; color: var(--charcoal); line-height: 1.4; display: block; opacity: 0; transform: translateY(10px); transition: opacity 1s ease, transform 1s ease; }
     .rl.meet { color: var(--coral); }
     .rl.attr { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-style: normal; font-weight: 400; margin-top: 0.6rem; opacity: 0; transition: opacity 0.9s ease; }
     .rl.vis { opacity: 1; transform: translateY(0); }
@@ -84,7 +85,7 @@
 
     .container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
     .section-rule { border: none; border-top: 1px solid var(--teal-rule); }
-    .section-label { font-size: 0.85rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 600; display: block; }
+    .section-label { font-size: 1.1rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 600; display: block; }
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -116,7 +117,7 @@
     .essay-card:hover::before { transform: scaleY(1); }
     .essay-card.coming { opacity: 0.38; pointer-events: none; }
     .essay-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.55rem; }
-    .essay-number { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .essay-number { font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
     .essay-status { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
     .essay-status.live { color: var(--coral); font-weight: 600; }
     .essay-card h3 { font-family: var(--serif); font-size: 1.55rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.45rem; line-height: 1.25; }
@@ -134,7 +135,7 @@
     .papers-card { background: white; padding: 2rem 2.25rem; text-decoration: none; transition: background 0.2s; display: block; }
     .papers-card:hover { background: #f0faf9; }
     .papers-card.dim { opacity: 0.62; pointer-events: none; }
-    .card-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; font-weight: 600; display: block; }
+    .card-label { font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; font-weight: 600; display: block; }
     .papers-card h4 { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.35; }
     .papers-card p { font-size: 1.05rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
@@ -169,11 +170,11 @@
       .papers-grid { grid-template-columns: 1fr; }
       .compass-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: flex-start; }
-      .spine-body p { font-size: 1.15rem; }
-      .essay-card p { font-size: 1.05rem; }
-      .papers-card p { font-size: 1.05rem; }
-      .bio-text { font-size: 1.1rem; }
-      .signal-closing p { font-size: 1.25rem; }
+      .spine-body p { font-size: 1.25rem; }
+      .essay-card p { font-size: 1.15rem; }
+      .papers-card p { font-size: 1.15rem; }
+      .bio-text { font-size: 1.2rem; }
+      .signal-closing p { font-size: 1.35rem; }
     }
   </style>
 </head>
@@ -246,14 +247,15 @@
 
 <section class="living-canvas-section" id="field">
   <canvas id="mini-canvas"></canvas>
+  <canvas id="ripple-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
   <div class="living-canvas-label">
-    <p style="font-family:var(--serif);font-size:clamp(0.95rem,1.6vw,1.15rem);font-style:italic;color:var(--teal-dark);opacity:1;letter-spacing:0.03em;text-shadow:0 1px 8px rgba(255,255,255,0.85);">The orientation field is alive and co-creative. Move your cursor or tap to interact.</p>
+    <p style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-style:italic;color:var(--teal-dark);opacity:1;letter-spacing:0.03em;text-shadow:0 1px 8px rgba(255,255,255,0.85);">The orientation field is alive.</p>
   </div>
 </section>
 
-<hr class="section-rule" />
+<p style="text-align:center;font-family:var(--sans);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);padding:0.6rem 0 0.8rem;">Move your mouse or tap &middot; Click or tap to send a wave</p>
 
-<section class="spine-section" id="what">
+<hr class="section-rule" />
   <div class="container">
     <div class="spine-intro reveal">
       <span class="section-label" style="margin-bottom:1rem;">The Condition</span>
@@ -484,103 +486,146 @@
       }));
     }
 
+    const rippleCanvas = document.getElementById('ripple-canvas');
+    const rctx = rippleCanvas.getContext('2d');
+
+    function resizeRipple() {
+      rippleCanvas.width = rippleCanvas.offsetWidth;
+      rippleCanvas.height = rippleCanvas.offsetHeight;
+    }
+
     function spawnRipple(cx, cy) {
-      const maxR = Math.max(W, H) * 0.75;
-      let start = null;
+      const maxR = Math.max(W, H) * 1.1;
+
+      // Strong outward push on ALL particles proportional to distance
       P.forEach(p => {
         if (p.cluster) return;
         const dx = p.x - cx, dy = p.y - cy;
         const d = Math.sqrt(dx*dx + dy*dy);
-        if (d < maxR && d > 0) {
-          const force = (1 - d/maxR) * 4.5;
+        if (d > 0) {
+          const force = Math.max(0, (1 - d/maxR)) * 9;
           p.vx += (dx/d) * force;
           p.vy += (dy/d) * force;
         }
       });
+
+      // Draw ripple rings on overlay canvas
+      let start = null;
       function step(ts) {
         if (!start) start = ts;
-        const prog = (ts - start) / 1200;
-        if (prog >= 1) return;
-        const r = prog * maxR;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI*2);
-        ctx.strokeStyle = '#4FBDBA';
-        ctx.globalAlpha = (1 - prog) * 0.38;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-        if (prog > 0.15) {
-          const r2 = (prog - 0.15) * maxR * 0.65;
-          ctx.beginPath();
-          ctx.arc(cx, cy, r2, 0, Math.PI*2);
-          ctx.globalAlpha = (1 - prog) * 0.2;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
+        const prog = Math.min((ts - start) / 800, 1);
+
+        rctx.clearRect(0, 0, rippleCanvas.width, rippleCanvas.height);
+
+        if (prog < 1) {
+          // Main expanding ring
+          const r = prog * maxR;
+          rctx.beginPath();
+          rctx.arc(cx, cy, r, 0, Math.PI * 2);
+          rctx.strokeStyle = '#4FBDBA';
+          rctx.globalAlpha = (1 - prog) * 0.7;
+          rctx.lineWidth = 2.5;
+          rctx.stroke();
+
+          // Second inner ring
+          if (prog > 0.08) {
+            const r2 = (prog - 0.08) * maxR;
+            rctx.beginPath();
+            rctx.arc(cx, cy, r2, 0, Math.PI * 2);
+            rctx.globalAlpha = (1 - prog) * 0.4;
+            rctx.lineWidth = 1.2;
+            rctx.stroke();
+          }
+
+          // Third faint ring
+          if (prog > 0.18) {
+            const r3 = (prog - 0.18) * maxR;
+            rctx.beginPath();
+            rctx.arc(cx, cy, r3, 0, Math.PI * 2);
+            rctx.globalAlpha = (1 - prog) * 0.2;
+            rctx.lineWidth = 0.7;
+            rctx.stroke();
+          }
+
+          rctx.globalAlpha = 1;
+          requestAnimationFrame(step);
+        } else {
+          rctx.clearRect(0, 0, rippleCanvas.width, rippleCanvas.height);
         }
-        ctx.restore();
-        requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
 
-    // Ripple every 7 seconds, cycling through left / centre / right zones
-    let rippleZone = 0;
-    setInterval(() => {
-      if (!W || !H) return;
-      // Divide canvas into thirds, cycle through them with some randomness
-      const zones = [
-        { xMin: 0.05, xMax: 0.35 },
-        { xMin: 0.35, xMax: 0.65 },
-        { xMin: 0.65, xMax: 0.95 }
-      ];
-      const z = zones[rippleZone % 3];
-      rippleZone++;
-      const cx = (z.xMin + Math.random()*(z.xMax - z.xMin)) * W;
-      const cy = (0.1 + Math.random()*0.8) * H;
-      spawnRipple(cx, cy);
-    }, 7000);
+    let zone = 0;
+    const zones = [
+      { xMin: 0.05, xMax: 0.32 },
+      { xMin: 0.36, xMax: 0.64 },
+      { xMin: 0.68, xMax: 0.95 }
+    ];
+
+    // Auto ripple - delay first fire 8 seconds, then every 15 seconds
+    setTimeout(() => {
+      if (W && H) {
+        const z = zones[zone % 3]; zone++;
+        spawnRipple((z.xMin + Math.random()*(z.xMax-z.xMin))*W, (0.15+Math.random()*0.7)*H);
+      }
+      setInterval(() => {
+        if (!W || !H) return;
+        const z = zones[zone % 3]; zone++;
+        spawnRipple((z.xMin + Math.random()*(z.xMax-z.xMin))*W, (0.15+Math.random()*0.7)*H);
+      }, 15000);
+    }, 8000);
 
     function draw() {
-      ctx.clearRect(0,0,W,H);
-      for (let i=0;i<P.length;i++) for (let j=i+1;j<P.length;j++) {
-        const a=P[i],b=P[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<75){
-          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-          ctx.strokeStyle='#008b87';ctx.globalAlpha=(1-d/75)*0.18;
-          ctx.lineWidth=0.7;ctx.stroke();
+      ctx.clearRect(0, 0, W, H);
+
+      // Connection lines
+      for (let i = 0; i < P.length; i++) {
+        for (let j = i+1; j < P.length; j++) {
+          const a = P[i], b = P[j];
+          const dx = a.x-b.x, dy = a.y-b.y;
+          const d = Math.sqrt(dx*dx+dy*dy);
+          if (d < 75) {
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+            ctx.strokeStyle = '#008b87';
+            ctx.globalAlpha = (1-d/75)*0.18;
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
+          }
         }
       }
+
+      // Particles
       P.forEach(p => {
-        const dx=mouse.x-p.x, dy=mouse.y-p.y, d=Math.sqrt(dx*dx+dy*dy);
-        if(d<180 && d>0){ p.vx+=(dx/d)*0.022; p.vy+=(dy/d)*0.022; }
-        p.vx*=0.974; p.vy*=0.974;
-        p.vx+=(Math.random()-0.5)*0.009;
-        p.vy+=(Math.random()-0.5)*0.009;
-        p.x+=p.vx; p.y+=p.vy;
-        if(p.x<0)p.x=W; if(p.x>W)p.x=0;
-        if(p.y<0)p.y=H; if(p.y>H)p.y=0;
-        p.pulse+=p.ps;
+        const dx = mouse.x-p.x, dy = mouse.y-p.y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if (d < 180 && d > 0) { p.vx += (dx/d)*0.022; p.vy += (dy/d)*0.022; }
+        p.vx *= 0.974; p.vy *= 0.974;
+        p.vx += (Math.random()-0.5)*0.009;
+        p.vy += (Math.random()-0.5)*0.009;
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        p.pulse += p.ps;
         ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle=p.color;
-        ctx.globalAlpha=p.alpha*(0.65+0.35*Math.sin(p.pulse));
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha * (0.65 + 0.35*Math.sin(p.pulse));
         ctx.fill();
       });
-      ctx.globalAlpha=1;
+      ctx.globalAlpha = 1;
       requestAnimationFrame(draw);
     }
 
     canvas.addEventListener('mousemove', e => {
       const r = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
     });
     canvas.addEventListener('mouseleave', () => { mouse.x=-999; mouse.y=-999; });
     canvas.addEventListener('click', e => {
       const r = canvas.getBoundingClientRect();
       spawnRipple(e.clientX - r.left, e.clientY - r.top);
     });
-    // Touch support for mobile
     canvas.addEventListener('touchmove', e => {
       e.preventDefault();
       const r = canvas.getBoundingClientRect();
@@ -596,8 +641,8 @@
       spawnRipple(tx, ty);
     }, { passive: false });
     canvas.addEventListener('touchend', () => { mouse.x=-999; mouse.y=-999; });
-    window.addEventListener('resize', () => { resize(); init(); });
-    resize(); init(); draw();
+    window.addEventListener('resize', () => { resize(); resizeRipple(); init(); });
+    resize(); resizeRipple(); init(); draw();
   })();
 </script>
 </body>
