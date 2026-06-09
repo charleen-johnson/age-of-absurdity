@@ -25,7 +25,8 @@
       --sans:       'Montserrat', system-ui, sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    @media (max-width: 480px) { html { font-size: 17px; } }
     body { background: var(--white); color: var(--body-text); font-family: var(--sans); font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
     #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--coral), var(--gold)); z-index: 300; transition: width 0.1s linear; }
@@ -49,7 +50,7 @@
     /* HERO */
     .essay-hero { padding: 8rem 2rem 2.5rem; background: var(--white); text-align: center; position: relative; }
     .essay-hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 3rem; background: linear-gradient(to bottom, transparent, var(--teal-rule)); }
-    .essay-series-label { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; display: block; opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s; }
+    .essay-series-label { font-family: var(--sans); font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; display: block; opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s; }
     .essay-number { font-family: var(--serif); font-size: 1rem; font-weight: 300; font-style: italic; color: var(--muted); margin-bottom: 1.5rem; display: block; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
     .essay-title { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 300; line-height: 1.05; color: var(--charcoal); margin-bottom: 1.25rem; white-space: nowrap; opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
     .essay-title em { font-style: italic; color: var(--teal-deep); }
@@ -62,22 +63,22 @@
     .essay-body { max-width: 680px; margin: 0 auto; padding: 2.5rem 2rem 7rem; }
 
     .essay-p.drop-cap::first-letter { font-family: var(--serif); font-size: 4.5em; font-weight: 600; float: left; line-height: 0.75; margin-right: 0.1em; margin-top: 0.07em; color: var(--teal-deep); }
-    .essay-p { font-family: var(--serif); font-size: clamp(1.05rem, 1.8vw, 1.18rem); color: var(--body-text); line-height: 1.92; margin-bottom: 1.5rem; font-weight: 400; }
+    .essay-p { font-family: var(--serif); font-size: 1.15rem; color: var(--body-text); line-height: 1.92; margin-bottom: 1.5rem; font-weight: 400; }
     .essay-p strong { font-weight: 600; color: var(--charcoal); }
 
     /* Opening spine block */
     .essay-opening { margin-bottom: 2.5rem; }
-    .essay-opening .essay-p { font-family: var(--serif); font-size: clamp(1.05rem, 1.9vw, 1.2rem); line-height: 1.9; }
+    .essay-opening .essay-p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.9; }
     .essay-opening .essay-p:last-child { margin-bottom: 0; }
 
     /* Rumi hinge */
     .rumi-hinge { margin: 2rem 0; padding: 1.5rem 2rem 1.5rem 2.5rem; border-left: 3px solid var(--teal-deep); background: var(--teal-card); border-radius: 0 3px 3px 0; }
-    .rumi-hinge p { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.3rem); font-style: italic; font-weight: 400; color: var(--teal-deep); line-height: 1.75; margin-bottom: 0.4rem; }
+    .rumi-hinge p { font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-style: italic; font-weight: 400; color: var(--teal-deep); line-height: 1.75; margin-bottom: 0.4rem; }
     .rumi-hinge cite { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-style: normal; }
 
     /* Section headers */
     .essay-section-head { margin: 3.5rem 0 1.25rem; }
-    .essay-section-num { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 0.35rem; }
+    .essay-section-num { font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 0.35rem; }
     .essay-section-head h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; color: var(--teal-deep); line-height: 1.2; }
 
     /* Pull quote */
@@ -91,7 +92,7 @@
 
     /* Closing */
     .essay-closing { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--teal-rule); }
-    .essay-closing-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1.25rem; display: block; }
+    .essay-closing-label { font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1.25rem; display: block; }
     .signal-lines { border-top: 3px solid var(--teal-deep); border-bottom: 3px solid var(--teal-deep); padding: 1.5rem 2rem; }
     .signal-lines p { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.7; }
     .signal-lines .sl1, .signal-lines .sl2, .signal-lines .sl3 { display: block; opacity: 0; transform: translateX(-12px); transition: opacity 0.5s ease, transform 0.5s ease; }
@@ -105,7 +106,7 @@
     .footer-back { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-deep); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .footer-back:hover { color: var(--coral); }
     .footer-next { text-align: right; }
-    .footer-next-label { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; display: block; }
+    .footer-next-label { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; display: block; }
     .footer-next-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--charcoal); font-style: italic; opacity: 0.4; }
 
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -113,10 +114,14 @@
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       nav { padding: 0.85rem 1.25rem; }
       .nav-current { display: none; }
       .essay-body { padding: 3rem 1.5rem 5rem; }
+      .essay-p { font-size: 1.2rem; line-height: 2; }
+      .rumi-hinge p { font-size: 1.4rem; }
+      .essay-section-head h2 { font-size: 1.9rem; }
+      .essay-pullquote p { font-size: 1.3rem; }
       .essay-footer-inner { flex-direction: column; align-items: flex-start; }
       .footer-next { text-align: left; }
     }
@@ -128,7 +133,9 @@
 
 <nav id="main-nav">
   <div class="nav-left">
-    <a href="https://charleen-johnson.github.io/age-of-absurdity/" class="nav-home-icon" title="Home">&#x1F3E0;</a>
+    <a href="https://charleen-johnson.github.io/age-of-absurdity/" class="nav-home-icon" title="Home">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+  </a>
     <a href="https://charleen-johnson.github.io/age-of-absurdity/" class="nav-series-link">The Age of Absurdity</a>
   </div>
   <div class="nav-right">
