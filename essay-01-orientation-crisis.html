@@ -124,6 +124,44 @@
       .essay-footer-inner { flex-direction: column; align-items: flex-start; }
       .footer-next { text-align: left; }
     }
+    /* Orientation field map */
+    .orientation-field-wrap { max-width: 900px; margin: 2rem auto 0; padding: 0 1.5rem; }
+    .orientation-field {
+      --lens-left: 50%; --lens-top: 52%;
+      position: relative; height: clamp(240px, 30vw, 400px);
+      overflow: hidden; border-radius: 6px;
+      border: 1px solid rgba(0,139,135,0.22);
+      box-shadow: 0 18px 50px rgba(26,26,46,0.12);
+      background:
+        radial-gradient(ellipse at 8% 18%, rgba(79,189,186,0.32), transparent 28%),
+        radial-gradient(ellipse at 10% 62%, rgba(50,150,70,0.26), transparent 24%),
+        radial-gradient(ellipse at 85% 16%, rgba(140,120,170,0.20), transparent 26%),
+        radial-gradient(ellipse at 52% 80%, rgba(240,225,130,0.28), transparent 28%),
+        radial-gradient(ellipse at 88% 68%, rgba(190,152,65,0.28), transparent 26%),
+        linear-gradient(150deg, rgba(215,248,244,0.98) 0%, rgba(225,248,228,0.97) 28%, rgba(244,246,208,0.96) 60%, rgba(248,234,178,0.96) 100%);
+      cursor: crosshair; isolation: isolate;
+    }
+    .static-map-layer, .static-grid-layer, .static-contour-layer, .static-route-layer, .orientation-field-label { position: absolute; inset: 0; pointer-events: none; }
+    .static-map-layer { z-index: 1; background: radial-gradient(ellipse at 8% 58%, rgba(0,139,135,0.32), transparent 26%), radial-gradient(ellipse at 22% 36%, rgba(40,150,70,0.30), transparent 22%), radial-gradient(ellipse at 86% 16%, rgba(120,100,160,0.22), transparent 24%), radial-gradient(ellipse at 50% 80%, rgba(205,195,110,0.26), transparent 28%), radial-gradient(ellipse at 88% 65%, rgba(185,145,55,0.28), transparent 24%); opacity: 0.90; filter: saturate(1.15); }
+    .static-grid-layer { z-index: 2; opacity: 0.22; mix-blend-mode: multiply; background-image: linear-gradient(rgba(0,80,70,0.32) 1px, transparent 1px), linear-gradient(90deg, rgba(0,80,70,0.32) 1px, transparent 1px); background-size: 74px 74px; }
+    .static-contour-layer { z-index: 3; opacity: 0.85; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23005a50' stroke-width='1.4' stroke-opacity='0.55'%3E%3Cpath d='M-80 80 C 70 20, 190 126, 350 76 S 610 18, 780 88 S 1030 152, 1380 70'/%3E%3Cpath d='M-70 132 C 84 78, 208 180, 370 130 S 642 74, 822 142 S 1040 212, 1370 132'/%3E%3Cpath d='M-60 190 C 96 140, 236 242, 398 190 S 664 132, 850 204 S 1078 272, 1376 192'/%3E%3Cpath d='M-68 252 C 110 198, 264 306, 430 252 S 692 190, 888 270 S 1120 328, 1370 254'/%3E%3Cpath d='M-84 318 C 108 262, 296 374, 472 320 S 726 260, 932 330 S 1156 398, 1382 324'/%3E%3Cpath d='M-80 386 C 126 332, 322 444, 514 390 S 766 326, 976 396 S 1198 468, 1378 396'/%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
+    .static-route-layer { z-index: 4; opacity: 0.9; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23cc4433' stroke-width='2' stroke-opacity='0.55' stroke-dasharray='9 10'%3E%3Cpath d='M40 370 C 180 330, 280 356, 420 292 S 620 196, 810 238 S 1020 314, 1250 246'/%3E%3C/g%3E%3Cg fill='%231a1a2e' fill-opacity='0.72' font-family='Georgia,serif' font-size='17' letter-spacing='5' font-weight='bold'%3E%3Ctext x='280' y='116'%3ERIDGE%3C/text%3E%3Ctext x='750' y='152'%3EFIELD%3C/text%3E%3Ctext x='860' y='358'%3ELOWLAND%3C/text%3E%3C/g%3E%3Cg fill='%23005a50' fill-opacity='0.5' font-family='Georgia,serif' font-size='13' letter-spacing='3'%3E%3Ctext x='280' y='300'%3EVALLEY%3C/text%3E%3Ctext x='560' y='420'%3EPLAIN%3C/text%3E%3Ctext x='850' y='88'%3EHIGHLAND%3C/text%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
+    .terrain-lens-wrap { position: absolute; left: var(--lens-left); top: var(--lens-top); transform: translate(-50%,-50%); width: 180px; height: 180px; pointer-events: none; z-index: 9; }
+    .orientation-field.is-active .terrain-lens-wrap { width: 200px; height: 200px; }
+    .terrain-lens { position: absolute; inset: 12px; border-radius: 50%; overflow: hidden; clip-path: circle(50%); box-shadow: inset 0 0 20px rgba(0,107,104,0.15); }
+    .compass-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(79,189,186,0.6); background: transparent; box-shadow: 0 0 0 1px rgba(79,189,186,0.2), 0 8px 24px rgba(26,26,46,0.18); z-index: 11; pointer-events: none; }
+    .compass-ring::before { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px solid rgba(79,189,186,0.25); }
+    .compass-cardinal { position: absolute; width: 100%; height: 100%; z-index: 13; pointer-events: none; }
+    .compass-cardinal span { position: absolute; font-family: var(--sans); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gold); }
+    .compass-cardinal .cn { top: 1px; left: 50%; transform: translateX(-50%); }
+    .compass-cardinal .cs { bottom: 1px; left: 50%; transform: translateX(-50%); }
+    .compass-cardinal .cw { left: 1px; top: 50%; transform: translateY(-50%); }
+    .compass-cardinal .ce { right: 1px; top: 50%; transform: translateY(-50%); }
+    #terrain-live-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 10; background: transparent; border-radius: 50%; }
+    .lens-sheen { position: absolute; inset: 0; z-index: 12; border-radius: 50%; background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.28), transparent 32%); mix-blend-mode: soft-light; pointer-events: none; }
+    .orientation-field-label { inset: auto auto 0.85rem 1rem; z-index: 18; padding: 0.42rem 0.58rem; background: rgba(255,255,255,0.74); color: rgba(26,26,46,0.72); font-size: 0.65rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 500; border: 1px solid rgba(0,139,135,0.18); backdrop-filter: blur(4px); }
+    .orientation-field-caption { margin-top: 0.85rem; text-align: center; font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--muted); }
+    @keyframes sheenFloat { 0% { transform: translate(0,0); opacity: 0.38; } 100% { transform: translate(12px,-8px); opacity: 0.5; } }
   </style>
 </head>
 <body>
@@ -154,6 +192,30 @@
   <p class="essay-lede">We are at the point where the gap can no longer be managed quietly. What orientation capacity is, why it erodes, and what absurdity signals when it does.</p>
   <div class="essay-hero-rule"></div>
 </section>
+
+<div class="orientation-field-wrap">
+  <figure class="orientation-field" id="orientation-living-field">
+    <div class="static-map-layer" aria-hidden="true"></div>
+    <div class="static-grid-layer" aria-hidden="true"></div>
+    <div class="static-contour-layer" aria-hidden="true"></div>
+    <div class="static-route-layer" aria-hidden="true"></div>
+    <div class="terrain-lens-wrap" id="terrain-lens-wrap" aria-hidden="true">
+      <div class="compass-ring"></div>
+      <div class="compass-cardinal">
+        <span class="cn">N</span>
+        <span class="cs">S</span>
+        <span class="cw">W</span>
+        <span class="ce">E</span>
+      </div>
+      <div class="terrain-lens" id="terrain-lens">
+        <canvas id="terrain-live-canvas"></canvas>
+        <div class="lens-sheen"></div>
+      </div>
+    </div>
+    <div class="orientation-field-label">Move cursor across the map</div>
+  </figure>
+  <p class="orientation-field-caption">The map stays still. The terrain does not.</p>
+</div>
 
 <article class="essay-body">
 
@@ -309,17 +371,6 @@
     <p class="essay-p">By asking, with less performance and more honesty, where we are, what is happening, what we are not yet able to see, and what becomes possible when we can.</p>
   </div>
 
-  <div class="essay-closing reveal">
-    <span class="essay-closing-label">The Signal</span>
-    <div class="signal-lines" id="signal-lines">
-      <p>
-        <span class="sl1">Absurdity is not the problem. It is the messenger.</span>
-        <span class="sl2">The question is whether anyone is still listening.</span>
-        <span class="sl3">And what becomes possible when they do.</span>
-      </p>
-    </div>
-  </div>
-
 </article>
 
 <footer class="essay-footer">
@@ -352,6 +403,99 @@
   }, { threshold: 0.4 });
   const sig = document.getElementById('signal-lines');
   if (sig) signalObs.observe(sig);
+
+  // Terrain lens
+  (function() {
+    const field = document.getElementById('orientation-living-field');
+    const lens = document.getElementById('terrain-lens');
+    const lensWrap = document.getElementById('terrain-lens-wrap');
+    const canvas = document.getElementById('terrain-live-canvas');
+    if (!field || !lens || !canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w = 0, h = 0, t = 0, mx = 0.5, my = 0.52;
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = lens.getBoundingClientRect();
+      w = Math.max(1, rect.width); h = Math.max(1, rect.height);
+      canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function setLensFromPoint(clientX, clientY) {
+      const rect = field.getBoundingClientRect();
+      const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
+      const y = Math.max(0, Math.min(rect.height, clientY - rect.top));
+      mx = x / rect.width; my = y / rect.height;
+      field.style.setProperty('--lens-left', x + 'px');
+      field.style.setProperty('--lens-top', y + 'px');
+    }
+
+    function centerLens() {
+      const rect = field.getBoundingClientRect();
+      setLensFromPoint(rect.left + rect.width * 0.5, rect.top + rect.height * 0.52);
+    }
+
+    function drawTerrain() {
+      t += 0.010;
+      ctx.clearRect(0, 0, w, h);
+      const cx = w / 2, cy = h / 2;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, w, h);
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, 'rgb(195,242,238)');
+      grad.addColorStop(0.28, 'rgb(215,240,220)');
+      grad.addColorStop(0.52, 'rgb(242,244,210)');
+      grad.addColorStop(0.75, 'rgb(250,238,175)');
+      grad.addColorStop(1, 'rgb(242,222,155)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+      const baseShift = (mx - 0.5) * 46;
+      const verticalShift = (my - 0.5) * 34;
+      for (let k = 0; k < 18; k++) {
+        ctx.beginPath();
+        const yBase = (k / 17) * h + Math.sin(t * 0.8 + k * 0.7) * 14 + verticalShift;
+        for (let x = -10; x <= w + 10; x += 6) {
+          const y = yBase + Math.sin(x * 0.018 + t * 1.7 + k * 0.72 + mx * 2.5) * (12 + k * 0.3) + Math.cos(x * 0.034 - t * 1.1 + my * 3.5) * 6 + baseShift * Math.sin(k * 0.42);
+          if (x === -10) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        const even = k % 4 === 0;
+        ctx.strokeStyle = even ? 'rgba(0,107,104,0.32)' : 'rgba(79,189,186,0.18)';
+        ctx.lineWidth = even ? 1.1 : 0.6;
+        ctx.stroke();
+      }
+      const cr = 6, armLen = 13;
+      ctx.beginPath();
+      ctx.arc(cx, cy, cr, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255,255,255,0.88)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,180,0,0.95)';
+      ctx.fill();
+      [[0,-1],[0,1],[1,0],[-1,0]].forEach(([dx,dy]) => {
+        ctx.beginPath();
+        ctx.moveTo(cx + dx*(cr+3), cy + dy*(cr+3));
+        ctx.lineTo(cx + dx*(cr+armLen), cy + dy*(cr+armLen));
+        ctx.strokeStyle = 'rgba(255,255,255,0.82)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      });
+      requestAnimationFrame(drawTerrain);
+    }
+
+    field.addEventListener('mouseenter', () => { field.classList.add('is-active'); resize(); });
+    field.addEventListener('mousemove', (e) => { field.classList.add('is-active'); setLensFromPoint(e.clientX, e.clientY); resize(); });
+    field.addEventListener('mouseleave', () => { field.classList.remove('is-active'); });
+    field.addEventListener('touchstart', (e) => { if (!e.touches||!e.touches.length) return; field.classList.add('is-active'); setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); resize(); }, { passive: true });
+    field.addEventListener('touchmove', (e) => { if (!e.touches||!e.touches.length) return; setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+    field.addEventListener('touchend', () => { field.classList.remove('is-active'); });
+    window.addEventListener('resize', () => { resize(); centerLens(); });
+    // Delay init slightly to ensure layout is complete
+    setTimeout(() => { resize(); centerLens(); drawTerrain(); }, 100);
+  })();
 </script>
 
 </body>
