@@ -145,7 +145,7 @@
     .static-map-layer { z-index: 1; background: radial-gradient(ellipse at 8% 58%, rgba(0,139,135,0.32), transparent 26%), radial-gradient(ellipse at 22% 36%, rgba(40,150,70,0.30), transparent 22%), radial-gradient(ellipse at 86% 16%, rgba(120,100,160,0.22), transparent 24%), radial-gradient(ellipse at 50% 80%, rgba(205,195,110,0.26), transparent 28%), radial-gradient(ellipse at 88% 65%, rgba(185,145,55,0.28), transparent 24%); opacity: 0.90; filter: saturate(1.15); }
     .static-grid-layer { z-index: 2; opacity: 0.22; mix-blend-mode: multiply; background-image: linear-gradient(rgba(0,80,70,0.32) 1px, transparent 1px), linear-gradient(90deg, rgba(0,80,70,0.32) 1px, transparent 1px); background-size: 74px 74px; }
     .static-contour-layer { z-index: 3; opacity: 0.85; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23005a50' stroke-width='1.4' stroke-opacity='0.55'%3E%3Cpath d='M-80 80 C 70 20, 190 126, 350 76 S 610 18, 780 88 S 1030 152, 1380 70'/%3E%3Cpath d='M-70 132 C 84 78, 208 180, 370 130 S 642 74, 822 142 S 1040 212, 1370 132'/%3E%3Cpath d='M-60 190 C 96 140, 236 242, 398 190 S 664 132, 850 204 S 1078 272, 1376 192'/%3E%3Cpath d='M-68 252 C 110 198, 264 306, 430 252 S 692 190, 888 270 S 1120 328, 1370 254'/%3E%3Cpath d='M-84 318 C 108 262, 296 374, 472 320 S 726 260, 932 330 S 1156 398, 1382 324'/%3E%3Cpath d='M-80 386 C 126 332, 322 444, 514 390 S 766 326, 976 396 S 1198 468, 1378 396'/%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
-    .static-route-layer { z-index: 4; opacity: 0.9; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23cc4433' stroke-width='2' stroke-opacity='0.55' stroke-dasharray='9 10'%3E%3Cpath d='M40 370 C 180 330, 280 356, 420 292 S 620 196, 810 238 S 1020 314, 1250 246'/%3E%3C/g%3E%3Cg fill='%231a1a2e' fill-opacity='0.72' font-family='Georgia,serif' font-size='17' letter-spacing='5' font-weight='bold'%3E%3Ctext x='280' y='116'%3ERIDGE%3C/text%3E%3Ctext x='750' y='152'%3EFIELD%3C/text%3E%3Ctext x='860' y='358'%3ELOWLAND%3C/text%3E%3C/g%3E%3Cg fill='%23005a50' fill-opacity='0.5' font-family='Georgia,serif' font-size='13' letter-spacing='3'%3E%3Ctext x='280' y='300'%3EVALLEY%3C/text%3E%3Ctext x='560' y='420'%3EPLAIN%3C/text%3E%3Ctext x='850' y='88'%3EHIGHLAND%3C/text%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
+    .static-route-layer { z-index: 4; opacity: 0.9; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 520'%3E%3Cg fill='none' stroke='%23cc4433' stroke-width='2' stroke-opacity='0.55' stroke-dasharray='9 10'%3E%3Cpath d='M40 370 C 180 330, 280 356, 420 292 S 620 196, 810 238 S 1020 314, 1250 246'/%3E%3C/g%3E%3Cg fill='%231a1a2e' fill-opacity='0.90' font-family='Georgia,serif' font-size='19' letter-spacing='5' font-weight='bold'%3E%3Ctext x='280' y='116'%3ERIDGE%3C/text%3E%3Ctext x='750' y='152'%3EFIELD%3C/text%3E%3Ctext x='860' y='358'%3ELOWLAND%3C/text%3E%3C/g%3E%3Cg fill='%23005a50' fill-opacity='0.90' font-family='Georgia,serif' font-size='15' letter-spacing='3' font-weight='bold'%3E%3Ctext x='280' y='300'%3EVALLEY%3C/text%3E%3Ctext x='560' y='420'%3EPLAIN%3C/text%3E%3Ctext x='850' y='88'%3EHIGHLAND%3C/text%3E%3C/g%3E%3C/svg%3E"); background-size: cover; background-position: center; }
     .terrain-lens-wrap { position: absolute; left: var(--lens-left); top: var(--lens-top); transform: translate(-50%,-50%); width: 180px; height: 180px; pointer-events: none; z-index: 9; }
     .orientation-field.is-active .terrain-lens-wrap { width: 200px; height: 200px; }
     .terrain-lens { position: absolute; inset: 12px; border-radius: 50%; overflow: hidden; clip-path: circle(50%); box-shadow: inset 0 0 20px rgba(0,107,104,0.15); }
@@ -491,8 +491,18 @@
     field.addEventListener('mouseenter', () => { field.classList.add('is-active'); resize(); });
     field.addEventListener('mousemove', (e) => { field.classList.add('is-active'); setLensFromPoint(e.clientX, e.clientY); });
     field.addEventListener('mouseleave', () => { field.classList.remove('is-active'); });
-    field.addEventListener('touchstart', (e) => { if (!e.touches||!e.touches.length) return; field.classList.add('is-active'); setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); resize(); }, { passive: true });
-    field.addEventListener('touchmove', (e) => { if (!e.touches||!e.touches.length) return; setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+    field.addEventListener('touchstart', (e) => { 
+      if (!e.touches||!e.touches.length) return;
+      e.preventDefault();
+      field.classList.add('is-active'); 
+      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); 
+      resize(); 
+    }, { passive: false });
+    field.addEventListener('touchmove', (e) => { 
+      if (!e.touches||!e.touches.length) return;
+      e.preventDefault();
+      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); 
+    }, { passive: false });
     field.addEventListener('touchend', () => { field.classList.remove('is-active'); });
     window.addEventListener('resize', () => { resize(); centerLens(); });
     // Delay init slightly to ensure layout is complete
