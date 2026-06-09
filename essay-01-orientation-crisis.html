@@ -160,7 +160,7 @@
     #terrain-live-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 10; background: transparent; border-radius: 50%; }
     .lens-sheen { position: absolute; inset: 0; z-index: 12; border-radius: 50%; background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.28), transparent 32%); mix-blend-mode: soft-light; pointer-events: none; }
     .orientation-field-label { inset: auto auto 0.85rem 1rem; z-index: 18; padding: 0.42rem 0.58rem; background: rgba(255,255,255,0.74); color: rgba(26,26,46,0.72); font-size: 0.65rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 500; border: 1px solid rgba(0,139,135,0.18); backdrop-filter: blur(4px); }
-    .orientation-field-caption { margin-top: 0.85rem; text-align: center; font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--muted); }
+    .orientation-field-caption { margin-top: 0.85rem; text-align: center; font-family: var(--serif); font-size: 1rem; font-style: italic; font-weight: 600; color: var(--charcoal); }
     @keyframes sheenFloat { 0% { transform: translate(0,0); opacity: 0.38; } 100% { transform: translate(12px,-8px); opacity: 0.5; } }
   </style>
 </head>
@@ -487,7 +487,7 @@
     }
 
     field.addEventListener('mouseenter', () => { field.classList.add('is-active'); resize(); });
-    field.addEventListener('mousemove', (e) => { field.classList.add('is-active'); setLensFromPoint(e.clientX, e.clientY); resize(); });
+    field.addEventListener('mousemove', (e) => { field.classList.add('is-active'); setLensFromPoint(e.clientX, e.clientY); });
     field.addEventListener('mouseleave', () => { field.classList.remove('is-active'); });
     field.addEventListener('touchstart', (e) => { if (!e.touches||!e.touches.length) return; field.classList.add('is-active'); setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); resize(); }, { passive: true });
     field.addEventListener('touchmove', (e) => { if (!e.touches||!e.touches.length) return; setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
