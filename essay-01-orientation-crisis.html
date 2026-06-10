@@ -1,4 +1,4 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -52,8 +52,9 @@
     .essay-hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 3rem; background: linear-gradient(to bottom, transparent, var(--teal-rule)); }
     .essay-series-label { font-family: var(--sans); font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; display: block; opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s; }
     .essay-number { font-family: var(--serif); font-size: 1rem; font-weight: 300; font-style: italic; color: var(--muted); margin-bottom: 1.5rem; display: block; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
-    .essay-title { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 300; line-height: 1.05; color: var(--charcoal); margin-bottom: 1.25rem; white-space: nowrap; opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
+    .essay-title { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 300; line-height: 1.05; color: var(--charcoal); margin-bottom: 0.6rem; white-space: nowrap; opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
     .essay-title em { font-style: italic; color: var(--teal-deep); }
+    .essay-subtitle { font-family: var(--serif); font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 300; font-style: italic; color: var(--muted); margin-bottom: 1.25rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s; }
     .essay-byline { margin-bottom: 1.25rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.9s; }
     .essay-byline-name { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
     .essay-lede { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 400; font-style: italic; color: var(--charcoal); max-width: 620px; margin: 0 auto 1.25rem; line-height: 1.65; opacity: 0; animation: fadeUp 0.9s ease forwards 1.0s; }
@@ -124,6 +125,7 @@
       .essay-footer-inner { flex-direction: column; align-items: flex-start; }
       .footer-next { text-align: left; }
     }
+
     /* Orientation field map */
     .orientation-field-wrap { max-width: 900px; margin: 2rem auto 0; padding: 0 1.5rem; }
     .orientation-field {
@@ -179,9 +181,9 @@
 
 <section class="essay-hero">
   <span class="essay-series-label">Essay One</span>
-  
   <h1 class="essay-title">The <em>Orientation</em> Crisis</h1>
-  <p class="essay-lede">The maps we were given to navigate work, leadership, and modern life no longer match the terrain. It is time to stop pretending they do.</p>
+  <p class="essay-subtitle">When Systems Lose Contact With What's Real</p>
+  <p class="essay-lede">The maps we use to navigate work, organisations, and modern life have been drifting from the terrain for a long time. This is what that looks like from the inside, and what becomes possible when we name it.</p>
   <div class="essay-hero-rule"></div>
 </section>
 
@@ -196,33 +198,25 @@
         <canvas id="terrain-live-canvas"></canvas>
         <div class="lens-sheen"></div>
       </div>
-      <!-- Single SVG compass overlay: ring, ticks, nodules, labels, crosshair all in one coordinate space -->
       <svg class="compass-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:14;">
-        <!-- Outer ring -->
         <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(79,189,186,0.65)" stroke-width="1.8"/>
-        <!-- Inner ring -->
         <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(79,189,186,0.25)" stroke-width="0.8"/>
-        <!-- Cardinal nodules (filled circles on the ring) -->
         <circle cx="50" cy="2" r="2.5" fill="#C17F00"/>
         <circle cx="50" cy="98" r="2.5" fill="#C17F00"/>
         <circle cx="2" cy="50" r="2.5" fill="#C17F00"/>
         <circle cx="98" cy="50" r="2.5" fill="#C17F00"/>
-        <!-- Minor tick marks -->
         <line x1="50" y1="4.5" x2="50" y2="8" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
         <line x1="50" y1="92" x2="50" y2="95.5" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
         <line x1="4.5" y1="50" x2="8" y2="50" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
         <line x1="92" y1="50" x2="95.5" y2="50" stroke="rgba(79,189,186,0.5)" stroke-width="1"/>
-        <!-- Diagonal minor ticks -->
         <line x1="15" y1="15" x2="18" y2="18" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
         <line x1="85" y1="15" x2="82" y2="18" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
         <line x1="15" y1="85" x2="18" y2="82" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
         <line x1="85" y1="85" x2="82" y2="82" stroke="rgba(79,189,186,0.3)" stroke-width="0.8"/>
-        <!-- Cardinal labels -->
         <text x="50" y="13" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">N</text>
         <text x="50" y="89" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">S</text>
         <text x="11" y="50" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">W</text>
         <text x="89" y="50" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#C17F00" letter-spacing="0.5">E</text>
-        <!-- Crosshair -->
         <line x1="50" y1="43" x2="50" y2="57" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/>
         <line x1="43" y1="50" x2="57" y2="50" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/>
         <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1"/>
@@ -236,7 +230,6 @@
 
 <article class="essay-body">
 
-  <!-- SPINE OPENING -->
   <div class="essay-opening reveal">
     <p class="essay-p drop-cap">People know something has shifted. They feel it in their bodies before they can name it in words: the particular weight of showing up to work that no longer makes sense, the low-grade grief of institutions that have stopped standing for what they claimed, the strange vertigo of a world moving at full speed toward destinations nobody actually chose. The exhaustion is real. The apathy is real. The anger is real. So is the growing sense that the people making the decisions, the large corporations, the governments, the billionaires holding the megaphone, are not going to be the ones who name what is actually happening, let alone find the way through it.</p>
 
@@ -255,7 +248,7 @@
 
     <p class="essay-p">This is the oldest pattern in the human story. Every major civilisational transition in recorded history has produced this same signal at the same moment in the arc: the moment when inherited ways of making sense stop holding, when systems keep running on momentum long after they have lost contact with what they were for, when absurdity surfaces as the most honest output a culture can produce. Camus called it the gap between what humans reach for and what the world actually offers. He was right, but he was only describing half of it. The gap is not existential. It is a navigational crisis, and navigational crises have always had a way through.</p>
 
-    <p class="essay-p">These essays, and the book they are building toward, are a reclamation. Of contact with what is actually happening. Of the capacity to orient inside conditions that are genuinely without precedent. Of the agency that returns, for a person and for a system, when it stops waiting for the centre to sort itself out first. This is not a series about coping, or about finding peace inside systems that deserve better. It is about recovering something that belongs to all of us: the capacity to see clearly, to act from what we actually know, and to navigate toward something worth reaching for. Written from inside the experience, for anyone who has felt the fracture and held the conviction, even quietly, that there is still a river somewhere and it is not too late to find it.</p>
+    <p class="essay-p">These essays are building toward the book <em>Reclaim: Finding Your Bearings in an Untethered World.</em> They are a reclamation of contact with what is actually happening, of the capacity to orient inside conditions that are genuinely without precedent, of the agency that returns for a person and for a system when it stops waiting for the centre to sort itself out first. This is not a series about coping, or about finding peace inside systems that deserve better. It is about recovering something that belongs to all of us: the capacity to see clearly, to act from what we actually know, and to navigate toward something worth reaching for. Written from inside the experience, for anyone who has felt the fracture and held the conviction, even quietly, that there is still a river somewhere and it is not too late to find it.</p>
   </div>
 
   <div class="section-break reveal"><span>&#9670;</span></div>
@@ -315,8 +308,7 @@
 
     <p class="essay-p">My work began in organizations because organizations make this pattern unusually visible. They produce artifacts. Meetings, metrics, dashboards, role descriptions, transformation plans, governance forums, engagement surveys, risk registers, town halls, culture statements, operating models, and email threads long enough to require their own ecosystem. Organizations leave traces of how they interpret reality and how they lose contact with it.</p>
 
-    <p class="essay-p">A leadership team says people are empowered, while every meaningful decision quietly travels upward for approval. A transformation program promises agility while requiring fourteen layers of sign-off to change a slide. A company says people are its greatest asset while designing work as if humans are unfortunate interruptions between software subscriptions. A meeting is called to create clarity, and everyone leaves with more action items and less truth. A strategy deck describes the future in language so abstract that the future itself would need a consultant to understand it. These are not failures of intelligence or intention. They are what orientation loss looks like when it has been institutionalised.
-    </p>
+    <p class="essay-p">A leadership team says people are empowered, while every meaningful decision quietly travels upward for approval. A transformation program promises agility while requiring fourteen layers of sign-off to change a slide. A company says people are its greatest asset while designing work as if humans are unfortunate interruptions between software subscriptions. A meeting is called to create clarity, and everyone leaves with more action items and less truth. A strategy deck describes the future in language so abstract that the future itself would need a consultant to understand it. These are not failures of intelligence or intention. They are what orientation loss looks like when it has been institutionalised.</p>
   </div>
 
   <!-- SECTION 04 -->
@@ -412,7 +404,6 @@
   const sig = document.getElementById('signal-lines');
   if (sig) signalObs.observe(sig);
 
-  // Terrain lens
   (function() {
     const field = document.getElementById('orientation-living-field');
     const lens = document.getElementById('terrain-lens');
@@ -485,21 +476,21 @@
     field.addEventListener('mouseenter', () => { field.classList.add('is-active'); resize(); });
     field.addEventListener('mousemove', (e) => { field.classList.add('is-active'); setLensFromPoint(e.clientX, e.clientY); });
     field.addEventListener('mouseleave', () => { field.classList.remove('is-active'); });
-    field.addEventListener('touchstart', (e) => { 
+    field.addEventListener('touchstart', (e) => {
       if (!e.touches||!e.touches.length) return;
       e.preventDefault();
-      field.classList.add('is-active'); 
-      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); 
-      resize(); 
+      field.classList.add('is-active');
+      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+      resize();
     }, { passive: false });
-    field.addEventListener('touchmove', (e) => { 
+    field.addEventListener('touchmove', (e) => {
       if (!e.touches||!e.touches.length) return;
       e.preventDefault();
-      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY); 
+      setLensFromPoint(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: false });
     field.addEventListener('touchend', () => { field.classList.remove('is-active'); });
     window.addEventListener('resize', () => { resize(); centerLens(); });
-    // Wait for field to be fully rendered before initialising
+
     function initWhenReady() {
       const rect = field.getBoundingClientRect();
       if (rect.width > 0 && rect.height > 0) {
